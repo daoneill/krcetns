@@ -19,145 +19,128 @@
         .bg-krc-light { background-color: #F1F8F9; }
         .bg-krc-orange-light { background-color: #FFF3E0; }
         
-        .chart-container { position: relative; width: 100%; max-width: 600px; margin: auto; height: 300px; max-height: 400px; }
+        .chart-container { position: relative; width: 100%; max-width: 600px; margin: auto; height: 300px; }
         .fade-in { animation: fadeIn 0.4s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
         .school-logo { height: 60px; width: auto; object-fit: contain; }
         .school-logo-footer { height: 80px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; }
         
-        .nav-text { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.025em; }
-        .dropdown-item { font-size: 0.8rem; font-weight: 600; }
+        .nav-text { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.025em; }
+        .dropdown-item { font-size: 0.85rem; font-weight: 600; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
 
-    <div id="app" class="flex flex-col min-h-screen"></div>
+    <div id="app" class="flex flex-col min-h-screen">
+        <!-- Initial Loading State -->
+        <div class="flex items-center justify-center flex-grow">
+            <div class="text-center">
+                <p class="text-krc-teal font-bold animate-pulse text-xl uppercase tracking-widest">Initialising School Portal...</p>
+                <p class="text-gray-400 text-sm mt-2">Connecting to data.json</p>
+            </div>
+        </div>
+    </div>
 
     <script>
-        /**
-         * ==========================================
-         * SITE_DATA: Centralized Content Management
-         * ==========================================
-         */
-        const SITE_DATA = {
-            contact: {
-                phone: "01 524 1637",
-                email: "info.krcetns@gmail.com",
-                address: "KILLESTER RAHENY CLONTARF ETNS, COLLINS AVENUE EAST, DUBLIN 5, D05 F2H1",
-                mapsUrl: "https://www.google.com/maps/search/?api=1&query=KILLESTER+RAHENY+CLONTARF+EDUCATE+TOGETHER+NATIONAL+SCHOOL+D05+F2H1"
-            },
-            principalMessage: `
-                Welcome to Killester Raheny Clontarf (KRC) ETNS school website, where you can explore what life is like in our wonderful school. Since opening our doors in September 2019 with 7 Junior Infant pupils, we have grown each year, and we now cater for pupils up to 3rd class. We were delighted to open 2 full Autism Classes in September 2023; and by September 2026, we will have all classes from Junior Infants to 6th Class.
-                <br><br>
-                We are an Educate Together school, which means that we are equality-based, democratically-run, child-centred, and co-educational. The mottos of Educate Together are ‘No Child an Outsider’ and ‘Learn Together to Live Together,’ and we seek to ensure that these are embedded in our school culture in authentic and tangible ways.
-                <br><br>
-                Celebrating diversity for us means that every child, parent/guardian and staff member feels like they genuinely belong. While we have high expectations for our pupils, we recognise that children can only learn and reach their unique potential in a nurturing school environment where they feel that they are respected for who they are, cared for, safe, and where they feel they can explore and express their own identity in a warm and secure space.
-            `,
-            staff: {
-                leadership: [
-                    { name: "Niamh O'Toole", role: "Principal" },
-                    { name: "Joanne", role: "Secretary" }
-                ],
-                teachers: [
-                    { name: "Lucy", role: "Teacher", image: "https://krcetns.com/wp-content/uploads/2025/03/xKelly-pic.jpg.pagespeed.ic.FUTpioFN7Q.webp" },
-                    { name: "Edward", role: "Teacher", image: "https://krcetns.com/wp-content/uploads/2024/09/Edward.png" },
-                    { name: "William", role: "Teacher", image: "https://krcetns.com/wp-content/uploads/2024/09/Eoin.png" },
-                    { name: "Louise", role: "Teacher" }, { name: "Diandra", role: "Teacher" },
-                    { name: "Gill", role: "Teacher" }, { name: "Eva", role: "Teacher" }
-                ],
-                specialEducation: [
-                    { name: "Natalia", role: "SET" }, { name: "[Open]", role: "SET" }
-                ],
-                ana: [
-                    { name: "Ailish", role: "ANA" }, { name: "Aoife", role: "ANA" }, { name: "Catherine", role: "ANA" },
-                    { name: "Christina", role: "ANA" }, { name: "Christine", role: "ANA" }, { name: "Deb", role: "ANA" },
-                    { name: "Kelly", role: "ANA" }, { name: "Amy", role: "ANA" }, { name: "Vanessa", role: "ANA" },
-                    { name: "Abbie", role: "ANA" }, { name: "Lauren", role: "ANA" }, { name: "Bryanna", role: "ANA" }
-                ],
-                support: [
-                    { name: "Lara", role: "Escort/Driver" }, { name: "Alan", role: "Escort/Driver" }, { name: "Carmen", role: "Escort/Driver" }
-                ]
-            },
-            bomMembers: [
-                { name: "Dr. Marie Flynn", role: "Chairperson (Patron Nominee)" },
-                { name: "Trish Loughman", role: "Community Nominee" },
-                { name: "Níamh O'Toole", role: "Principal & Secretary" },
-                { name: "Dr. Anne Marie Kavanagh", role: "Community Nominee" },
-                { name: "Kelly De Bruin", role: "Parent Nominee" },
-                { name: "David O'Neill", role: "Parent Nominee" },
-                { name: "William", role: "Teacher Nominee" }
-            ],
-            ethosContent: {
-                intro: `Since opening our doors in 2019, we in Killester Raheny Clontarf (KRC) ETNS have been dedicated to ensuring that our school is genuinely inclusive of all the wonderful diversity that makes up our ever-changing community. With this in mind, we are committed to living by and actively promoting the values and principles of the Educate Together Charter (equality-based, co-educational, child-centred and democratically-run), and those of our Anti-Racism and Restorative Practice Statements.`,
-                relationships: `Being a restorative school means that our core focus is on how we develop and maintain relationships. The relationships between all members of our school community are vital in terms of developing a genuinely warm and welcoming environment. Developing a strong bond between the children and adults in the school is central to all that we do.`
-            }
-        };
+        let currentView = 'home';
+        let SITE_DATA = null;
 
         /**
-         * ==========================================
-         * UI COMPONENTS
-         * ==========================================
+         * FETCH DATA
+         * Simplified relative fetch to avoid URL constructor errors in restricted environments.
+         * This function attempts to load 'data.json' from the same directory as the HTML file.
          */
-        const UI = {
-            Navbar: () => `
-                <nav class="bg-white shadow-md sticky top-0 z-50">
-                    <div class="max-w-[1600px] mx-auto px-4">
-                        <div class="flex justify-between h-24">
-                            <!-- Logo Area -->
-                            <div class="flex items-center cursor-pointer flex-shrink-0" onclick="router('home')">
-                                <img src="krcetns_logo.webp" alt="KRCETNS" class="school-logo mr-3">
-                                <div class="hidden sm:flex flex-col">
-                                    <span class="font-bold text-lg text-krc-teal leading-none">KRCETNS</span>
-                                    <span class="text-[9px] text-krc-orange font-bold uppercase tracking-widest mt-1">Educate Together</span>
-                                </div>
-                            </div>
-                            
-                            <!-- Desktop Menu -->
-                            <div class="hidden lg:flex items-center space-x-4">
-                                <button onclick="router('home')" class="nav-text text-gray-600 hover:text-krc-teal transition">Home</button>
-                                
-                                <!-- Dropdown Menu -->
-                                <div class="relative group h-full flex items-center">
-                                    <button class="nav-text text-gray-600 group-hover:text-krc-teal transition flex items-center">
-                                        Our School <span class="ml-1 text-[10px]">▼</span>
-                                    </button>
-                                    <div class="absolute top-[80%] left-0 w-56 bg-white shadow-xl rounded-xl py-3 border border-gray-100 hidden group-hover:block fade-in z-50">
-                                        <button onclick="router('team')" class="dropdown-item block w-full text-left px-6 py-2.5 hover:bg-gray-50 hover:text-krc-teal transition">Our Team</button>
-                                        <button onclick="router('ethos')" class="dropdown-item block w-full text-left px-6 py-2.5 hover:bg-gray-50 hover:text-krc-teal transition">Ethos & Values</button>
-                                        <button onclick="router('bom')" class="dropdown-item block w-full text-left px-6 py-2.5 hover:bg-gray-50 hover:text-krc-teal transition">Board of Management</button>
-                                        <button onclick="router('pa')" class="dropdown-item block w-full text-left px-6 py-2.5 hover:bg-gray-50 hover:text-krc-teal transition">Parents Association</button>
-                                    </div>
-                                </div>
-
-                                <button onclick="router('learning')" class="nav-text text-gray-600 hover:text-krc-teal transition">Learning</button>
-                                <button onclick="router('parents')" class="nav-text text-gray-600 hover:text-krc-teal transition">Parent Hub</button>
-                                <button onclick="router('news')" class="nav-text text-gray-600 hover:text-krc-teal transition">News</button>
-                                <button onclick="router('admissions')" class="nav-text bg-krc-orange text-white px-6 py-2.5 rounded-full shadow-md hover:bg-orange-700 transition">Join Us</button>
-                            </div>
-
-                            <!-- Mobile Toggle -->
-                            <div class="flex items-center lg:hidden">
-                                <button onclick="toggleMobileMenu()" class="text-3xl text-krc-teal p-2">☰</button>
+        async function loadSiteData() {
+            try {
+                // Fetch using relative path - most reliable across GitHub/Local environments
+                const response = await fetch('data.json');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                SITE_DATA = await response.json();
+                renderApp();
+            } catch (error) {
+                console.error('Failed to load site data:', error);
+                
+                // Detailed Fallback UI to help non-technical users identify issues
+                document.getElementById('app').innerHTML = `
+                    <div class="p-10 md:p-20 text-center flex flex-col items-center justify-center min-h-screen bg-gray-100">
+                        <div class="bg-white p-8 md:p-12 rounded-[2rem] max-w-2xl shadow-2xl border border-red-100">
+                            <div class="text-6xl mb-6">⚠️</div>
+                            <h2 class="text-3xl font-black text-gray-800 mb-4">Content Connection Error</h2>
+                            <p class="text-gray-600 mb-8 leading-relaxed text-lg text-left">
+                                The portal could not load the <strong>data.json</strong> file. 
+                                <br><br>
+                                <strong>Common reasons:</strong>
+                                <ul class="text-left list-disc list-inside text-gray-500 space-y-2 mb-8">
+                                    <li>The file <strong>data.json</strong> has not been uploaded to GitHub yet.</li>
+                                    <li>There is a syntax error (like a missing comma) in your <strong>data.json</strong>.</li>
+                                    <li>You are opening the file locally without a web server (browsers block this for security).</li>
+                                </ul>
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                <button onclick="location.reload()" class="bg-krc-teal text-white px-10 py-3 rounded-xl font-bold hover:bg-teal-700 transition shadow-lg">Retry Connection</button>
+                                <a href="https://github.com" target="_blank" class="bg-gray-800 text-white px-10 py-3 rounded-xl font-bold hover:bg-black transition shadow-lg text-center">Check GitHub Repo</a>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Mobile Menu Panel -->
-                    <div id="mobile-menu" class="hidden lg:hidden bg-white shadow-2xl absolute w-full border-t border-gray-100 max-h-[85vh] overflow-y-auto">
-                        <div class="flex flex-col py-2">
-                            <button onclick="router('home')" class="text-left px-8 py-4 font-bold text-gray-700 hover:bg-gray-50">Home</button>
-                            <div class="px-8 py-3 font-black text-[10px] text-gray-400 uppercase tracking-widest bg-gray-50">Our School</div>
-                            <button onclick="router('team')" class="text-left px-12 py-3 text-gray-600 hover:bg-gray-50">Our Team</button>
-                            <button onclick="router('ethos')" class="text-left px-12 py-3 text-gray-600 hover:bg-gray-50">Ethos & Values</button>
-                            <button onclick="router('bom')" class="text-left px-12 py-3 text-gray-600 hover:bg-gray-50">Board of Management</button>
-                            <button onclick="router('pa')" class="text-left px-12 py-3 text-gray-600 hover:bg-gray-50">Parents Association</button>
+                `;
+            }
+        }
+
+        const UI = {
+            Navbar: () => `
+                <nav class="bg-white shadow-md sticky top-0 z-50">
+                    <div class="max-w-[1600px] mx-auto px-4 flex justify-between h-24">
+                        <div class="flex items-center cursor-pointer flex-shrink-0" onclick="router('home')">
+                            <img src="krcetns_logo.webp" alt="Logo" class="school-logo mr-3">
+                            <div class="hidden sm:flex flex-col">
+                                <span class="font-bold text-lg text-krc-teal leading-none">KRCETNS</span>
+                                <span class="text-[9px] text-krc-orange font-bold uppercase tracking-widest mt-1">Educate Together</span>
+                            </div>
+                        </div>
+                        
+                        <div class="hidden lg:flex items-center space-x-4">
+                            <button onclick="router('home')" class="nav-text text-gray-600 hover:text-krc-teal transition">Home</button>
                             
-                            <div class="px-8 py-3 font-black text-[10px] text-gray-400 uppercase tracking-widest bg-gray-50">Information</div>
-                            <button onclick="router('learning')" class="text-left px-8 py-4 font-bold text-gray-700 hover:bg-gray-50">Learning</button>
-                            <button onclick="router('parents')" class="text-left px-8 py-4 font-bold text-gray-700 hover:bg-gray-50">Parent Hub</button>
-                            <button onclick="router('news')" class="text-left px-8 py-4 font-bold text-gray-700 hover:bg-gray-50">News</button>
-                            <button onclick="router('admissions')" class="text-center mx-6 my-4 py-4 rounded-xl font-black text-white bg-krc-orange">JOIN OUR SCHOOL</button>
+                            <div class="relative group h-full flex items-center">
+                                <button class="nav-text text-gray-600 group-hover:text-krc-teal transition flex items-center">
+                                    Our School <span class="ml-1 text-[10px]">▼</span>
+                                </button>
+                                <div class="absolute top-[80%] left-0 w-64 bg-white shadow-2xl rounded-2xl py-4 border border-gray-100 hidden group-hover:block fade-in z-50">
+                                    <button onclick="router('team')" class="dropdown-item block w-full text-left px-8 py-2.5 hover:bg-gray-50 hover:text-krc-teal transition">About Us & Team</button>
+                                    <button onclick="router('ethos')" class="dropdown-item block w-full text-left px-8 py-2.5 hover:bg-gray-50 hover:text-krc-teal transition">Ethos & Values</button>
+                                    <button onclick="router('bom')" class="dropdown-item block w-full text-left px-8 py-2.5 hover:bg-gray-50 hover:text-krc-teal transition">Board of Management</button>
+                                    <button onclick="router('pa')" class="dropdown-item block w-full text-left px-8 py-2.5 hover:bg-gray-50 hover:text-krc-teal transition">Parents Association</button>
+                                </div>
+                            </div>
+
+                            <button onclick="router('learning')" class="nav-text text-gray-600 hover:text-krc-teal transition">Learning</button>
+                            <button onclick="router('parents')" class="nav-text text-gray-600 hover:text-krc-teal transition">Parent Hub</button>
+                            <button onclick="router('news')" class="nav-text text-gray-600 hover:text-krc-teal transition">News</button>
+                            <button onclick="router('admissions')" class="nav-text bg-krc-orange text-white px-6 py-2.5 rounded-full shadow-lg hover:bg-orange-700 transition">Join Us</button>
+                        </div>
+                        
+                        <div class="flex items-center lg:hidden">
+                            <button onclick="toggleMobileMenu()" class="text-3xl text-krc-teal">☰</button>
+                        </div>
+                    </div>
+                    
+                    <div id="mobile-menu" class="hidden lg:hidden bg-white shadow-2xl absolute w-full border-t border-gray-100 max-h-[85vh] overflow-y-auto">
+                        <div class="flex flex-col py-2 font-bold text-gray-700">
+                            <button onclick="router('home')" class="text-left px-8 py-4 border-b border-gray-50">Home</button>
+                            <div class="px-8 py-3 text-[10px] text-gray-400 uppercase tracking-widest bg-gray-50">Our School</div>
+                            <button onclick="router('team')" class="text-left px-12 py-3 border-b border-gray-50">About Us & Team</button>
+                            <button onclick="router('ethos')" class="text-left px-12 py-3 border-b border-gray-50">Ethos & Values</button>
+                            <button onclick="router('bom')" class="text-left px-12 py-3 border-b border-gray-50">Board of Management</button>
+                            <button onclick="router('pa')" class="text-left px-12 py-3 border-b border-gray-50">Parents Association</button>
+                            <button onclick="router('learning')" class="text-left px-8 py-4 border-b border-gray-50">Learning</button>
+                            <button onclick="router('parents')" class="text-left px-8 py-4 border-b border-gray-50">Parent Hub</button>
+                            <button onclick="router('news')" class="text-left px-8 py-4 border-b border-gray-50">News</button>
+                            <button onclick="router('admissions')" class="text-center mx-6 my-4 py-4 rounded-xl text-white bg-krc-orange">JOIN OUR SCHOOL</button>
                         </div>
                     </div>
                 </nav>
@@ -167,42 +150,36 @@
                     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
                         <div class="flex flex-col items-center md:items-start">
                             <img src="krcetns_logo.webp" class="school-logo-footer mb-6">
-                            <p class="text-slate-400 text-sm leading-relaxed max-w-xs">Equality-based, child-centred primary education for Killester, Raheny, and Clontarf.</p>
+                            <p class="text-slate-400 text-sm leading-relaxed max-w-xs">Equality-based primary education for Killester, Raheny, and Clontarf.</p>
                         </div>
                         <div>
-                            <h3 class="text-krc-orange font-bold mb-6 uppercase tracking-widest text-sm">Quick Links</h3>
+                            <h3 class="text-krc-orange font-bold mb-6 uppercase tracking-widest text-sm">Our School</h3>
                             <div class="flex flex-col space-y-3 text-slate-400 text-sm">
-                                <button onclick="router('team')" class="hover:text-white text-left">Meet the Team</button>
-                                <button onclick="router('ethos')" class="hover:text-white text-left">Ethos & Values</button>
-                                <button onclick="router('bom')" class="hover:text-white text-left">Board of Management</button>
-                                <button onclick="router('pa')" class="hover:text-white text-left">Parents Association</button>
+                                <button onclick="router('team')" class="hover:text-white text-left transition">About Us & Team</button>
+                                <button onclick="router('ethos')" class="hover:text-white text-left transition">Ethos & Values</button>
+                                <button onclick="router('bom')" class="hover:text-white text-left transition">Board of Management</button>
+                                <button onclick="router('pa')" class="hover:text-white text-left transition">Parents Association</button>
                             </div>
                         </div>
                         <div>
                             <h3 class="text-krc-orange font-bold mb-6 uppercase tracking-widest text-sm">Contact</h3>
-                            <a href="${SITE_DATA.contact.mapsUrl}" target="_blank" class="block text-slate-400 text-sm hover:text-white leading-relaxed">
+                            <a href="${SITE_DATA.contact.mapsUrl}" target="_blank" class="block text-slate-400 text-sm hover:text-white leading-relaxed transition">
                                 Collins Avenue East,<br>Dublin 5, D05 F2H1
                             </a>
-                            <p class="text-slate-400 text-sm mt-4 font-bold">01 524 1637</p>
-                            <p class="text-slate-400 text-sm mt-2">${SITE_DATA.contact.email}</p>
+                            <p class="text-slate-400 text-sm mt-4 font-bold tracking-wider">${SITE_DATA.contact.phone}</p>
+                            <p class="text-slate-400 text-sm mt-1">${SITE_DATA.contact.email}</p>
                         </div>
                         <div>
-                            <h3 class="text-krc-orange font-bold mb-6 uppercase tracking-widest text-sm">Enrollment</h3>
-                            <button onclick="router('admissions')" class="bg-krc-teal hover:bg-teal-700 text-white px-6 py-3 rounded-xl text-sm font-bold transition w-full shadow-lg">Apply to Join</button>
+                            <button onclick="router('admissions')" class="bg-krc-teal hover:bg-teal-700 text-white px-6 py-3 rounded-xl font-bold w-full shadow-lg transition">Apply to Join</button>
                         </div>
                     </div>
                 </footer>
             `
         };
 
-        /**
-         * ==========================================
-         * PAGE RENDERERS
-         * ==========================================
-         */
         const Pages = {
             home: () => `
-                <section class="mb-16 text-center py-8">
+                <section class="mb-16 text-center py-8 fade-in">
                     <h1 class="text-5xl md:text-7xl font-black text-krc-teal mb-6 tracking-tight leading-tight">Learn Together to Live Together</h1>
                     <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">KRCETNS is a warm, nurturing environment where every child genuinely belongs.</p>
                 </section>
@@ -214,7 +191,7 @@
                     </a>
                     <a href="${SITE_DATA.contact.mapsUrl}" target="_blank" class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 flex items-center hover:shadow-md transition group">
                         <div class="text-4xl mr-6">📍</div>
-                        <div><h4 class="font-bold text-gray-800 group-hover:text-krc-teal">Location</h4><p class="text-sm text-gray-500">Collins Ave East, D5</p></div>
+                        <div><h4 class="font-bold text-gray-800 group-hover:text-krc-teal transition">Location</h4><p class="text-sm text-gray-500">Collins Ave East, D5</p></div>
                     </a>
                     <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 flex items-center">
                         <div class="text-4xl mr-6">📞</div>
@@ -224,31 +201,37 @@
 
                 <div class="bg-white p-12 rounded-[3rem] shadow-xl border border-gray-100 grid lg:grid-cols-2 gap-16 items-center">
                     <div>
-                        <h2 class="text-4xl font-black text-krc-teal mb-6">Our School's Growth</h2>
+                        <h2 class="text-4xl font-black text-krc-teal mb-6 leading-tight tracking-tight">Our School's Growth</h2>
                         <p class="text-lg text-gray-600 mb-8 leading-relaxed">Since opening in 2019, we have grown from 7 pupils to a community catering for 3rd class. By 2026, we will be a full primary school.</p>
-                        <button onclick="router('team')" class="bg-krc-teal text-white px-8 py-3.5 rounded-2xl font-bold shadow-lg hover:bg-teal-700 transition">Meet the Team</button>
+                        <button onclick="router('team')" class="bg-krc-teal text-white px-8 py-3.5 rounded-2xl font-bold shadow-lg hover:bg-teal-700 transition">Read the Principal's Welcome</button>
                     </div>
                     <div class="chart-container"><canvas id="homeStatsChart"></canvas></div>
                 </div>
             `,
             team: () => `
-                <div class="mb-12"><h2 class="text-4xl font-black text-krc-teal">Meet Our Team</h2></div>
+                <div class="mb-12 fade-in"><h2 class="text-4xl font-black text-krc-teal tracking-tight leading-tight">About Us & Team</h2></div>
                 <section class="bg-white p-10 md:p-14 rounded-[2.5rem] shadow-lg border border-gray-100 mb-16">
                     <h3 class="text-3xl font-black text-krc-teal mb-8">Principal's Welcome</h3>
-                    <div class="text-gray-700 leading-relaxed text-lg space-y-6">${SITE_DATA.principalMessage}</div>
-                    <div class="mt-10 pt-10 border-t border-gray-50">
-                        <p class="font-black text-2xl text-krc-teal">Niamh O’Toole</p>
-                        <p class="text-krc-orange font-bold uppercase tracking-widest text-xs">Principal</p>
+                    <div class="text-gray-700 leading-relaxed text-lg space-y-6">
+                        ${SITE_DATA.principal.message.split('\n').map(p => p ? `<p>${p}</p>` : '').join('')}
+                    </div>
+                    <div class="mt-10 pt-10 border-t border-gray-50 flex items-center justify-between">
+                        <div>
+                            <p class="font-black text-2xl text-krc-teal">${SITE_DATA.principal.name}</p>
+                            <p class="text-krc-orange font-bold uppercase tracking-widest text-xs">${SITE_DATA.principal.role}</p>
+                        </div>
                     </div>
                 </section>
+
                 <div class="space-y-20">
-                    ${['Leadership & Admin', 'Teaching Team', 'Special Education', 'ANAs', 'Support'].map((label, i) => {
-                        const keys = ['leadership', 'teachers', 'specialEducation', 'ana', 'support'];
+                    ${['Leadership & Administration', 'Teaching Team', 'Special Education Team', 'Additional Needs Assistants (ANAs)', 'Support Services'].map((label, i) => {
+                        const keys = ['leadership', 'teachers', 'special_education', 'ana', 'support'];
+                        const members = SITE_DATA.staff[keys[i]] || [];
                         return `
                             <div>
                                 <h4 class="text-krc-orange font-black uppercase tracking-[0.2em] text-[10px] mb-8 border-b-2 border-krc-orange/10 pb-4">${label}</h4>
                                 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                                    ${SITE_DATA.staff[keys[i]].map(m => renderStaffCard(m)).join('')}
+                                    ${members.map(m => renderStaffCard(m)).join('')}
                                 </div>
                             </div>
                         `;
@@ -256,40 +239,39 @@
                 </div>
             `,
             ethos: () => `
-                <div class="mb-12"><h2 class="text-4xl font-black text-krc-teal">Ethos & Values</h2></div>
+                <div class="mb-12 fade-in"><h2 class="text-4xl font-black text-krc-teal leading-tight tracking-tight">Ethos & Values</h2></div>
                 <section class="bg-white p-12 rounded-[2.5rem] shadow-lg border border-gray-100 mb-12">
-                    <h3 class="text-3xl font-black text-krc-teal mb-8">Our Core Identity</h3>
+                    <h3 class="text-3xl font-black text-krc-teal mb-8">${SITE_DATA.ethos.title}</h3>
                     <div class="text-gray-700 text-lg leading-relaxed space-y-6">
-                        <p>${SITE_DATA.ethosContent.intro}</p>
-                        <p>${SITE_DATA.ethosContent.relationships}</p>
+                        ${SITE_DATA.ethos.main_content.split('\n').map(p => p ? `<p>${p}</p>` : '').join('')}
                     </div>
                 </section>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                    <div class="bg-krc-teal text-white p-10 rounded-[2rem] shadow-xl flex flex-col justify-between">
-                        <div>
-                            <h4 class="text-2xl font-bold mb-6 text-krc-orange">Restorative Practice</h4>
-                            <p class="mb-8 leading-relaxed">Focusing on building, maintaining and repairing relationships across the whole community.</p>
-                        </div>
-                        <a href="https://www.connectrp.ie" target="_blank" class="bg-white/10 p-5 rounded-2xl text-center font-bold hover:bg-white/20 transition">Visit Connect RP Website &rarr;</a>
-                    </div>
-                    <div class="bg-white p-10 rounded-[2rem] border border-gray-100 shadow-lg flex flex-col justify-between">
-                        <div>
-                            <h4 class="text-2xl font-bold text-krc-teal mb-6">Educate Together</h4>
-                            <p class="text-gray-600 mb-8 leading-relaxed">Equality-based, Co-educational, Child-centred, and Democratically-run.</p>
-                        </div>
-                        <a href="https://www.educatetogether.ie/about/charter/" target="_blank" class="bg-krc-light p-5 rounded-2xl text-center font-bold text-krc-teal hover:bg-teal-50 transition">Read ET Charter &rarr;</a>
-                    </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    ${SITE_DATA.ethos.links.map(link => `
+                        <a href="${link.url}" target="_blank" class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm flex flex-col justify-between hover:shadow-md transition border-t-4 border-krc-orange">
+                            <h4 class="font-bold text-gray-800 mb-4 leading-tight">${link.title}</h4>
+                            <span class="text-krc-teal font-black text-xs uppercase tracking-wider">Visit Website &rarr;</span>
+                        </a>
+                    `).join('')}
                 </div>
             `,
             bom: () => `
-                <div class="mb-12"><h2 class="text-4xl font-black text-krc-teal">Board of Management</h2></div>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                    <div class="lg:col-span-2 space-y-8">
+                <div class="mb-12 fade-in"><h2 class="text-4xl font-black text-krc-teal leading-tight tracking-tight">Board of Management</h2></div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 text-left">
+                    <div class="lg:col-span-2 space-y-12">
                         <section class="bg-white p-10 rounded-[2.5rem] shadow-lg border border-gray-100">
-                            <h3 class="text-2xl font-bold text-krc-teal mb-8 tracking-tight leading-tight">Board Members</h3>
+                            <h3 class="text-2xl font-bold text-krc-teal mb-8 leading-tight">About our BOM</h3>
+                            <p class="text-gray-700 mb-6 text-lg leading-relaxed">${SITE_DATA.bom.about}</p>
+                            <ul class="grid md:grid-cols-2 gap-4 text-sm font-medium">
+                                ${SITE_DATA.bom.responsibilities.map(r => `<li class="flex items-start p-4 bg-gray-50 rounded-xl leading-tight"><span class="text-krc-orange mr-3">●</span> ${r}</li>`).join('')}
+                            </ul>
+                        </section>
+
+                        <section class="bg-white p-10 rounded-[2.5rem] shadow-lg border border-gray-100">
+                            <h3 class="text-2xl font-bold text-krc-teal mb-8">Current Members</h3>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                ${SITE_DATA.bomMembers.map(m => `
-                                    <div class="p-6 border-2 border-krc-light rounded-3xl">
+                                ${SITE_DATA.bom.members.map(m => `
+                                    <div class="p-6 border-2 border-krc-light rounded-3xl group hover:border-krc-teal transition">
                                         <p class="font-black text-gray-800 text-lg leading-tight">${m.name}</p>
                                         <p class="text-[10px] font-bold text-krc-orange uppercase tracking-widest mt-2">${m.role}</p>
                                     </div>
@@ -301,66 +283,62 @@
                         <section class="bg-krc-teal text-white p-10 rounded-[2.5rem] shadow-xl sticky top-32">
                             <h3 class="text-2xl font-black mb-8 flex items-center"><span class="mr-3">📁</span> Minutes</h3>
                             <div class="space-y-4">
-                                <div class="p-5 bg-white/10 rounded-2xl hover:bg-white/20 transition cursor-pointer font-bold border border-white/5">Agreed Report - Oct 2025</div>
-                                <div class="p-5 bg-white/10 rounded-2xl hover:bg-white/20 transition cursor-pointer font-bold border border-white/5">Agreed Report - June 2025</div>
+                                ${SITE_DATA.bom.reports.map(r => `<a href="${r.url}" class="block p-5 bg-white/10 rounded-2xl hover:bg-white/20 transition font-bold border border-white/5 text-center">${r.title}</a>`).join('')}
                             </div>
                         </section>
                     </div>
                 </div>
             `,
             pa: () => `
-                <div class="mb-12"><h2 class="text-4xl font-black text-krc-teal text-nowrap tracking-tight leading-tight">Parents Association</h2></div>
-                <section class="bg-white p-12 rounded-[3rem] shadow-xl border border-gray-100 flex flex-col md:flex-row gap-12 items-center">
-                    <div class="md:w-2/3 text-center md:text-left">
-                        <h3 class="text-4xl font-black text-krc-orange mb-6">Building Community</h3>
-                        <p class="text-xl text-gray-700 leading-relaxed mb-10">Every parent and guardian is a member. We work together to ensure children feel respected, cared for, and secure.</p>
+                <div class="mb-12 fade-in"><h2 class="text-4xl font-black text-krc-teal leading-tight tracking-tight">Parents Association</h2></div>
+                <section class="bg-white p-12 rounded-[3rem] shadow-xl border border-gray-100 flex flex-col md:flex-row gap-12 items-center text-left">
+                    <div class="md:w-2/3">
+                        <h3 class="text-4xl font-black text-krc-orange mb-6 tracking-tight leading-tight">Building Community</h3>
+                        <p class="text-xl text-gray-700 leading-relaxed mb-10">${SITE_DATA.pa.message}</p>
                         <button class="bg-krc-orange text-white px-12 py-4 rounded-2xl font-black shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1">Contact PA Committee</button>
                     </div>
-                    <div class="md:w-1/3 bg-krc-orange-light p-10 rounded-[2rem] border-2 border-krc-orange/10 italic text-orange-900 text-center">
-                        "Empowering parents to participate democratically in school life."
+                    <div class="md:w-1/3 bg-krc-orange-light p-10 rounded-[2rem] border-2 border-krc-orange/10 italic text-orange-900 text-center shadow-inner leading-relaxed">
+                        "Every child, parent and staff member should feel like they genuinely belong."
                     </div>
                 </section>
             `,
             learning: () => `
-                <div class="mb-12"><h2 class="text-4xl font-black text-krc-teal tracking-tight leading-tight">Learning & Curriculum</h2></div>
-                <div class="bg-white p-12 rounded-[2.5rem] shadow-lg border border-gray-100">
-                    <h3 class="text-2xl font-bold text-krc-teal mb-8">Learn Together Overview</h3>
+                <div class="mb-12 fade-in"><h2 class="text-4xl font-black text-krc-teal leading-tight tracking-tight">Learning & Curriculum</h2></div>
+                <div class="bg-white p-12 rounded-[2.5rem] shadow-lg border border-gray-100 text-center">
+                    <h3 class="text-2xl font-bold text-krc-teal mb-8">Ethical Education Overview</h3>
+                    <p class="text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">Ethical Education focuses on questions of equality, justice, sustainability and active citizenship.</p>
                     <div class="chart-container"><canvas id="curriculumChart"></canvas></div>
                 </div>
             `,
             parents: () => `
-                <div class="mb-12"><h2 class="text-4xl font-black text-krc-teal tracking-tight leading-tight">Parent Hub</h2></div>
-                <div class="grid md:grid-cols-2 gap-10">
+                <div class="mb-12 fade-in"><h2 class="text-4xl font-black text-krc-teal leading-tight tracking-tight">Parent Hub</h2></div>
+                <div class="grid md:grid-cols-2 gap-10 text-left">
                     <div class="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm">
-                        <h3 class="text-2xl font-bold mb-10">Key Policies</h3>
+                        <h3 class="text-2xl font-bold mb-10 text-krc-teal">Key Policies</h3>
                         <div class="space-y-4">
-                            ${['Code of Behavior', 'Anti-Bullying', 'Child Safeguarding', 'Admissions Notice'].map(p => `
+                            ${SITE_DATA.policies.map(p => `
                                 <div class="p-5 bg-gray-50 rounded-2xl flex justify-between items-center hover:bg-krc-light transition group cursor-pointer">
-                                    <span class="font-bold text-gray-700">${p}</span>
+                                    <span class="font-bold text-gray-700">${p.name}</span>
                                     <span class="text-[10px] font-black bg-white border border-krc-orange text-krc-orange px-3 py-1 rounded-full">PDF</span>
                                 </div>
                             `).join('')}
                         </div>
                     </div>
                     <div class="bg-krc-teal text-white p-12 rounded-[2.5rem] shadow-xl flex flex-col justify-between">
-                        <div><h3 class="text-3xl font-black mb-6">Quick Access</h3><p class="text-teal-100 text-lg mb-10 leading-relaxed">Log in to Aladdin Connect or download the current school calendar.</p></div>
+                        <div>
+                            <h3 class="text-3xl font-black mb-6">Quick Access</h3>
+                            <p class="text-teal-100 text-lg mb-10 leading-relaxed">Manage your child's records or access the full school calendar.</p>
+                        </div>
                         <div class="space-y-4">
                             <button class="w-full bg-white text-krc-teal py-4 rounded-2xl font-black hover:shadow-lg transition">Login to Aladdin</button>
-                            <button class="w-full border-2 border-white/30 text-white py-4 rounded-2xl font-black hover:bg-white/10 transition">School Calendar</button>
+                            <button class="w-full border-2 border-white/30 text-white py-4 rounded-2xl font-black hover:bg-white/10 transition">Download Calendar</button>
                         </div>
                     </div>
                 </div>
             `,
-            news: () => `<div class="py-24 text-center bg-white rounded-[3rem] border border-gray-100 shadow-sm"><div class="text-7xl mb-8">🗞️</div><h2 class="text-4xl font-black text-krc-teal mb-4">Latest News</h2><p class="text-xl text-gray-500 max-w-xl mx-auto">School updates and photos will appear here as they are published.</p></div>`,
-            admissions: () => `<div class="max-w-4xl mx-auto py-12 text-center"><h2 class="text-6xl font-black text-krc-teal mb-12 tracking-tight leading-tight">Admissions</h2><div class="bg-white p-16 rounded-[3rem] border border-gray-100 shadow-xl"><h4 class="text-3xl font-black mb-6">Join Our Family</h4><p class="text-gray-600 mb-10 text-xl leading-relaxed">Applications for Junior Infants normally open in October each year.</p><button class="bg-krc-orange text-white px-12 py-5 rounded-2xl font-black shadow-xl hover:scale-105 transition">Download Admissions Notice</button></div></div>`
+            news: () => `<div class="py-24 text-center bg-white rounded-[3rem] border border-gray-100 shadow-sm fade-in"><div class="text-7xl mb-8">🗞️</div><h2 class="text-4xl font-black text-krc-teal mb-4">Latest News</h2><p class="text-xl text-gray-500 max-w-xl mx-auto leading-relaxed">School updates and photos will appear here as they are published.</p></div>`,
+            admissions: () => `<div class="max-w-4xl mx-auto py-12 text-center fade-in"><h2 class="text-6xl font-black text-krc-teal mb-12 leading-tight tracking-tight">Admissions</h2><div class="bg-white p-16 rounded-[3rem] border border-gray-100 shadow-xl"><h4 class="text-3xl font-black mb-6">Join Our Family</h4><p class="text-gray-600 mb-10 text-xl leading-relaxed text-left">Applications for Junior Infants normally open in October each year for the following September.</p><button class="bg-krc-orange text-white px-12 py-5 rounded-2xl font-black shadow-xl hover:scale-105 transition">Download Admissions Notice</button></div></div>`
         };
-
-        /**
-         * ==========================================
-         * APP STATE & CORE LOGIC
-         * ==========================================
-         */
-        let currentView = 'home';
 
         function renderStaffCard(member) {
             const fallback = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=006064&color=fff&size=200`;
@@ -384,14 +362,19 @@
             currentView = view;
             renderApp();
             window.scrollTo(0, 0);
+            
+            // Auto-close mobile menu on navigation
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) mobileMenu.classList.add('hidden');
         }
 
         function renderApp() {
+            if (!SITE_DATA) return;
             const app = document.getElementById('app');
             app.innerHTML = `
                 ${UI.Navbar()}
                 <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                    <div class="fade-in">${Pages[currentView]()}</div>
+                    ${Pages[currentView]()}
                 </main>
                 ${UI.Footer()}
             `;
@@ -404,13 +387,13 @@
 
         function initHomeStats() {
             const ctx = document.querySelector('#homeStatsChart');
-            if (!ctx) return;
+            if (!ctx || !SITE_DATA.growth_chart) return;
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['2019', '2020', '2021', '2022', '2023', 'Today'],
+                    labels: SITE_DATA.growth_chart.labels,
                     datasets: [{
-                        label: 'Students', data: [7, 24, 45, 80, 115, 140],
+                        label: 'Students', data: SITE_DATA.growth_chart.data,
                         backgroundColor: '#F57C00', borderRadius: 8, barThickness: 25
                     }]
                 },
@@ -439,7 +422,7 @@
             });
         }
 
-        window.onload = renderApp;
+        window.onload = loadSiteData;
     </script>
 </body>
 </html>
