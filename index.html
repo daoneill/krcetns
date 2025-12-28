@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,36 +8,116 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
-        body { font-family: 'Noto Sans', sans-serif; scroll-behavior: smooth; }
-        .bg-krc-teal { background-color: #006064; }
-        .text-krc-teal { color: #006064; }
-        .border-krc-teal { border-color: #006064; }
-        .bg-krc-orange { background-color: #F57C00; }
-        .text-krc-orange { color: #F57C00; }
-        .border-krc-orange { border-color: #F57C00; }
-        .bg-krc-light { background-color: #F1F8F9; }
-        .bg-krc-orange-light { background-color: #FFF3E0; }
-        
-        .chart-container { position: relative; width: 100%; max-width: 600px; margin: auto; height: 300px; }
-        .fade-in { animation: fadeIn 0.4s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .school-logo { height: 60px; width: auto; object-fit: contain; }
-        .school-logo-footer { height: 80px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; }
-        
-        .nav-text { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.025em; }
-        .dropdown-item { font-size: 0.85rem; font-weight: 600; }
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .bg-krc-teal {
+            background-color: #006064;
+        }
+
+        .text-krc-teal {
+            color: #006064;
+        }
+
+        .border-krc-teal {
+            border-color: #006064;
+        }
+
+        .bg-krc-green {
+            background-color: #76C12E;
+        }
+
+        .text-krc-green {
+            color: #76C12E;
+        }
+
+        .border-krc-green {
+            border-color: #76C12E;
+        }
+
+        .bg-krc-orange {
+            background-color: #FFC107;
+        }
+
+        .text-krc-orange {
+            color: #FFC107;
+        }
+
+        .border-krc-orange {
+            border-color: #FFC107;
+        }
+
+        .bg-krc-light {
+            background-color: #F1F8F9;
+        }
+
+        .bg-krc-green-light {
+            background-color: #F8FFF0;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            height: 300px;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .school-logo {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .school-logo-footer {
+            height: 80px;
+            width: auto;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+        }
+
+        .nav-text {
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+        }
+
+        .dropdown-item {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
     </style>
 </head>
+
 <body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
 
     <div id="app" class="flex flex-col min-h-screen">
         <!-- Initial Loading State -->
         <div class="flex items-center justify-center flex-grow">
             <div class="text-center">
-                <p class="text-krc-teal font-bold animate-pulse text-xl uppercase tracking-widest">Initialising School Portal...</p>
+                <p class="text-krc-teal font-bold animate-pulse text-xl uppercase tracking-widest">Initialising School
+                    Portal...</p>
                 <p class="text-gray-400 text-sm mt-2">Connecting to data.json</p>
             </div>
         </div>
@@ -55,16 +136,16 @@
             try {
                 // Fetch using relative path - most reliable across GitHub/Local environments
                 const response = await fetch('data.json');
-                
+
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                
+
                 SITE_DATA = await response.json();
                 renderApp();
             } catch (error) {
                 console.error('Failed to load site data:', error);
-                
+
                 // Detailed Fallback UI to help non-technical users identify issues
                 document.getElementById('app').innerHTML = `
                     <div class="p-10 md:p-20 text-center flex flex-col items-center justify-center min-h-screen bg-gray-100">
@@ -97,35 +178,40 @@
                     <div class="max-w-[1600px] mx-auto px-4 flex justify-between h-24">
                         <div class="flex items-center cursor-pointer flex-shrink-0" onclick="router('home')">
                             <img src="krcetns_logo.webp" alt="Logo" class="school-logo mr-3">
-                            <div class="hidden sm:flex flex-col">
-                                <span class="font-bold text-lg text-krc-teal leading-none">KRCETNS</span>
-                                <span class="text-[9px] text-krc-orange font-bold uppercase tracking-widest mt-1">Educate Together</span>
-                            </div>
                         </div>
                         
                         <div class="hidden lg:flex items-center space-x-4">
-                            <button onclick="router('home')" class="nav-text text-gray-600 hover:text-krc-teal transition">Home</button>
+                            <button onclick="router('home')" class="nav-text text-gray-600 hover:text-krc-green transition">Home</button>
                             
                             <div class="relative group h-full flex items-center">
-                                <button class="nav-text text-gray-600 group-hover:text-krc-teal transition flex items-center">
+                                <button class="nav-text text-gray-600 group-hover:text-krc-green transition flex items-center">
                                     Our School <span class="ml-1 text-[10px]">▼</span>
                                 </button>
                                 <div class="absolute top-[80%] left-0 w-64 bg-white shadow-2xl rounded-2xl py-4 border border-gray-100 hidden group-hover:block fade-in z-50">
-                                    <button onclick="router('team')" class="dropdown-item block w-full text-left px-8 py-2.5 hover:bg-gray-50 hover:text-krc-teal transition">About Us & Team</button>
-                                    <button onclick="router('ethos')" class="dropdown-item block w-full text-left px-8 py-2.5 hover:bg-gray-50 hover:text-krc-teal transition">Ethos & Values</button>
-                                    <button onclick="router('bom')" class="dropdown-item block w-full text-left px-8 py-2.5 hover:bg-gray-50 hover:text-krc-teal transition">Board of Management</button>
-                                    <button onclick="router('pa')" class="dropdown-item block w-full text-left px-8 py-2.5 hover:bg-gray-50 hover:text-krc-teal transition">Parents Association</button>
+                                    <button onclick="router('schoolDay')" class="dropdown-item block w-full text-left px-8 py-2.5 hover:bg-gray-50 hover:text-krc-green transition">Our School Day</button>
+                                    <button onclick="router('ethos')" class="dropdown-item block w-full text-left px-8 py-2.5 hover:bg-gray-50 hover:text-krc-green transition">Ethos & Values</button>
+                                    <button onclick="router('policies')" class="dropdown-item block w-full text-left px-8 py-2.5 hover:bg-gray-50 hover:text-krc-green transition">School Policies</button>
+                                    <button onclick="router('calendar')" class="dropdown-item block w-full text-left px-8 py-2.5 hover:bg-gray-50 hover:text-krc-green transition">School Calendar</button>
                                 </div>
                             </div>
 
-                            <button onclick="router('learning')" class="nav-text text-gray-600 hover:text-krc-teal transition">Learning</button>
-                            <button onclick="router('parents')" class="nav-text text-gray-600 hover:text-krc-teal transition">Parent Hub</button>
-                            <button onclick="router('news')" class="nav-text text-gray-600 hover:text-krc-teal transition">News</button>
-                            <button onclick="router('admissions')" class="nav-text bg-krc-orange text-white px-6 py-2.5 rounded-full shadow-lg hover:bg-orange-700 transition">Join Us</button>
+                            <div class="relative group h-full flex items-center">
+                                <button class="nav-text text-gray-600 group-hover:text-krc-green transition flex items-center">
+                                    Our Team <span class="ml-1 text-[10px]">▼</span>
+                                </button>
+                                <div class="absolute top-[80%] left-0 w-64 bg-white shadow-2xl rounded-2xl py-4 border border-gray-100 hidden group-hover:block fade-in z-50">
+                                    <button onclick="router('team')" class="dropdown-item block w-full text-left px-8 py-2.5 hover:bg-gray-50 hover:text-krc-green transition">School Team (Staff)</button>
+                                    <button onclick="router('bom')" class="dropdown-item block w-full text-left px-8 py-2.5 hover:bg-gray-50 hover:text-krc-green transition">Board of Management</button>
+                                    <button onclick="router('pa')" class="dropdown-item block w-full text-left px-8 py-2.5 hover:bg-gray-50 hover:text-krc-green transition">Parents Association</button>
+                                </div>
+                            </div>
+
+                            <button onclick="router('news')" class="nav-text text-gray-600 hover:text-krc-green transition">News</button>
+                            <button onclick="router('admissions')" class="nav-text bg-krc-green text-white px-6 py-2.5 rounded-full shadow-lg hover:bg-green-700 transition">Join Us</button>
                         </div>
                         
                         <div class="flex items-center lg:hidden">
-                            <button onclick="toggleMobileMenu()" class="text-3xl text-krc-teal">☰</button>
+                            <button onclick="toggleMobileMenu()" class="text-3xl text-krc-green">☰</button>
                         </div>
                     </div>
                     
@@ -133,14 +219,18 @@
                         <div class="flex flex-col py-2 font-bold text-gray-700">
                             <button onclick="router('home')" class="text-left px-8 py-4 border-b border-gray-50">Home</button>
                             <div class="px-8 py-3 text-[10px] text-gray-400 uppercase tracking-widest bg-gray-50">Our School</div>
-                            <button onclick="router('team')" class="text-left px-12 py-3 border-b border-gray-50">About Us & Team</button>
+                            <button onclick="router('schoolDay')" class="text-left px-12 py-3 border-b border-gray-50">Our School Day</button>
                             <button onclick="router('ethos')" class="text-left px-12 py-3 border-b border-gray-50">Ethos & Values</button>
+                            <button onclick="router('policies')" class="text-left px-12 py-3 border-b border-gray-50">School Policies</button>
+                            <button onclick="router('calendar')" class="text-left px-12 py-3 border-b border-gray-50">School Calendar</button>
+                            
+                            <div class="px-8 py-3 text-[10px] text-gray-400 uppercase tracking-widest bg-gray-50">Our Team</div>
+                            <button onclick="router('team')" class="text-left px-12 py-3 border-b border-gray-50">School Team (Staff)</button>
                             <button onclick="router('bom')" class="text-left px-12 py-3 border-b border-gray-50">Board of Management</button>
                             <button onclick="router('pa')" class="text-left px-12 py-3 border-b border-gray-50">Parents Association</button>
-                            <button onclick="router('learning')" class="text-left px-8 py-4 border-b border-gray-50">Learning</button>
-                            <button onclick="router('parents')" class="text-left px-8 py-4 border-b border-gray-50">Parent Hub</button>
+                            
                             <button onclick="router('news')" class="text-left px-8 py-4 border-b border-gray-50">News</button>
-                            <button onclick="router('admissions')" class="text-center mx-6 my-4 py-4 rounded-xl text-white bg-krc-orange">JOIN OUR SCHOOL</button>
+                            <button onclick="router('admissions')" class="text-center mx-6 my-4 py-4 rounded-xl text-white bg-krc-green">JOIN OUR SCHOOL</button>
                         </div>
                     </div>
                 </nav>
@@ -152,17 +242,23 @@
                             <img src="krcetns_logo.webp" class="school-logo-footer mb-6">
                             <p class="text-slate-400 text-sm leading-relaxed max-w-xs">Equality-based primary education for Killester, Raheny, and Clontarf.</p>
                         </div>
-                        <div>
-                            <h3 class="text-krc-orange font-bold mb-6 uppercase tracking-widest text-sm">Our School</h3>
+                         <div>
+                            <h3 class="text-krc-green font-bold mb-6 uppercase tracking-widest text-sm">Our School</h3>
                             <div class="flex flex-col space-y-3 text-slate-400 text-sm">
-                                <button onclick="router('team')" class="hover:text-white text-left transition">About Us & Team</button>
+                                <button onclick="router('schoolDay')" class="hover:text-white text-left transition">Our School Day</button>
                                 <button onclick="router('ethos')" class="hover:text-white text-left transition">Ethos & Values</button>
+                                <button onclick="router('policies')" class="hover:text-white text-left transition">School Policies</button>
+                                <button onclick="router('calendar')" class="hover:text-white text-left transition">School Calendar</button>
+                            </div>
+                            <h3 class="text-krc-green font-bold mt-8 mb-6 uppercase tracking-widest text-sm">Our Team</h3>
+                            <div class="flex flex-col space-y-3 text-slate-400 text-sm">
+                                <button onclick="router('team')" class="hover:text-white text-left transition">School Team (Staff)</button>
                                 <button onclick="router('bom')" class="hover:text-white text-left transition">Board of Management</button>
                                 <button onclick="router('pa')" class="hover:text-white text-left transition">Parents Association</button>
                             </div>
                         </div>
                         <div>
-                            <h3 class="text-krc-orange font-bold mb-6 uppercase tracking-widest text-sm">Contact</h3>
+                            <h3 class="text-krc-green font-bold mb-6 uppercase tracking-widest text-sm">Contact</h3>
                             <a href="${SITE_DATA.contact.mapsUrl}" target="_blank" class="block text-slate-400 text-sm hover:text-white leading-relaxed transition">
                                 Collins Avenue East,<br>Dublin 5, D05 F2H1
                             </a>
@@ -170,7 +266,7 @@
                             <p class="text-slate-400 text-sm mt-1">${SITE_DATA.contact.email}</p>
                         </div>
                         <div>
-                            <button onclick="router('admissions')" class="bg-krc-teal hover:bg-teal-700 text-white px-6 py-3 rounded-xl font-bold w-full shadow-lg transition">Apply to Join</button>
+                            <button onclick="router('admissions')" class="bg-krc-green hover:bg-green-700 text-white px-6 py-3 rounded-xl font-bold w-full shadow-lg transition">Apply to Join</button>
                         </div>
                     </div>
                 </footer>
@@ -180,8 +276,9 @@
         const Pages = {
             home: () => `
                 <section class="mb-16 text-center py-8 fade-in">
-                    <h1 class="text-5xl md:text-7xl font-black text-krc-teal mb-6 tracking-tight leading-tight">Learn Together to Live Together</h1>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">KRCETNS is a warm, nurturing environment where every child genuinely belongs.</p>
+                    <h1 class="text-5xl md:text-7xl font-black text-krc-green mb-6 tracking-tight leading-tight">Killester Raheny Clontarf</h1>
+                    <h1 class="text-5xl md:text-7xl font-black text-krc-green mb-6 tracking-tight leading-tight">Educate Together National School</h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">KRC ETNS teaches the national curriculum and is proud to be an inclusive, equality-based Educate Together National School.</p>
                 </section>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
@@ -208,8 +305,95 @@
                     <div class="chart-container"><canvas id="homeStatsChart"></canvas></div>
                 </div>
             `,
+            schoolDay: () => `
+                <div class="mb-12 fade-in"><h2 class="text-4xl font-black text-krc-teal leading-tight tracking-tight">${SITE_DATA.school_day.title}</h2></div>
+                <section class="bg-white p-10 md:p-14 rounded-[3rem] shadow-xl border border-gray-100 mb-16">
+                    <p class="text-xl text-gray-700 leading-relaxed mb-12">${SITE_DATA.school_day.message}</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        ${SITE_DATA.school_day.schedule.map(item => `
+                            <div class="flex items-center p-6 bg-gray-50 rounded-3xl border border-transparent hover:border-krc-green/10 transition">
+                                <div class="w-24 font-black text-krc-green text-lg">${item.time}</div>
+                                <div class="text-gray-700 font-medium">${item.event}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+            `,
+            ethos: () => `
+                <div class="mb-12 fade-in"><h2 class="text-4xl font-black text-krc-teal leading-tight tracking-tight">Ethos & Values</h2></div>
+                <section class="bg-white p-12 rounded-[2.5rem] shadow-lg border border-gray-100 mb-12">
+                    <h3 class="text-3xl font-black text-krc-teal mb-8">${SITE_DATA.ethos.title}</h3>
+                    <div class="text-gray-700 text-lg leading-relaxed space-y-6">
+                        ${SITE_DATA.ethos.main_content.split('\n').map(p => p ? `<p>${p}</p>` : '').join('')}
+                    </div>
+                </section>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    ${SITE_DATA.ethos.links.map(link => `
+                        <a href="${link.url}" target="_blank" class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm flex flex-col justify-between hover:shadow-md transition border-t-4 border-krc-orange">
+                            <h4 class="font-bold text-gray-800 mb-4 leading-tight">${link.title}</h4>
+                            <span class="text-krc-green font-black text-xs uppercase tracking-wider">Visit Website &rarr;</span>
+                        </a>
+                    `).join('')}
+                </div>
+            `,
+            policies: () => `
+                <div class="mb-12 fade-in"><h2 class="text-4xl font-black text-krc-teal leading-tight tracking-tight">School Policies</h2></div>
+                <section class="bg-white p-10 md:p-14 rounded-[2.5rem] shadow-lg border border-gray-100 mb-16">
+                    <p class="text-krc-green font-bold text-lg mb-8">${SITE_DATA.school_policies.welcome}</p>
+                    
+                    <div class="text-gray-700 leading-relaxed text-lg space-y-6 mb-12">
+                        ${SITE_DATA.school_policies.content.map(p => `<p>${p}</p>`).join('')}
+                    </div>
+
+                    <div class="bg-krc-light p-8 rounded-3xl border border-krc-green/10 mb-12">
+                        <p class="text-gray-800 font-medium">
+                            ${SITE_DATA.school_policies.sse_2021_report.text}
+                            <a href="${SITE_DATA.school_policies.sse_2021_report.url}" class="text-krc-green font-bold hover:underline" target="_blank">
+                                ${SITE_DATA.school_policies.sse_2021_report.title}
+                            </a>
+                        </p>
+                    </div>
+
+                    <h3 class="text-2xl font-black text-krc-teal mb-8">Policy Documents</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        ${SITE_DATA.school_policies.documents.map(doc => `
+                            <a href="${doc.path}" target="_blank" class="p-6 bg-gray-50 rounded-3xl flex justify-between items-center hover:bg-krc-green-light transition group border border-transparent hover:border-krc-green/20">
+                                <span class="font-bold text-gray-700 group-hover:text-krc-green transition">${doc.name}</span>
+                                <span class="text-[10px] font-black bg-white border border-krc-green text-krc-green px-3 py-1 rounded-full uppercase">PDF</span>
+                            </a>
+                        `).join('')}
+                    </div>
+                </section>
+            `,
+            calendar: () => `
+                <div class="mb-12 fade-in"><h2 class="text-4xl font-black text-krc-teal leading-tight tracking-tight">${SITE_DATA.calendar.title}</h2></div>
+                <section class="bg-white p-10 md:p-14 rounded-[3rem] shadow-xl border border-gray-100 mb-16 text-center">
+                    <div class="max-w-2xl mx-auto">
+                        <div class="text-6xl mb-8">📅</div>
+                        <h3 class="text-3xl font-black text-gray-800 mb-4">Academic Year ${SITE_DATA.calendar.academic_year}</h3>
+                        <p class="text-gray-600 mb-12 text-lg">Click the button below to view or download our full school calendar for the current academic year.</p>
+                        <a href="${SITE_DATA.calendar.pdf_url}" target="_blank" class="inline-block bg-krc-green text-white px-12 py-4 rounded-2xl font-black shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1">
+                            Download School Calendar (PDF)
+                        </a>
+                        <div class="mt-16 pt-12 border-t border-gray-100">
+                            <h4 class="text-xl font-bold text-gray-800 mb-8 uppercase tracking-widest">Upcoming Dates</h4>
+                            <div class="space-y-4 text-left">
+                                ${SITE_DATA.calendar.events.map(ev => `
+                                    <div class="p-6 bg-gray-50 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                        <div class="flex flex-col">
+                                            <span class="font-black text-krc-green text-sm uppercase mb-1">${ev.date}</span>
+                                            <span class="text-gray-800 font-bold text-lg">${ev.title}</span>
+                                        </div>
+                                        <p class="text-gray-600 text-sm md:text-right max-w-md">${ev.description}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `,
             team: () => `
-                <div class="mb-12 fade-in"><h2 class="text-4xl font-black text-krc-teal tracking-tight leading-tight">About Us & Team</h2></div>
+                <div class="mb-12 fade-in"><h2 class="text-4xl font-black text-krc-teal tracking-tight leading-tight">School Team (Staff)</h2></div>
                 <section class="bg-white p-10 md:p-14 rounded-[2.5rem] shadow-lg border border-gray-100 mb-16">
                     <h3 class="text-3xl font-black text-krc-teal mb-8">Principal's Welcome</h3>
                     <div class="text-gray-700 leading-relaxed text-lg space-y-6">
@@ -225,34 +409,17 @@
 
                 <div class="space-y-20">
                     ${['Leadership & Administration', 'Teaching Team', 'Special Education Team', 'Additional Needs Assistants (ANAs)', 'Support Services'].map((label, i) => {
-                        const keys = ['leadership', 'teachers', 'special_education', 'ana', 'support'];
-                        const members = SITE_DATA.staff[keys[i]] || [];
-                        return `
+                const keys = ['leadership', 'teachers', 'special_education', 'ana', 'support'];
+                const members = SITE_DATA.staff[keys[i]] || [];
+                return `
                             <div>
-                                <h4 class="text-krc-orange font-black uppercase tracking-[0.2em] text-[10px] mb-8 border-b-2 border-krc-orange/10 pb-4">${label}</h4>
+                                <h4 class="text-krc-green font-black uppercase tracking-[0.2em] text-[10px] mb-8 border-b-2 border-krc-green/10 pb-4">${label}</h4>
                                 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
                                     ${members.map(m => renderStaffCard(m)).join('')}
                                 </div>
                             </div>
                         `;
-                    }).join('')}
-                </div>
-            `,
-            ethos: () => `
-                <div class="mb-12 fade-in"><h2 class="text-4xl font-black text-krc-teal leading-tight tracking-tight">Ethos & Values</h2></div>
-                <section class="bg-white p-12 rounded-[2.5rem] shadow-lg border border-gray-100 mb-12">
-                    <h3 class="text-3xl font-black text-krc-teal mb-8">${SITE_DATA.ethos.title}</h3>
-                    <div class="text-gray-700 text-lg leading-relaxed space-y-6">
-                        ${SITE_DATA.ethos.main_content.split('\n').map(p => p ? `<p>${p}</p>` : '').join('')}
-                    </div>
-                </section>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    ${SITE_DATA.ethos.links.map(link => `
-                        <a href="${link.url}" target="_blank" class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm flex flex-col justify-between hover:shadow-md transition border-t-4 border-krc-orange">
-                            <h4 class="font-bold text-gray-800 mb-4 leading-tight">${link.title}</h4>
-                            <span class="text-krc-teal font-black text-xs uppercase tracking-wider">Visit Website &rarr;</span>
-                        </a>
-                    `).join('')}
+            }).join('')}
                 </div>
             `,
             bom: () => `
@@ -291,53 +458,54 @@
             `,
             pa: () => `
                 <div class="mb-12 fade-in"><h2 class="text-4xl font-black text-krc-teal leading-tight tracking-tight">Parents Association</h2></div>
-                <section class="bg-white p-12 rounded-[3rem] shadow-xl border border-gray-100 flex flex-col md:flex-row gap-12 items-center text-left">
-                    <div class="md:w-2/3">
-                        <h3 class="text-4xl font-black text-krc-orange mb-6 tracking-tight leading-tight">Building Community</h3>
-                        <p class="text-xl text-gray-700 leading-relaxed mb-10">${SITE_DATA.pa.message}</p>
-                        <button class="bg-krc-orange text-white px-12 py-4 rounded-2xl font-black shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1">Contact PA Committee</button>
-                    </div>
-                    <div class="md:w-1/3 bg-krc-orange-light p-10 rounded-[2rem] border-2 border-krc-orange/10 italic text-orange-900 text-center shadow-inner leading-relaxed">
-                        "Every child, parent and staff member should feel like they genuinely belong."
-                    </div>
-                </section>
-            `,
-            learning: () => `
-                <div class="mb-12 fade-in"><h2 class="text-4xl font-black text-krc-teal leading-tight tracking-tight">Learning & Curriculum</h2></div>
-                <div class="bg-white p-12 rounded-[2.5rem] shadow-lg border border-gray-100 text-center">
-                    <h3 class="text-2xl font-bold text-krc-teal mb-8">Ethical Education Overview</h3>
-                    <p class="text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">Ethical Education focuses on questions of equality, justice, sustainability and active citizenship.</p>
-                    <div class="chart-container"><canvas id="curriculumChart"></canvas></div>
-                </div>
-            `,
-            parents: () => `
-                <div class="mb-12 fade-in"><h2 class="text-4xl font-black text-krc-teal leading-tight tracking-tight">Parent Hub</h2></div>
-                <div class="grid md:grid-cols-2 gap-10 text-left">
-                    <div class="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm">
-                        <h3 class="text-2xl font-bold mb-10 text-krc-teal">Key Policies</h3>
-                        <div class="space-y-4">
-                            ${SITE_DATA.policies.map(p => `
-                                <div class="p-5 bg-gray-50 rounded-2xl flex justify-between items-center hover:bg-krc-light transition group cursor-pointer">
-                                    <span class="font-bold text-gray-700">${p.name}</span>
-                                    <span class="text-[10px] font-black bg-white border border-krc-orange text-krc-orange px-3 py-1 rounded-full">PDF</span>
+                
+                <div class="grid lg:grid-cols-3 gap-12 text-left">
+                    <div class="lg:col-span-2 space-y-12">
+                        <section class="bg-white p-10 md:p-14 rounded-[3rem] shadow-xl border border-gray-100">
+                            <div class="mb-12">
+                                <h4 class="text-2xl font-black text-krc-teal mb-6">Purpose</h4>
+                                <p class="text-lg text-gray-700 leading-relaxed">${SITE_DATA.pa.purpose}</p>
+                            </div>
+                            <div class="mb-12">
+                                <h4 class="text-2xl font-black text-krc-teal mb-6">Committee Meetings</h4>
+                                <div class="inline-flex items-center p-6 bg-orange-50 rounded-[2rem] border border-krc-orange/20 text-krc-orange">
+                                    <span class="text-3xl mr-4">🗓️</span>
+                                    <p class="font-black leading-tight">${SITE_DATA.pa.meetings}</p>
                                 </div>
-                            `).join('')}
-                        </div>
+                            </div>
+
+                            <h4 class="text-2xl font-black text-krc-teal mb-8">Committee Members</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                ${SITE_DATA.pa.members.map(m => `
+                                    <div class="p-6 bg-gray-50 rounded-3xl border-2 border-transparent hover:border-krc-green/10 transition group">
+                                        <p class="font-black text-gray-800 text-lg leading-tight mb-2 group-hover:text-krc-green transition">${m.name}</p>
+                                        <p class="text-[10px] font-bold text-krc-green uppercase tracking-widest leading-tight">${m.role}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </section>
                     </div>
-                    <div class="bg-krc-teal text-white p-12 rounded-[2.5rem] shadow-xl flex flex-col justify-between">
-                        <div>
-                            <h3 class="text-3xl font-black mb-6">Quick Access</h3>
-                            <p class="text-teal-100 text-lg mb-10 leading-relaxed">Manage your child's records or access the full school calendar.</p>
-                        </div>
-                        <div class="space-y-4">
-                            <button class="w-full bg-white text-krc-teal py-4 rounded-2xl font-black hover:shadow-lg transition">Login to Aladdin</button>
-                            <button class="w-full border-2 border-white/30 text-white py-4 rounded-2xl font-black hover:bg-white/10 transition">Download Calendar</button>
-                        </div>
+
+                    <div class="lg:col-span-1">
+                        <section class="bg-krc-teal text-white p-10 rounded-[2.5rem] shadow-xl sticky top-32">
+                            <h3 class="text-2xl font-black mb-8 flex items-center"><span class="mr-3">✉️</span> Contact PA</h3>
+                            <p class="text-teal-50 mb-8 text-sm leading-relaxed">For more details or to get involved, reach out to our committee members via email:</p>
+                            <div class="space-y-4">
+                                ${SITE_DATA.pa.contacts.map(c => `
+                                    <a href="mailto:${c.email}" class="block p-5 bg-white/10 rounded-2xl hover:bg-white/20 transition border border-white/5 active:scale-95">
+                                        <p class="text-[10px] uppercase font-black tracking-widest text-teal-200 mb-1">${c.label}</p>
+                                        <p class="font-bold text-sm truncate">${c.email}</p>
+                                    </a>
+                                `).join('')}
+                            </div>
+                        </section>
                     </div>
                 </div>
             `,
+            initiatives: () => `<div class="py-24 text-center bg-white rounded-[3rem] border border-gray-100 shadow-sm fade-in"><div class="text-7xl mb-8">💡</div><h2 class="text-4xl font-black text-krc-teal mb-4">School Initiatives</h2><p class="text-xl text-gray-500 max-w-xl mx-auto leading-relaxed">Our school's exciting projects and community initiatives will be featured here.</p></div>`,
+            facilities: () => `<div class="py-24 text-center bg-white rounded-[3rem] border border-gray-100 shadow-sm fade-in"><div class="text-7xl mb-8">🏢</div><h2 class="text-4xl font-black text-krc-teal mb-4">Our Facilities</h2><p class="text-xl text-gray-500 max-w-xl mx-auto leading-relaxed">Information about our school building and learning environment will be available soon.</p></div>`,
             news: () => `<div class="py-24 text-center bg-white rounded-[3rem] border border-gray-100 shadow-sm fade-in"><div class="text-7xl mb-8">🗞️</div><h2 class="text-4xl font-black text-krc-teal mb-4">Latest News</h2><p class="text-xl text-gray-500 max-w-xl mx-auto leading-relaxed">School updates and photos will appear here as they are published.</p></div>`,
-            admissions: () => `<div class="max-w-4xl mx-auto py-12 text-center fade-in"><h2 class="text-6xl font-black text-krc-teal mb-12 leading-tight tracking-tight">Admissions</h2><div class="bg-white p-16 rounded-[3rem] border border-gray-100 shadow-xl"><h4 class="text-3xl font-black mb-6">Join Our Family</h4><p class="text-gray-600 mb-10 text-xl leading-relaxed text-left">Applications for Junior Infants normally open in October each year for the following September.</p><button class="bg-krc-orange text-white px-12 py-5 rounded-2xl font-black shadow-xl hover:scale-105 transition">Download Admissions Notice</button></div></div>`
+            admissions: () => `<div class="max-w-4xl mx-auto py-12 text-center fade-in"><h2 class="text-6xl font-black text-krc-teal mb-12 leading-tight tracking-tight">Admissions</h2><div class="bg-white p-16 rounded-[3rem] border border-gray-100 shadow-xl"><h4 class="text-3xl font-black mb-6">Join Our Family</h4><p class="text-gray-600 mb-10 text-xl leading-relaxed text-left">Applications for Junior Infants normally open in October each year for the following September.</p><button class="bg-krc-green text-white px-12 py-5 rounded-2xl font-black shadow-xl hover:scale-105 transition">Download Admissions Notice</button></div></div>`
         };
 
         function renderStaffCard(member) {
@@ -348,7 +516,7 @@
                         <img src="${member.image || fallback}" class="w-full h-full object-cover" onerror="this.src='${fallback}'">
                     </div>
                     <h4 class="font-bold text-gray-800 text-xs leading-tight mb-1">${member.name}</h4>
-                    <p class="text-krc-orange font-bold text-[9px] uppercase tracking-wider">${member.role}</p>
+                    <p class="text-krc-green font-bold text-[9px] uppercase tracking-wider">${member.role}</p>
                 </div>
             `;
         }
@@ -362,7 +530,7 @@
             currentView = view;
             renderApp();
             window.scrollTo(0, 0);
-            
+
             // Auto-close mobile menu on navigation
             const mobileMenu = document.getElementById('mobile-menu');
             if (mobileMenu) mobileMenu.classList.add('hidden');
@@ -378,7 +546,7 @@
                 </main>
                 ${UI.Footer()}
             `;
-            
+
             setTimeout(() => {
                 if (currentView === 'home') initHomeStats();
                 if (currentView === 'learning') initLearningChart();
@@ -394,10 +562,10 @@
                     labels: SITE_DATA.growth_chart.labels,
                     datasets: [{
                         label: 'Students', data: SITE_DATA.growth_chart.data,
-                        backgroundColor: '#F57C00', borderRadius: 8, barThickness: 25
+                        backgroundColor: '#76C12E', borderRadius: 8, barThickness: 25
                     }]
                 },
-                options: { 
+                options: {
                     responsive: true, maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
                     scales: { y: { display: false }, x: { grid: { display: false }, border: { display: false } } }
@@ -425,4 +593,5 @@
         window.onload = loadSiteData;
     </script>
 </body>
+
 </html>

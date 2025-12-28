@@ -14,10 +14,22 @@
     "title": "Our Ethos and Values",
     "main_content": "Since opening our doors in 2019, we in Killester Raheny Clontarf (KRC) ETNS have been dedicated to ensuring that our school is genuinely inclusive of all the wonderful diversity that makes up our ever-changing community. With this in mind, we are committed to living by and actively promoting the values and principles of the Educate Together Charter (equality-based, co-educational, child-centred and democratically-run), and those of our Anti-Racism and Restorative Practice Statements. We strive to embed these values and principles in all dimensions of school life.\n\nBeing a restorative school means that our core focus is on how we develop and maintain relationships. The relationships between all members of our school community are vital in terms of developing a genuinely warm and welcoming environment. Developing a strong bond between the children and adults in the school is central to all that we do. It is our aim that every child in our school feels included and that they belong. We recognise that feeling included and having a real sense of belonging is not the responsibility of the child but of the entire school community, and that a child can only feel that they belong in an environment that is one of authentic inclusion and respect.\n\nEvery child has the right to feel safe, valued and respected, and to have their voices heard. Children learn best when they feel like they belong, and where they can develop and become their authentic selves without fear of judgement or ridicule. We want the children in our school to feel comfortable being themselves, but equally we want the children to respect each other's diversity in a caring, loving, respectful and anti-racist environment. Children are encouraged to see uniqueness and difference as being an everyday part of being in the world with others. This demands that everyone in the school community is committed to ensuring that the diversity that exists in our school is accepted as part of what makes up the fabric of our community and that all children are cherished for what they uniquely bring to our ever-changing, ever-developing school.\n\nWe want people to feel the character and spirit of our school community as they step through our doors. As we grow and develop, we will ensure that this atmosphere of respect, inclusion, kindness and anti-racism remains central to what we do and how we do it.\n\nWith this in mind, the whole school team is committed to ensuring that representing diverse identities is something that is normalised within our delivery of the curriculum, within the school's policies, and in how we engage with each other. We recognise that the curriculum privileges some identities, experiences and perspectives over others. To redress this inequity, we strive to ensure balanced representation as far as possible. To this end, we implement a curriculum where children see their own and other people's diverse identities reflected in teaching materials. We do not shy away from difficult issues or conversations, but instead engage children in reflective and respectful dialogue in an age-appropriate way.\n\nOur ethos is not just a statement, but a living document that we revisit regularly to ensure that our values are reflected in what we do, and why and how we do it. Making a school genuinely inclusive and anti-racist demands that everyone regularly reflects on their individual practice, how the curriculum is delivered, how we speak to each other, how conflict is dealt with, etc. We endeavour to ensure that our curriculum plans, policies, and other documents reflect our values. We also know that inclusivity extends beyond these and is to be found in the little things we do and how we engage with each other every day.",
     "links": [
-      { "title": "Connect RP Website", "url": "https://www.connectrp.ie" },
-      { "title": "Educate Together Charter", "url": "https://www.educatetogether.ie/about/charter/" },
-      { "title": "Learn Together Ethical Education Curriculum", "url": "https://www.educatetogether.ie/curriculum/" },
-      { "title": "Empathy: The Heart of Difficult Conversations", "url": "https://krcetns.com/our-ethos-and-values/" }
+      {
+        "title": "Connect RP Website",
+        "url": "https://www.connectrp.ie"
+      },
+      {
+        "title": "Educate Together Charter",
+        "url": "https://www.educatetogether.ie/about/charter/"
+      },
+      {
+        "title": "Learn Together Ethical Education Curriculum",
+        "url": "https://www.educatetogether.ie/curriculum/"
+      },
+      {
+        "title": "Empathy: The Heart of Difficult Conversations",
+        "url": "https://krcetns.com/our-ethos-and-values/"
+      }
     ]
   },
   "bom": {
@@ -34,60 +46,452 @@
       "Ensuring the school has a Code of Behaviour and an Anti-Bullying Policy."
     ],
     "members": [
-      { "name": "Dr. Marie Flynn", "role": "Chairperson and Patron (Educate Together Nominee)" },
-      { "name": "Trish Loughman", "role": "Community Nominee" },
-      { "name": "Níamh O'Toole", "role": "Principal and Secretary" },
-      { "name": "Dr. Anne Marie Kavanagh", "role": "Community Nominee" },
-      { "name": "Kelly De Bruin", "role": "Parent Nominee" },
-      { "name": "David O'Neill", "role": "Parent Nominee" },
-      { "name": "William", "role": "Teacher" }
+      {
+        "name": "Dr. Marie Flynn",
+        "role": "Chairperson and Patron (Educate Together Nominee)"
+      },
+      {
+        "name": "Trish Loughman",
+        "role": "Community Nominee"
+      },
+      {
+        "name": "Níamh O'Toole",
+        "role": "Principal and Secretary"
+      },
+      {
+        "name": "Dr. Anne Marie Kavanagh",
+        "role": "Community Nominee"
+      },
+      {
+        "name": "Kelly De Bruin",
+        "role": "Parent Nominee"
+      },
+      {
+        "name": "David O'Neill",
+        "role": "Parent Nominee"
+      },
+      {
+        "name": "William",
+        "role": "Teacher"
+      }
     ],
     "reports": [
-      { "title": "Agreed Report - Oct 2025", "url": "#" },
-      { "title": "Agreed Report - June 2025", "url": "#" }
+      {
+        "title": "Agreed Report - Oct 2025",
+        "url": "#"
+      },
+      {
+        "title": "Agreed Report - June 2025",
+        "url": "#"
+      }
     ]
   },
   "staff": {
     "leadership": [
-      { "name": "Niamh O'Toole", "role": "Principal" },
-      { "name": "Joanne", "role": "Secretary" }
+      {
+        "name": "Niamh O'Toole",
+        "role": "Principal",
+        "image": "images/staff/niamh-01.png"
+      },
+      {
+        "name": "Joanne",
+        "role": "Secretary"
+      }
     ],
     "teachers": [
-      { "name": "Lucy", "role": "Teacher", "image": "https://krcetns.com/wp-content/uploads/2025/03/xKelly-pic.jpg.pagespeed.ic.FUTpioFN7Q.webp" },
-      { "name": "Edward", "role": "Teacher", "image": "https://krcetns.com/wp-content/uploads/2024/09/Edward.png" },
-      { "name": "William", "role": "Teacher", "image": "https://krcetns.com/wp-content/uploads/2024/09/Eoin.png" },
-      { "name": "Louise", "role": "Teacher" },
-      { "name": "Diandra", "role": "Teacher" },
-      { "name": "Gill", "role": "Teacher" },
-      { "name": "Eva", "role": "Teacher" }
+      {
+        "name": "Lucy",
+        "role": "Teacher"
+      },
+      {
+        "name": "Edward",
+        "role": "Teacher",
+        "image": "images/staff/teacher-edward-01.png"
+      },
+      {
+        "name": "William",
+        "role": "Teacher"
+      },
+      {
+        "name": "Louise",
+        "role": "Teacher",
+        "image": "images/staff/teacher-louise-01.png"
+      },
+      {
+        "name": "Diandra",
+        "role": "Teacher"
+      },
+      {
+        "name": "Gill",
+        "role": "Teacher"
+      },
+      {
+        "name": "Eva",
+        "role": "Teacher"
+      }
     ],
     "special_education": [
-      { "name": "Natalia", "role": "Special Education Teacher" },
-      { "name": "[Open]", "role": "Special Education Teacher" }
+      {
+        "name": "Natalia",
+        "role": "Special Education Teacher"
+      },
+      {
+        "name": "[Open]",
+        "role": "Special Education Teacher"
+      }
     ],
     "ana": [
-      { "name": "Ailish", "role": "ANA" }, { "name": "Aoife", "role": "ANA" }, { "name": "Catherine", "role": "ANA" },
-      { "name": "Christina", "role": "ANA" }, { "name": "Christine", "role": "ANA" }, { "name": "Deb", "role": "ANA" },
-      { "name": "Kelly", "role": "ANA" }, { "name": "Amy", "role": "ANA" }, { "name": "Vanessa", "role": "ANA" },
-      { "name": "Abbie", "role": "ANA" }, { "name": "Lauren", "role": "ANA" }, { "name": "Bryanna", "role": "ANA" }
+      {
+        "name": "Ailish",
+        "role": "ANA",
+        "image": "images/staff/ana-ailish-01.png"
+      },
+      {
+        "name": "Aoife",
+        "role": "ANA",
+        "image": "images/staff/ana-aoife-01.png"
+      },
+      {
+        "name": "Catherine",
+        "role": "ANA",
+        "image": "images/staff/ana-catherine-01.png"
+      },
+      {
+        "name": "Christina",
+        "role": "ANA",
+        "image": "images/staff/ana-christina-01.png"
+      },
+      {
+        "name": "Christine",
+        "role": "ANA",
+        "image": "images/staff/ana-christine-01.png"
+      },
+      {
+        "name": "Deb",
+        "role": "ANA",
+        "image": "images/staff/ana-deb-01.png"
+      },
+      {
+        "name": "Kelly",
+        "role": "ANA",
+        "image": "images/staff/ana-kelly-01.png"
+      },
+      {
+        "name": "Amy",
+        "role": "ANA",
+        "image": "images/staff/ana-amy-01.png"
+      },
+      {
+        "name": "Vanessa",
+        "role": "ANA",
+        "image": "images/staff/ana-vanessa-01.png"
+      },
+      {
+        "name": "Abbie",
+        "role": "ANA",
+        "image": "images/staff/ana-abbie-01.png"
+      },
+      {
+        "name": "Lauren",
+        "role": "ANA",
+        "image": "images/staff/ana-lauren-01.jpg"
+      },
+      {
+        "name": "Bryanna",
+        "role": "ANA",
+        "image": "images/staff/ana-bryanna-01.jpg"
+      }
     ],
     "support": [
-      { "name": "Lara", "role": "Bus Escort/Driver" },
-      { "name": "Alan", "role": "Bus Escort/Driver" },
-      { "name": "Carmen", "role": "Bus Escort/Driver" }
+      {
+        "name": "Lara",
+        "role": "Bus Escort/Driver",
+        "image": "images/staff/ss-lara-01.png"
+      },
+      {
+        "name": "Alan",
+        "role": "Bus Escort/Driver"
+      },
+      {
+        "name": "Carmen",
+        "role": "Bus Escort/Driver"
+      }
     ]
   },
   "pa": {
-    "message": "As a school committed to the value of democracy, we welcome and support the proactive involvement of the Parents Association in our school’s activities. Every parent and guardian is automatically a member. We work collaboratively to support children’s happiness, security, and sense of worth."
+    "purpose": "The Parents' Association is the structure through which the parents/guardians in a school can work together for the best possible education for their children.<BR>The parent association works with the principal, staff and the board of management to build effective partnership between home and school. Educational research on the involvement of parents in schools shows that children achieve better outcomes when parents and teachers work together.",
+    "meetings": "Our Parents Association committee meetings are held the 2nd Tuesday of every month.",
+    "contacts": [
+      {
+        "label": "Chairperson",
+        "email": "pachair.krcetns@gmail.com"
+      },
+      {
+        "label": "Secretary",
+        "email": "pasecretary.krcetns@gmail.com"
+      }
+    ],
+    "members": [
+      {
+        "name": "Sheana Burman",
+        "role": "Chairperson"
+      },
+      {
+        "name": "Emma Lowry",
+        "role": "Secretary"
+      },
+      {
+        "name": "Eric Burke",
+        "role": "Treasurer"
+      },
+      {
+        "name": "Kelly Alqashqish De Bruin",
+        "role": "BOM Parent Representative & Committee Member"
+      },
+      {
+        "name": "Brian Clinton",
+        "role": "BOM Parent Representative & Committee Member"
+      },
+      {
+        "name": "Anna Beuge",
+        "role": "Committee Member"
+      },
+      {
+        "name": "Karl O’Connor",
+        "role": "Committee Member"
+      },
+      {
+        "name": "Sarah Mason",
+        "role": "Committee Member"
+      },
+      {
+        "name": "Ronan O’Toole",
+        "role": "Committee Member"
+      },
+      {
+        "name": "Jessica Keatley",
+        "role": "Committee Member"
+      },
+      {
+        "name": "Joyce Franciosa",
+        "role": "Committee Member"
+      },
+      {
+        "name": "Mark Flood",
+        "role": "Committee Member"
+      },
+      {
+        "name": "Lisa Foran",
+        "role": "Committee Member"
+      },
+      {
+        "name": "Karyn Shaw",
+        "role": "Committee Member"
+      }
+    ]
+  },
+  "school_day": {
+    "title": "Our School Day",
+    "message": "A typical day at Killester Raheny Clontarf ETNS is filled with learning, play, and community building.",
+    "schedule": [
+      {
+        "time": "08:30",
+        "event": "School Opens"
+      },
+      {
+        "time": "08:40",
+        "event": "Classes Begin"
+      },
+      {
+        "time": "10:10",
+        "event": "Morning lunch break/Story-time & free play/yard (20mins)"
+      },
+      {
+        "time": "12:00",
+        "event": "Lunch Break (30 mins)"
+      },
+      {
+        "time": "13:20",
+        "event": "Infant Classes Finish"
+      },
+      {
+        "time": "14:20",
+        "event": "1st - 6th Classes Finish"
+      }
+    ]
+  },
+  "calendar": {
+    "title": "School Calendar",
+    "academic_year": "2025/2026",
+    "pdf_url": "documents/KRC-ETNS-School-Calendar-2025-2026.pdf",
+    "events": [
+      {
+        "date": "August 28",
+        "title": "School Re-opens",
+        "description": "Welcome back! Classes resume for all pupils."
+      },
+      {
+        "date": "Oct 27 - Oct 31",
+        "title": "Mid-term Break",
+        "description": "School closed for the October bank holiday and mid-term."
+      },
+      {
+        "date": "Dec 19",
+        "title": "Last Day of Term",
+        "description": "School closes at 11:30 for all pupils."
+      },
+      {
+        "date": "Dec 22 - Jan 2",
+        "title": "Winter Holidays",
+        "description": "School closed for the festive period."
+      },
+      {
+        "date": "Feb 2",
+        "title": "Public Holiday",
+        "description": "School closed for the public holiday."
+      },
+      {
+        "date": "Feb 16 - Feb 20",
+        "title": "Mid-term Break",
+        "description": "School closed for February mid-term."
+      },
+      {
+        "date": "Mar 16 - Mar 17",
+        "title": "St. Patrick's Day Holidays",
+        "description": "School closed for the national holiday."
+      },
+      {
+        "date": "Mar 27",
+        "title": "Last Day of Term",
+        "description": "School closes at 11:30 for all pupils."
+      },
+      {
+        "date": "Mar 30 - Apr 10",
+        "title": "Easter Holidays",
+        "description": "School closed for Easter mid-term."
+      },
+      {
+        "date": "May 4",
+        "title": "Public Holiday",
+        "description": "School closed for the public holiday."
+      },
+      {
+        "date": "Jun 1",
+        "title": "Public Holiday",
+        "description": "School closed for the public holiday."
+      },
+      {
+        "date": "Jun 26 ",
+        "title": "Last Day of Term",
+        "description": "School closes at 11:30 for all pupils."
+      }
+    ]
   },
   "policies": [
-    { "name": "Code of Behavior", "type": "PDF" },
-    { "name": "Anti-Bullying Policy", "type": "PDF" },
-    { "name": "Child Safeguarding Statement", "type": "PDF" },
-    { "name": "Admissions Policy", "type": "PDF" }
+    {
+      "name": "Code of Behavior",
+      "type": "PDF"
+    },
+    {
+      "name": "Anti-Bullying Policy",
+      "type": "PDF"
+    },
+    {
+      "name": "Child Safeguarding Statement",
+      "type": "PDF"
+    },
+    {
+      "name": "Admissions Policy",
+      "type": "PDF"
+    }
   ],
+  "school_policies": {
+    "welcome": "Links to our school policies are at the end of this page.",
+    "content": [
+      "In Killester Raheny Clontarf ETNS, we are committed to regularly reflecting on and improving teaching and learning in our school.",
+      "As required by the Department of Education and Skills (DES), we undertake School Self-Evaluation (SSE) reviews on a cyclical basis.",
+      "The current SSE cycle runs from 2023 to 2026 and our focus for this cycle is Wellbeing through the Learn Together programme."
+    ],
+    "sse_2021_report": {
+      "text": "The focus, findings and targets of the 2021 SSE report can be found here: ",
+      "title": "2021 SSE Report",
+      "url": "documents/policies/SSE_Report_2021.pdf"
+    },
+    "documents": [
+      {
+        "name": "Admission Policy",
+        "path": "documents/policies/krc-etns-admissions-policy-2025.pdf"
+      },
+      {
+        "name": "Acceptable Use Policy",
+        "path": "documents/policies/krc-etns-acceptable-use-policy.pdf"
+      },
+      {
+        "name": "Child Safeguarding Statement",
+        "path": "documents/policies/krc-etns-child-safeguarding-statement.pdf"
+      },
+      {
+        "name": "Child Safeguarding Checklist Policy",
+        "path": "documents/policies/krc-etns-child-safeguarding-checklist.pdf"
+      },
+      {
+        "name": "Relationships & Code of Practice",
+        "path": "documents/policies/krc-etns-relationships-and-behaviour-code-of-practice.pdf"
+      },
+      {
+        "name": "Anti Bullying Policy",
+        "path": "documents/policies/krc-etns-anti-bullying-policy.pdf"
+      },
+      {
+        "name": "Anti Bullying Checklist",
+        "path": "documents/policies/krc-etns-anti-bullying-checklist.pdf"
+      },
+      {
+        "name": "Administration of Medicines Policy",
+        "path": "documents/policies/krc-etns-administration-of-medication.pdf"
+      },
+      {
+        "name": "Communication Policy",
+        "path": "documents/policies/krc-etns-communcation-policy.pdf"
+      },
+      {
+        "name": "Parental Complaints Procedure",
+        "path": "documents/policies/krc-etns-parental-complaints-procedure.pdf"
+      },
+      {
+        "name": "Critical Incident Policy",
+        "path": "documents/policies/krc-etns-critical-incident.pdf"
+      },
+      {
+        "name": "Visitor Code of Conduct Policy",
+        "path": "documents/policies/krc-etns-visitor-code-of-conduct.pdf"
+      },
+      {
+        "name": "Intimate Care Policy",
+        "path": "documents/policies/krc-etns-intimate-care-policy.pdf"
+      },
+      {
+        "name": "Anti-Racism Statement",
+        "path": "documents/policies/krc-etns-anti-racism-statement.pdf"
+      }
+    ]
+  },
   "growth_chart": {
-    "labels": ["2019", "2020", "2021", "2022", "2023", "Today"],
-    "data": [7, 24, 45, 80, 115, 140]
+    "labels": [
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "Today"
+    ],
+    "data": [
+      7,
+      24,
+      45,
+      80,
+      115,
+      140
+    ]
   }
 }
