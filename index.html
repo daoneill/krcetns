@@ -275,34 +275,99 @@
 
         const Pages = {
             home: () => `
-                <section class="mb-16 text-center py-8 fade-in">
-                    <h1 class="text-5xl md:text-7xl font-black text-krc-green mb-6 tracking-tight leading-tight">Killester Raheny Clontarf</h1>
-                    <h1 class="text-5xl md:text-7xl font-black text-krc-green mb-6 tracking-tight leading-tight">Educate Together National School</h1>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">KRC ETNS teaches the national curriculum and is proud to be an inclusive, equality-based Educate Together National School.</p>
-                </section>
+                <div class="relative rounded-[3rem] overflow-hidden mb-16 shadow-2xl group border-4 border-white">
+                    <img src="images/school/krc-campus.png" class="w-full h-[500px] md:h-[600px] object-cover transition duration-700 group-hover:scale-105" alt="KRC ETNS Campus">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-10 md:p-20">
+                        <div class="max-w-4xl fade-in">
+                            <h1 class="text-4xl md:text-7xl font-black text-white mb-6 leading-none tracking-tight">Killester Raheny Clontarf</h1>
+                            <h2 class="text-3xl md:text-5xl font-black text-krc-green mb-8 leading-none tracking-tight drop-shadow-lg">Educate Together National School</h2>
+                            <p class="text-xl md:text-2xl text-gray-200 font-medium max-w-2xl leading-relaxed mb-10 drop-shadow-md">A child-centred, equality-based school where every child is valued and respected.</p>
+                            <div class="flex flex-wrap gap-4">
+                                <button onclick="router('admissions')" class="bg-krc-green hover:bg-green-700 text-white px-10 py-5 rounded-2xl font-black text-lg shadow-xl hover:scale-105 transition transform active:scale-95">Enroll for 2026/27</button>
+                                <button onclick="router('ethos')" class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border-2 border-white/30 px-10 py-5 rounded-2xl font-black text-lg shadow-xl hover:scale-105 transition transform active:scale-95">Our Ethos</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-                    <a href="mailto:${SITE_DATA.contact.email}" class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 flex items-center hover:shadow-md transition">
-                        <div class="text-4xl mr-6">✉️</div>
-                        <div><h4 class="font-bold text-gray-800">Email</h4><p class="text-sm text-gray-500">${SITE_DATA.contact.email}</p></div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+                    <a href="mailto:${SITE_DATA.contact.email}" class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-xl hover:-translate-y-2 transition duration-300 group">
+                        <div class="w-20 h-20 bg-blue-50 text-blue-500 rounded-3xl flex items-center justify-center text-4xl mb-6 shadow-inner group-hover:bg-blue-500 group-hover:text-white transition duration-300">✉️</div>
+                        <h4 class="font-black text-gray-800 text-xl mb-2">Email Us</h4>
+                        <p class="text-gray-500 text-sm font-medium">${SITE_DATA.contact.email}</p>
                     </a>
-                    <a href="${SITE_DATA.contact.mapsUrl}" target="_blank" class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 flex items-center hover:shadow-md transition group">
-                        <div class="text-4xl mr-6">📍</div>
-                        <div><h4 class="font-bold text-gray-800 group-hover:text-krc-teal transition">Location</h4><p class="text-sm text-gray-500">Collins Ave East, D5</p></div>
+                    <a href="${SITE_DATA.contact.mapsUrl}" target="_blank" class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-xl hover:-translate-y-2 transition duration-300 group">
+                        <div class="w-20 h-20 bg-red-50 text-red-500 rounded-3xl flex items-center justify-center text-4xl mb-6 shadow-inner group-hover:bg-red-500 group-hover:text-white transition duration-300">📍</div>
+                        <h4 class="font-black text-gray-800 text-xl mb-2">Visit Us</h4>
+                        <p class="text-gray-500 text-sm font-medium">Collins Ave East, Dublin 5</p>
                     </a>
-                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 flex items-center">
-                        <div class="text-4xl mr-6">📞</div>
-                        <div><h4 class="font-bold text-gray-800">Phone</h4><p class="text-sm text-gray-500">${SITE_DATA.contact.phone}</p></div>
+                    <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-gray-100 flex flex-col items-center text-center hover:shadow-xl hover:-translate-y-2 transition duration-300 group cursor-default">
+                        <div class="w-20 h-20 bg-green-50 text-green-500 rounded-3xl flex items-center justify-center text-4xl mb-6 shadow-inner group-hover:bg-green-500 group-hover:text-white transition duration-300">📞</div>
+                        <h4 class="font-black text-gray-800 text-xl mb-2">Call Us</h4>
+                        <p class="text-gray-500 text-sm font-medium">${SITE_DATA.contact.phone}</p>
                     </div>
                 </div>
 
-                <div class="bg-white p-12 rounded-[3rem] shadow-xl border border-gray-100 grid lg:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <h2 class="text-4xl font-black text-krc-teal mb-6 leading-tight tracking-tight">Our School's Growth</h2>
-                        <p class="text-lg text-gray-600 mb-8 leading-relaxed">Since opening in 2019, we have grown from 7 pupils to a community catering for 3rd class. By 2026, we will be a full primary school.</p>
-                        <button onclick="router('team')" class="bg-krc-teal text-white px-8 py-3.5 rounded-2xl font-bold shadow-lg hover:bg-teal-700 transition">Read the Principal's Welcome</button>
+                <div class="mb-24">
+                    <div class="flex items-end justify-between mb-12 px-4">
+                        <div class="max-w-xl">
+                            <h2 class="text-4xl md:text-5xl font-black text-krc-teal leading-tight tracking-tight mb-4">School Life in Focus</h2>
+                            <p class="text-lg text-gray-600 font-medium">Explore our vibrant learning environment and modern facilities.</p>
+                        </div>
+                        <button onclick="router('news')" class="hidden md:block text-krc-green font-black uppercase tracking-widest text-sm hover:underline">View News &rarr;</button>
                     </div>
-                    <div class="chart-container"><canvas id="homeStatsChart"></canvas></div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="group relative rounded-[2rem] overflow-hidden shadow-lg h-80 border-4 border-white">
+                            <img src="images/school/garden-01.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="School Garden">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-8">
+                                <p class="text-white font-bold text-lg">Outdoor Learning</p>
+                            </div>
+                        </div>
+                        <div class="group relative rounded-[2rem] overflow-hidden shadow-lg h-80 border-4 border-white lg:col-span-2">
+                            <img src="images/school/krc-classroom-01.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="Classroom">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-8">
+                                <p class="text-white font-bold text-xl leading-snug">Our bright, modern classrooms are designed for active learning.</p>
+                            </div>
+                        </div>
+                        <div class="group relative rounded-[2rem] overflow-hidden shadow-lg h-80 border-4 border-white">
+                            <img src="images/school/library-01.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="Library">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-8">
+                                <p class="text-white font-bold text-lg">School Library</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-12 md:p-20 rounded-[4rem] shadow-2xl border border-gray-100 grid lg:grid-cols-2 gap-16 items-center mb-24 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-krc-green/5 rounded-full -mr-32 -mt-32"></div>
+                    <div class="relative z-10">
+                        <h2 class="text-4xl md:text-6xl font-black text-krc-teal mb-8 leading-none tracking-tight">Our School's Growth</h2>
+                        <p class="text-xl text-gray-600 mb-10 leading-relaxed font-medium">Since opening in 2019, we have grown from 7 pupils to a community catering for 3rd class. By 2026, we will be a full primary school.</p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button onclick="router('team')" class="bg-krc-teal text-white px-10 py-5 rounded-2xl font-black text-lg shadow-xl hover:bg-teal-700 transition transform hover:-translate-y-1">Meet Our Team</button>
+                            <div class="flex items-center gap-4 px-6">
+                                <span class="text-3xl font-black text-krc-green">176+</span>
+                                <span class="text-sm font-bold text-gray-500 leading-tight">Pupils<br>Enrolled</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-container bg-gray-50/50 p-8 rounded-[3rem] border border-gray-100 shadow-inner">
+                        <canvas id="homeStatsChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-krc-teal rounded-[4rem] p-12 md:p-20 text-white relative overflow-hidden mb-16 shadow-2xl">
+                    <div class="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full -ml-48 -mb-48"></div>
+                    <div class="flex flex-col lg:flex-row items-center gap-16">
+                        <div class="w-full lg:w-1/2 rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white/20 transform -rotate-3 hover:rotate-0 transition duration-500">
+                            <img src="images/pupils/pupils-01.jpg" class="w-full h-96 object-cover" alt="KRC ETNS Pupils">
+                        </div>
+                        <div class="w-full lg:w-1/2">
+                            <h3 class="text-4xl md:text-5xl font-black mb-6 leading-tight tracking-tight italic">"No Child an Outsider"</h3>
+                            <p class="text-xl md:text-2xl text-teal-50 mb-10 leading-relaxed font-medium">Our school culture is built on the core principle of authentic inclusion. Every child, parent, and staff member genuinely belongs here.</p>
+                            <button onclick="router('ethos')" class="bg-white text-krc-teal px-10 py-5 rounded-2xl font-black text-lg shadow-xl hover:bg-teal-50 transition transform hover:-translate-y-1">Read Our Ethos</button>
+                        </div>
+                    </div>
                 </div>
             `,
             schoolDay: () => `
@@ -321,6 +386,9 @@
             `,
             ethos: () => `
                 <div class="mb-12 fade-in"><h2 class="text-4xl font-black text-krc-teal leading-tight tracking-tight">Ethos & Values</h2></div>
+                <div class="mb-12 rounded-[2.5rem] overflow-hidden shadow-xl border border-gray-100 fade-in">
+                    <img src="images/pupils/all-children-wear-red-day-01.jpg" class="w-full h-80 object-cover" alt="KRC ETNS Pupils">
+                </div>
                 <section class="bg-white p-12 rounded-[2.5rem] shadow-lg border border-gray-100 mb-12">
                     <h3 class="text-3xl font-black text-krc-teal mb-8">${SITE_DATA.ethos.title}</h3>
                     <div class="text-gray-700 text-lg leading-relaxed space-y-6">
@@ -459,9 +527,9 @@
             pa: () => `
                 <div class="mb-12 fade-in"><h2 class="text-4xl font-black text-krc-teal leading-tight tracking-tight">Parents Association</h2></div>
                 
-                <div class="grid lg:grid-cols-3 gap-12 text-left">
+                <div class="grid lg:grid-cols-3 gap-12 text-left mb-16">
                     <div class="lg:col-span-2 space-y-12">
-                        <section class="bg-white p-10 md:p-14 rounded-[3rem] shadow-xl border border-gray-100">
+                        <section class="bg-white p-10 md:p-14 rounded-[3rem] shadow-xl border border-gray-100 h-full">
                             <div class="mb-12">
                                 <h4 class="text-2xl font-black text-krc-teal mb-6">Purpose</h4>
                                 <p class="text-lg text-gray-700 leading-relaxed">${SITE_DATA.pa.purpose}</p>
@@ -499,6 +567,46 @@
                                 `).join('')}
                             </div>
                         </section>
+                    </div>
+                </div>
+
+                <div class="mb-16 fade-in">
+                    <div class="mb-10 px-4">
+                        <h3 class="text-3xl md:text-5xl font-black text-krc-teal mb-4 tracking-tight">Community in Action</h3>
+                        <p class="text-xl text-gray-500 font-medium max-w-2xl">Building our school community together through events, initiatives, and shared pride.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="md:col-span-2 group relative h-[500px] rounded-[3rem] overflow-hidden shadow-2xl border-4 border-white">
+                            <img src="images/pa_events/bbq-01.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" alt="KRC ETNS BBQ">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-10">
+                                <h4 class="text-white text-3xl font-black mb-2">Summer Family BBQ</h4>
+                                <p class="text-teal-50 text-lg font-medium">Coming together to celebrate our school family.</p>
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="group relative h-60 rounded-[2.5rem] overflow-hidden shadow-xl border-4 border-white">
+                                <img src="images/pa_events/painting-the-school-03.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="Painting the School">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center p-6 text-center">
+                                    <p class="text-white font-black">Painting our school environment together.</p>
+                                </div>
+                            </div>
+                            <div class="group relative h-60 rounded-[2.5rem] overflow-hidden shadow-xl border-4 border-white">
+                                <img src="images/pa_events/engineering-class-special-01.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="Special Engineering Class">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center p-6 text-center">
+                                    <p class="text-white font-black">Supporting special learning initiatives.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:col-span-3 group relative h-64 rounded-[3rem] overflow-hidden shadow-xl border-4 border-white">
+                            <img src="images/pa_events/climate-class-special-01.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" alt="Climate Class">
+                            <div class="absolute inset-0 bg-gradient-to-r from-krc-teal/80 to-transparent flex items-center p-12">
+                                <div class="max-w-md">
+                                    <h4 class="text-white text-2xl font-black mb-2 italic">Building a better future</h4>
+                                    <p class="text-teal-50 font-bold uppercase tracking-widest text-xs">Sustainability Initiatives 2024</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             `,
