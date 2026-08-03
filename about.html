@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us & Ethos | Killester Park Dublin 5</title>
+  <meta name="description" content="Learn about Killester Park Educate Together National School history, core Educate Together ethos, equality-based values, governance, and school policy documents.">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Shared Site Header Container -->
+  <div id="siteHeader"></div>
+
+  <!-- Page Banner -->
+  <section class="page-header-banner">
+    <div class="page-header-container">
+      <h1 class="page-header-title">About Our School</h1>
+      <p class="page-header-subtitle">Learn about our origins, dedicated staff, governance, and school policies.</p>
+    </div>
+  </section>
+
+  <!-- History & Vision Section -->
+  <section class="section">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3.5rem; align-items: center;">
+        <div>
+          <span class="section-tag">Our History</span>
+          <h2 class="section-title" style="text-align: left; margin-bottom: 1.25rem;">Growing Together Since 2019</h2>
+          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-body); margin-bottom: 1rem;">
+            Killester Park Educate Together National School opened its doors in September 2019 to welcome our first Junior Infants class. Founded by dedicated local parents and community advocates, our school fulfills the growing demand for equality-based primary education in the Killester, Raheny, and Clontarf communities.
+          </p>
+          <p style="font-size: 1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1.5rem;">
+            From our initial temporary accommodation, we moved to our permanent modern facilities on Collins Avenue East in Killester. We have expanded year-on-year to cater for children from Junior Infants right up to 6th Class, including two specialized Autism classes designed to provide tailored sensory and educational support.
+          </p>
+          <div class="policy-card" style="background: var(--teal-light); border-color: var(--teal-brand);">
+            <i class="fa-solid fa-seedling" style="font-size: 1.75rem; color: var(--teal-brand);"></i>
+            <div>
+              <h4 style="font-family: var(--font-heading); font-weight: 700; color: var(--teal-dark);">Our Mission Statement</h4>
+              <p style="font-size: 0.9rem; color: var(--text-heading); margin-top: 0.25rem;">To create a safe, nurturing, and joyful learning community where every child's voice is heard and every identity is celebrated.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image-card">
+          <img src="images/hero.png" alt="Killester Park School Campus">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Governance & Parents Association -->
+  <section class="section">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <div class="pillar-card">
+          <div class="pillar-icon"><i class="fa-solid fa-building-columns"></i></div>
+          <h3 class="pillar-title">Board of Management</h3>
+          <p class="pillar-text">The Board of Management manages the school on behalf of the Patron (Educate Together) and the Department of Education. It comprises nominee representatives from parents, patron, teachers, and community members.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon"><i class="fa-solid fa-users"></i></div>
+          <h3 class="pillar-title">Parents Association</h3>
+          <p class="pillar-text">Our active Parents Association works closely with the principal and staff to organize community events, support school fundraising, and foster a welcoming spirit among all families.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon"><i class="fa-solid fa-comments"></i></div>
+          <h3 class="pillar-title">Student Council</h3>
+          <p class="pillar-text">Democratically elected student representatives from 2nd to 6th class give pupils a direct voice in school activities, green initiatives, playground equipment, and charity days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Policies Center Section -->
+  <section class="section" id="policies" style="background-color: var(--bg-surface);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Governance & Compliance</span>
+        <h2 class="section-title">School Policies & Documentation</h2>
+        <p class="section-description">Official Killester Park policy documents, compliance statements, and parent downloads.</p>
+      </div>
+
+      <!-- Live Policy List Container -->
+      <div class="policy-list" id="policyList">
+        <!-- Rendered dynamically via js/main.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Shared Site Footer Container -->
+  <div id="siteFooter"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

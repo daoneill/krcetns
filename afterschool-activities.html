@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Afterschool Activities & Clubs | Killester Park Dublin 5</title>
+  <meta name="description" content="Explore afterschool clubs and extra-curricular activities at Killester Park Educate Together National School, including sports, art, chess, drama, coding, and music.">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .activity-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .activity-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--teal-brand);
+    }
+    .activity-header {
+      padding: 1.5rem 1.5rem 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+      background: linear-gradient(135deg, var(--bg-surface-elevated), var(--bg-surface));
+      position: relative;
+    }
+    .activity-category-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.75rem;
+    }
+    .badge-sports { background: #e0f2fe; color: #0369a1; }
+    .badge-art { background: #fce7f3; color: #be185d; }
+    .badge-stem { background: #e0e7ff; color: #4338ca; }
+    .badge-music { background: #fef3c7; color: #b45309; }
+    .badge-general { background: #e2e8f0; color: #334155; }
+
+    .activity-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 0.25rem;
+    }
+    .activity-age {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--teal-brand);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .activity-body {
+      padding: 1.25rem 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .activity-desc {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .activity-meta-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.25rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .activity-meta-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--text-body);
+    }
+    .activity-meta-item i {
+      color: var(--teal-brand);
+      margin-top: 3px;
+      font-size: 0.95rem;
+      width: 16px;
+    }
+    .activity-footer {
+      padding: 1rem 1.5rem;
+      background: var(--bg-surface-elevated);
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-md);
+      background: var(--teal-brand);
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .contact-btn:hover {
+      background: var(--teal-hover);
+      color: white;
+    }
+    .fee-tag {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      background: var(--bg-surface);
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shared Site Header Container -->
+  <div id="siteHeader"></div>
+
+  <!-- Page Banner -->
+  <section class="page-header-banner">
+    <div class="page-header-container">
+      <h1 class="page-header-title">Afterschool Activities & Clubs</h1>
+      <p class="page-header-subtitle">Enriching learning, sports, arts, and social development after the school day.</p>
+    </div>
+  </section>
+
+  <!-- Info Notice Section -->
+  <section class="section" style="padding: 2.5rem 0; background: var(--bg-surface-elevated); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div style="background: white; padding: 1.75rem; border-radius: var(--radius-lg); border-left: 5px solid var(--teal-brand); box-shadow: var(--shadow-sm); display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap;">
+        <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--teal-light); color: var(--teal-brand); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;">
+          <i class="fa-solid fa-circle-info"></i>
+        </div>
+        <div style="flex: 1; min-width: 280px;">
+          <h3 style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; margin-bottom: 0.4rem; color: var(--text-heading);">Important Information for Parents & Guardians</h3>
+          <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin: 0;">
+            Afterschool activities are organized and run independently by qualified external tutors and school staff. Registration, fees, and enquiries should be made directly with each activity facilitator using the contact details provided below.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Activities Section -->
+  <section class="section">
+    <div class="container">
+      
+      <!-- Category Filter Pills -->
+      <div class="filter-pills" id="afterschoolFilterPills" style="margin-bottom: 2.5rem; display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+        <button class="filter-pill active" data-filter="all"><i class="fa-solid fa-layer-group"></i> All Clubs</button>
+        <button class="filter-pill" data-filter="Sports"><i class="fa-solid fa-volleyball"></i> Sports & Fitness</button>
+        <button class="filter-pill" data-filter="Art"><i class="fa-solid fa-palette"></i> Art & Crafts</button>
+        <button class="filter-pill" data-filter="STEM"><i class="fa-solid fa-laptop-code"></i> STEM & Chess</button>
+        <button class="filter-pill" data-filter="Music"><i class="fa-solid fa-music"></i> Music & Drama</button>
+      </div>
+
+      <!-- Activity Grid Container -->
+      <div class="card-grid" id="afterschoolList">
+        <!-- Dynamic content loaded via js/main.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Facilitator CTA Section -->
+  <section class="section" style="background: linear-gradient(135deg, var(--primary-navy), var(--primary-navy-dark)); color: white; padding: 3.5rem 0;">
+    <div class="container text-center" style="max-width: 800px;">
+      <h2 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem; color: white;">Would You Like to Host an Afterschool Activity?</h2>
+      <p style="font-size: 1.05rem; opacity: 0.9; line-height: 1.7; margin-bottom: 2rem;">
+        Killester Park welcomes proposals from qualified, Garda vetted tutors and coaches to run innovative extra-curricular clubs for our pupils.
+      </p>
+      <a href="contact.html" class="btn btn-amber" style="font-size: 1rem;"><i class="fa-solid fa-paper-plane"></i> Contact School Office</a>
+    </div>
+  </section>
+
+  <!-- Shared Site Footer Container -->
+  <div id="siteFooter"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
