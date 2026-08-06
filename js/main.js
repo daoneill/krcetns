@@ -52,7 +52,7 @@ function renderCommonComponents() {
           <div class="top-info">
             <span class="top-info-item"><i class="fa-solid fa-location-dot"></i> Collins Avenue East, Killester, Dublin 5, D05 F2H1</span>
             <span class="top-info-item"><i class="fa-solid fa-phone"></i> <a href="tel:015241637">01 524 1637</a></span>
-            <span class="top-info-item"><i class="fa-solid fa-envelope"></i> <a href="mailto:info.krcetns@gmail.com">info.krcetns@gmail.com</a></span>
+            <span class="top-info-item"><i class="fa-solid fa-envelope"></i> <a href="mailto:info@killesterparketns.ie">info@killesterparketns.ie</a></span>
           </div>
         </div>
       </div>
@@ -215,7 +215,7 @@ function renderCommonComponents() {
               </div>
               <div class="footer-contact-item">
                 <i class="fa-solid fa-envelope" style="color: var(--teal-brand);"></i>
-                <a href="mailto:info.krcetns@gmail.com" style="color: white;">info.krcetns@gmail.com</a>
+                <a href="mailto:info@killesterparketns.ie" style="color: white;">info@killesterparketns.ie</a>
               </div>
             </div>
           </div>
@@ -883,8 +883,8 @@ async function initDynamicNews() {
         const title = cols[0];
         const category = (cols[1] || 'events').toLowerCase().trim();
         const summary = cols[2];
-        const image = cols[3] || 'images/hero.png';
-        const link = cols[4] || 'news.html';
+        const image = cols[3] && cols[3].trim() !== '' ? cols[3].trim() : 'images/hero.png';
+        const link = cols[4] && cols[4].trim() !== '' ? cols[4].trim() : '';
 
         if (i === 0 && (title.toLowerCase().includes('title') || title.toLowerCase().includes('news'))) {
           continue;
@@ -925,6 +925,11 @@ function renderNewsCards(items, container) {
     article.className = 'info-card';
     article.setAttribute('data-category', item.category);
 
+    const hasLink = item.link && item.link.trim() !== '' && item.link.trim() !== '#';
+    const linkBtnHTML = hasLink
+      ? `<a href="${escapeHTML(item.link)}" ${item.link.startsWith('http') ? 'target="_blank"' : ''} class="btn btn-outline" style="align-self: flex-start;">Read Details</a>`
+      : '';
+
     article.innerHTML = `
       <div class="card-img-wrapper">
         <span class="card-badge">${escapeHTML(item.categoryLabel)}</span>
@@ -933,7 +938,7 @@ function renderNewsCards(items, container) {
       <div class="card-body">
         <h3 class="card-title">${escapeHTML(item.title)}</h3>
         <p class="card-text">${escapeHTML(item.summary)}</p>
-        <a href="${escapeHTML(item.link || 'news.html')}" class="btn btn-outline" style="align-self: flex-start;">Read Details</a>
+        ${linkBtnHTML}
       </div>
     `;
 
