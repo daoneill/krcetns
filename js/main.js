@@ -123,40 +123,66 @@ function renderCommonComponents() {
       <div class="mobile-drawer" id="mobileDrawer">
         <div class="mobile-drawer-header">
           <div class="brand-logo">
-            <img src="images/logo.png" alt="Killester Park Logo" style="width: 40px;">
-            <span class="brand-title" style="font-size: 1.1rem;">Killester Park</span>
+            <img src="images/logo.png" alt="Killester Park Logo" style="width: 36px;">
+            <span class="brand-title" style="font-size: 1.05rem;">Killester Park</span>
           </div>
           <button class="close-drawer" id="closeDrawer" aria-label="Close menu">&times;</button>
         </div>
-        <ul class="mobile-nav-list">
-          <li><a href="index.html" class="mobile-nav-link">Home</a></li>
-          <li>
-            <span class="mobile-nav-link">About Us</span>
-            <ul class="mobile-submenu">
-              <li><a href="about.html" class="mobile-submenu-link">About Our School</a></li>
-              <li><a href="staff.html" class="mobile-submenu-link">Our Staff</a></li>
-              <li><a href="board-of-management.html" class="mobile-submenu-link">Board of Management</a></li>
-              <li><a href="parents-association.html" class="mobile-submenu-link">Parents Association</a></li>
-            </ul>
-          </li>
-          <li>
-            <span class="mobile-nav-link">School Life</span>
-            <ul class="mobile-submenu">
-              <li><a href="school-life.html" class="mobile-submenu-link">School Life & Learning</a></li>
-              <li><a href="afterschool-activities.html" class="mobile-submenu-link">Afterschool Activities</a></li>
-            </ul>
-          </li>
-          <li>
-            <span class="mobile-nav-link">News & Events</span>
-            <ul class="mobile-submenu">
-              <li><a href="news.html" class="mobile-submenu-link">Latest News</a></li>
-              <li><a href="calendar.html" class="mobile-submenu-link">School Calendar</a></li>
-              <li><a href="gallery.html" class="mobile-submenu-link">Photo Gallery</a></li>
-            </ul>
-          </li>
-          <li><a href="admissions.html" class="mobile-nav-link">Admissions & Enrollment</a></li>
-          <li><a href="contact.html" class="mobile-nav-link">Contact Us</a></li>
-        </ul>
+        
+        <div class="mobile-nav-body">
+          <ul class="mobile-nav-list">
+            <li class="mobile-nav-item">
+              <a href="index.html" class="mobile-nav-link">Home</a>
+            </li>
+
+            <!-- Collapsible About Us -->
+            <li class="mobile-nav-item">
+              <button class="mobile-nav-toggle" data-target="mobileAboutSubmenu" aria-expanded="false">
+                <span>About Us</span>
+                <i class="fa-solid fa-chevron-down chevron-icon"></i>
+              </button>
+              <ul class="mobile-submenu" id="mobileAboutSubmenu">
+                <li><a href="about.html" class="mobile-submenu-link"><i class="fa-solid fa-school"></i> About Our School</a></li>
+                <li><a href="staff.html" class="mobile-submenu-link"><i class="fa-solid fa-chalkboard-user"></i> Our Staff</a></li>
+                <li><a href="board-of-management.html" class="mobile-submenu-link"><i class="fa-solid fa-building-columns"></i> Board of Management</a></li>
+                <li><a href="parents-association.html" class="mobile-submenu-link"><i class="fa-solid fa-users"></i> Parents Association</a></li>
+              </ul>
+            </li>
+
+            <!-- Collapsible School Life -->
+            <li class="mobile-nav-item">
+              <button class="mobile-nav-toggle" data-target="mobileLifeSubmenu" aria-expanded="false">
+                <span>School Life</span>
+                <i class="fa-solid fa-chevron-down chevron-icon"></i>
+              </button>
+              <ul class="mobile-submenu" id="mobileLifeSubmenu">
+                <li><a href="school-life.html" class="mobile-submenu-link"><i class="fa-solid fa-book-open"></i> School Life & Learning</a></li>
+                <li><a href="afterschool-activities.html" class="mobile-submenu-link"><i class="fa-solid fa-shapes"></i> Afterschool Activities</a></li>
+              </ul>
+            </li>
+
+            <!-- Collapsible News & Events -->
+            <li class="mobile-nav-item">
+              <button class="mobile-nav-toggle" data-target="mobileNewsSubmenu" aria-expanded="false">
+                <span>News & Events</span>
+                <i class="fa-solid fa-chevron-down chevron-icon"></i>
+              </button>
+              <ul class="mobile-submenu" id="mobileNewsSubmenu">
+                <li><a href="news.html" class="mobile-submenu-link"><i class="fa-solid fa-newspaper"></i> Latest News</a></li>
+                <li><a href="calendar.html" class="mobile-submenu-link"><i class="fa-solid fa-calendar-days"></i> School Calendar</a></li>
+                <li><a href="gallery.html" class="mobile-submenu-link"><i class="fa-solid fa-images"></i> Photo Gallery</a></li>
+              </ul>
+            </li>
+
+            <li class="mobile-nav-item">
+              <a href="admissions.html" class="mobile-nav-link">Admissions</a>
+            </li>
+
+            <li class="mobile-nav-item">
+              <a href="contact.html" class="mobile-nav-link">Contact Us</a>
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="backdrop" id="backdrop"></div>
     `;
@@ -261,6 +287,42 @@ function initMobileDrawer() {
     if (e.key === 'Escape' && drawer.classList.contains('open')) {
       closeMenu();
     }
+  });
+
+  // Collapsible Accordion Submenus in Mobile Drawer
+  const submenuToggles = drawer.querySelectorAll('.mobile-nav-toggle');
+  submenuToggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = toggle.getAttribute('data-target');
+      const targetSubmenu = document.getElementById(targetId);
+
+      if (!targetSubmenu) return;
+
+      const isOpen = targetSubmenu.classList.contains('open');
+
+      // Close other open submenus for clean accordion behavior
+      drawer.querySelectorAll('.mobile-submenu').forEach(sub => {
+        if (sub !== targetSubmenu) sub.classList.remove('open');
+      });
+      drawer.querySelectorAll('.mobile-nav-toggle').forEach(t => {
+        if (t !== toggle) {
+          t.classList.remove('open');
+          t.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Toggle target submenu
+      if (isOpen) {
+        targetSubmenu.classList.remove('open');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      } else {
+        targetSubmenu.classList.add('open');
+        toggle.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+    });
   });
 }
 
