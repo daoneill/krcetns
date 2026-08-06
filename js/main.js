@@ -85,8 +85,6 @@ function renderCommonComponents() {
               </ul>
             </li>
 
-            <li><a href="admissions.html" class="nav-link">Admissions</a></li>
-            
             <!-- School Life Dropdown -->
             <li class="nav-item-dropdown">
               <a href="school-life.html" class="nav-link" id="schoolLifeDropdownLink">
@@ -98,9 +96,20 @@ function renderCommonComponents() {
               </ul>
             </li>
 
-            <li><a href="news.html" class="nav-link">News & Events</a></li>
+            <!-- News & Events Dropdown -->
+            <li class="nav-item-dropdown">
+              <a href="news.html" class="nav-link" id="newsDropdownLink">
+                News & Events <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem; margin-left: 4px;"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="news.html" class="dropdown-item"><i class="fa-solid fa-newspaper"></i> Latest News</a></li>
+                <li><a href="calendar.html" class="dropdown-item"><i class="fa-solid fa-calendar-days"></i> School Calendar</a></li>
+                <li><a href="gallery.html" class="dropdown-item"><i class="fa-solid fa-images"></i> Photo Gallery</a></li>
+              </ul>
+            </li>
+
+            <li><a href="admissions.html" class="nav-link">Admissions</a></li>
             <li><a href="contact.html" class="nav-link">Contact Us</a></li>
-            <li><a href="admissions.html" class="nav-link nav-cta">Enroll Now</a></li>
           </ul>
 
           <!-- Mobile Hamburger Toggle -->
@@ -130,7 +139,6 @@ function renderCommonComponents() {
               <li><a href="parents-association.html" class="mobile-submenu-link">Parents Association</a></li>
             </ul>
           </li>
-          <li><a href="admissions.html" class="mobile-nav-link">Admissions & Enrollment</a></li>
           <li>
             <span class="mobile-nav-link">School Life</span>
             <ul class="mobile-submenu">
@@ -138,7 +146,15 @@ function renderCommonComponents() {
               <li><a href="afterschool-activities.html" class="mobile-submenu-link">Afterschool Activities</a></li>
             </ul>
           </li>
-          <li><a href="news.html" class="mobile-nav-link">News & Calendar</a></li>
+          <li>
+            <span class="mobile-nav-link">News & Events</span>
+            <ul class="mobile-submenu">
+              <li><a href="news.html" class="mobile-submenu-link">Latest News</a></li>
+              <li><a href="calendar.html" class="mobile-submenu-link">School Calendar</a></li>
+              <li><a href="gallery.html" class="mobile-submenu-link">Photo Gallery</a></li>
+            </ul>
+          </li>
+          <li><a href="admissions.html" class="mobile-nav-link">Admissions & Enrollment</a></li>
           <li><a href="contact.html" class="mobile-nav-link">Contact Us</a></li>
         </ul>
       </div>
@@ -181,8 +197,9 @@ function renderCommonComponents() {
                 <li><a href="school-life.html" class="footer-link">School Schedule</a></li>
                 <li><a href="afterschool-activities.html" class="footer-link">Afterschool Activities</a></li>
                 <li><a href="about.html#policies" class="footer-link">School Policies</a></li>
-                <li><a href="news.html" class="footer-link">News & Calendar</a></li>
-                <li><a href="news.html#gallery" class="footer-link">Photo Gallery</a></li>
+                <li><a href="news.html" class="footer-link">Latest News</a></li>
+                <li><a href="calendar.html" class="footer-link">School Calendar</a></li>
+                <li><a href="gallery.html" class="footer-link">Photo Gallery</a></li>
               </ul>
             </div>
 
@@ -204,7 +221,7 @@ function renderCommonComponents() {
           </div>
 
           <div class="footer-bottom">
-            <span>&copy; 2026 Killester Park Educate Together National School. Roll No: 20524F.</span>
+            <span>&copy; 2026 Killester Park Educate Together National School. Roll No: 20525B.</span>
             <span>Affiliated with <a href="https://www.educatetogether.ie/" target="_blank" style="color: var(--amber-accent); font-weight: 600;">Educate Together Ireland</a></span>
           </div>
         </div>
@@ -256,6 +273,7 @@ function highlightActiveRoute() {
 
   const aboutRoutes = ['about.html', 'staff.html', 'board-of-management.html', 'parents-association.html'];
   const schoolLifeRoutes = ['school-life.html', 'afterschool-activities.html'];
+  const newsRoutes = ['news.html', 'calendar.html', 'gallery.html'];
 
   navLinks.forEach(link => {
     const href = link.getAttribute('href');
@@ -281,6 +299,15 @@ function highlightActiveRoute() {
       schoolLifeParentNav.classList.add('active');
     } else {
       schoolLifeParentNav.classList.remove('active');
+    }
+  }
+
+  const newsParentNav = document.getElementById('newsDropdownLink');
+  if (newsParentNav) {
+    if (newsRoutes.includes(currentPath)) {
+      newsParentNav.classList.add('active');
+    } else {
+      newsParentNav.classList.remove('active');
     }
   }
 }
@@ -803,7 +830,32 @@ function renderMemberCards(members, container, type) {
 /* --------------------------------------------------------------------------
    5. Dynamic News Feed Loader (news.html & index.html)
    -------------------------------------------------------------------------- */
-const DEFAULT_NEWS_ITEMS = [];
+const DEFAULT_NEWS_ITEMS = [
+  {
+    title: 'Admissions Open for Academic Year 2026/2027',
+    category: 'admissions',
+    categoryLabel: 'Admissions',
+    summary: 'Killester Park ETNS is accepting applications for Junior Infants for the 2026/2027 school year. Apply online through our admissions portal.',
+    image: 'images/hero.png',
+    link: 'admissions.html'
+  },
+  {
+    title: 'Annual Science & Biodiversity Week Showcase',
+    category: 'art',
+    categoryLabel: 'Art & Curriculum',
+    summary: 'Students presented fantastic experiments and biodiversity projects during our school-wide STEM showcase.',
+    image: 'images/hero.png',
+    link: 'gallery.html'
+  },
+  {
+    title: 'Active School Sports Day & Community Run',
+    category: 'events',
+    categoryLabel: 'Events & Sports',
+    summary: 'A wonderful day of fun, sportsmanship, and relay races with parents, students, and teachers in Dublin 5.',
+    image: 'images/hero.png',
+    link: 'calendar.html'
+  }
+];
 
 async function initDynamicNews() {
   const container = document.getElementById('newsFeedList');
@@ -812,9 +864,8 @@ async function initDynamicNews() {
   if (!container && !homeContainer) return;
 
   if (!GOOGLE_NEWS_CSV_URL || GOOGLE_NEWS_CSV_URL.trim() === '') {
-    const emptyMsg = `<div style="grid-column: 1 / -1; text-align: center; padding: 2rem;"><p style="color: var(--text-muted);">News CSV URL not configured.</p></div>`;
-    if (container) container.innerHTML = emptyMsg;
-    if (homeContainer) homeContainer.innerHTML = emptyMsg;
+    if (container) renderNewsCards(DEFAULT_NEWS_ITEMS, container);
+    if (homeContainer) renderNewsCards(DEFAULT_NEWS_ITEMS.slice(0, 3), homeContainer);
     return;
   }
 
@@ -856,12 +907,13 @@ async function initDynamicNews() {
       if (container) renderNewsCards(newsItems, container);
       if (homeContainer) renderNewsCards(newsItems.slice(0, 3), homeContainer);
     } else {
-      const emptyMsg = `<div style="grid-column: 1 / -1; text-align: center; padding: 2rem;"><p style="color: var(--text-muted);">No news items found in published CSV.</p></div>`;
-      if (container) container.innerHTML = emptyMsg;
-      if (homeContainer) homeContainer.innerHTML = emptyMsg;
+      if (container) renderNewsCards(DEFAULT_NEWS_ITEMS, container);
+      if (homeContainer) renderNewsCards(DEFAULT_NEWS_ITEMS.slice(0, 3), homeContainer);
     }
   } catch (err) {
-    console.warn('Fetching News Google Sheet failed:', err);
+    console.warn('Fetching News Google Sheet failed, using fallbacks:', err);
+    if (container) renderNewsCards(DEFAULT_NEWS_ITEMS, container);
+    if (homeContainer) renderNewsCards(DEFAULT_NEWS_ITEMS.slice(0, 3), homeContainer);
   }
 }
 
@@ -890,16 +942,23 @@ function renderNewsCards(items, container) {
 }
 
 /* --------------------------------------------------------------------------
-   6. Dynamic Calendar / Events Loader (news.html & index.html)
+   6. Dynamic Calendar / Events Loader (calendar.html & index.html)
    -------------------------------------------------------------------------- */
-const DEFAULT_CALENDAR_EVENTS = [];
+const DEFAULT_CALENDAR_EVENTS = [
+  { day: '01', month: 'SEP', title: 'First Day of Term 1', details: 'School re-opens for all students at 8:30 AM.', color: 'var(--teal-brand)' },
+  { day: '27', month: 'OCT', title: 'October Mid-Term Break', details: 'School closed for mid-term break from Oct 27 to Oct 31.', color: 'var(--amber-accent)' },
+  { day: '22', month: 'DEC', title: 'Winter Holidays Begin', details: 'School closes at 12:00 PM for winter holidays.', color: 'var(--primary-navy)' },
+  { day: '06', month: 'JAN', title: 'Term 2 Begins', details: 'School re-opens for Term 2.', color: 'var(--teal-brand)' },
+  { day: '16', month: 'FEB', title: 'February Mid-Term Break', details: 'School closed for February mid-term break.', color: 'var(--amber-accent)' },
+  { day: '17', month: 'MAR', title: 'St. Patrick\'s Day Closure', details: 'Public holiday school closure.', color: '#10b981' }
+];
 
 async function initDynamicEvents() {
   const container = document.getElementById('calendarEventsList');
   if (!container) return;
 
   if (!GOOGLE_EVENTS_CSV_URL || GOOGLE_EVENTS_CSV_URL.trim() === '') {
-    container.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; padding: 2rem;"><p style="color: var(--text-muted);">Calendar Events CSV URL not configured.</p></div>`;
+    renderCalendarCards(DEFAULT_CALENDAR_EVENTS, container);
     return;
   }
 
@@ -933,10 +992,11 @@ async function initDynamicEvents() {
     if (events.length > 0) {
       renderCalendarCards(events, container);
     } else {
-      container.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; padding: 2rem;"><p style="color: var(--text-muted);">No calendar events found in published CSV.</p></div>`;
+      renderCalendarCards(DEFAULT_CALENDAR_EVENTS, container);
     }
   } catch (err) {
-    console.warn('Fetching Events Google Sheet failed:', err);
+    console.warn('Fetching Events Google Sheet failed, using fallbacks:', err);
+    renderCalendarCards(DEFAULT_CALENDAR_EVENTS, container);
   }
 }
 
@@ -1099,12 +1159,9 @@ async function initDynamicAfterschool() {
 
   if (!GOOGLE_AFTERSCHOOL_CSV_URL || GOOGLE_AFTERSCHOOL_CSV_URL.trim() === '') {
     container.innerHTML = `
-      <div style="grid-column: 1 / -1; text-align: center; padding: 3.5rem 1.5rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
-        <i class="fa-solid fa-shapes" style="font-size: 2.5rem; color: var(--teal-brand); margin-bottom: 1rem;"></i>
-        <h3 style="font-family: var(--font-heading); font-weight: 800; font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text-heading);">Live Google Sheet / Doc Integration Ready</h3>
-        <p style="font-size: 0.95rem; color: var(--text-muted); max-width: 620px; margin: 0 auto 1.5rem; line-height: 1.6;">
-          School administrators can manage afterschool activities live without editing code! Create a Google Sheet or Doc table with 10 columns, publish it as CSV, and paste the URL into <code>GOOGLE_AFTERSCHOOL_CSV_URL</code> in <code>js/main.js</code>.
-        </p>
+      <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1.5rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);">
+        <i class="fa-solid fa-circle-exclamation" style="font-size: 2rem; color: var(--amber-accent); margin-bottom: 0.75rem;"></i>
+        <h3 style="font-family: var(--font-heading); font-weight: 800; font-size: 1.15rem; color: var(--text-heading);">Afterschool CSV URL Not Configured</h3>
       </div>
     `;
     return;
@@ -1112,7 +1169,8 @@ async function initDynamicAfterschool() {
 
   try {
     const response = await fetch(GOOGLE_AFTERSCHOOL_CSV_URL);
-    if (!response.ok) return;
+    if (!response.ok) throw new Error(`HTTP Error ${response.status} when fetching Google Sheet CSV`);
+
     const csvText = await response.text();
     const rows = parseCSVRows(csvText);
 
@@ -1165,6 +1223,15 @@ async function initDynamicAfterschool() {
     }
   } catch (err) {
     console.warn('Fetching Afterschool Google Sheet CSV failed:', err);
+    container.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1.5rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+        <i class="fa-solid fa-triangle-exclamation" style="font-size: 2.2rem; color: var(--amber-accent); margin-bottom: 0.75rem;"></i>
+        <h3 style="font-family: var(--font-heading); font-weight: 800; font-size: 1.2rem; color: var(--text-heading); margin-bottom: 0.5rem;">Could Not Fetch CSV Data</h3>
+        <p style="font-size: 0.95rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 1rem; line-height: 1.6;">
+          ${escapeHTML(err.message || 'Network or CORS restriction occurred while fetching CSV.')}
+        </p>
+      </div>
+    `;
   }
 }
 
