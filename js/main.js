@@ -53,6 +53,10 @@ function renderCommonComponents() {
             <span class="top-info-item"><i class="fa-solid fa-location-dot"></i> Collins Avenue East, Killester, Dublin 5, D05 F2H1</span>
             <span class="top-info-item"><i class="fa-solid fa-phone"></i> <a href="tel:015241637">01 524 1637</a></span>
             <span class="top-info-item"><i class="fa-solid fa-envelope"></i> <a href="mailto:info@killesterparketns.ie">info@killesterparketns.ie</a></span>
+            <span class="top-info-item top-instagram-item">
+              <i class="fa-brands fa-instagram"></i>
+              <a href="https://www.instagram.com/killesterparketns/" target="_blank" rel="noopener noreferrer" title="Follow Killester Park ETNS on Instagram">@killesterparketns</a>
+            </span>
           </div>
         </div>
       </div>
@@ -181,6 +185,12 @@ function renderCommonComponents() {
             <li class="mobile-nav-item">
               <a href="contact.html" class="mobile-nav-link">Contact Us</a>
             </li>
+
+            <li class="mobile-nav-item">
+              <a href="https://www.instagram.com/killesterparketns/" target="_blank" rel="noopener noreferrer" class="mobile-nav-link" style="display: flex; align-items: center; gap: 0.6rem; color: #e1306c;">
+                <i class="fa-brands fa-instagram" style="font-size: 1.15rem;"></i> Follow on Instagram
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -212,7 +222,7 @@ function renderCommonComponents() {
                 <li><a href="staff.html" class="footer-link">Our Staff Team</a></li>
                 <li><a href="board-of-management.html" class="footer-link">Board of Management</a></li>
                 <li><a href="parents-association.html" class="footer-link">Parents Association</a></li>
-                <li><a href="admissions.html" class="footer-link">Admissions & Enrollment</a></li>
+                <li><a href="admissions.html" class="footer-link">Admissions & Enrolment</a></li>
                 <li><a href="contact.html" class="footer-link">Contact Us</a></li>
               </ul>
             </div>
@@ -242,6 +252,10 @@ function renderCommonComponents() {
               <div class="footer-contact-item">
                 <i class="fa-solid fa-envelope" style="color: var(--teal-brand);"></i>
                 <a href="mailto:info@killesterparketns.ie" style="color: white;">info@killesterparketns.ie</a>
+              </div>
+              <div class="footer-contact-item">
+                <i class="fa-brands fa-instagram" style="color: #e1306c; font-size: 1.05rem;"></i>
+                <a href="https://www.instagram.com/killesterparketns/" target="_blank" rel="noopener noreferrer" style="color: white;">@killesterparketns</a>
               </div>
             </div>
           </div>
