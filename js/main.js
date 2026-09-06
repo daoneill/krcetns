@@ -459,6 +459,20 @@ function initNewsFilters() {
    Interactive Form Validation & Feedback
    -------------------------------------------------------------------------- */
 function initFormValidation() {
+  const subjectSelect = document.getElementById('contactSubject');
+  if (subjectSelect) {
+    const params = new URLSearchParams(window.location.search);
+    const requestedSubject = params.get('subject') || params.get('topic');
+    if (requestedSubject) {
+      for (let i = 0; i < subjectSelect.options.length; i++) {
+        if (subjectSelect.options[i].value.toLowerCase().includes(requestedSubject.toLowerCase())) {
+          subjectSelect.selectedIndex = i;
+          break;
+        }
+      }
+    }
+  }
+
   const forms = document.querySelectorAll('form[data-validate]');
 
   forms.forEach(form => {
@@ -1023,18 +1037,360 @@ function renderNewsCards(items, container) {
 }
 
 /* --------------------------------------------------------------------------
-   6. Dynamic Calendar / Events Loader (calendar.html & index.html)
+   6. Dynamic Calendar & Interactive Academic Year Grid Loader (calendar.html)
    -------------------------------------------------------------------------- */
-const DEFAULT_CALENDAR_EVENTS = [
-  { day: '01', month: 'SEP', title: 'First Day of Term 1', details: 'School re-opens for all students at 8:30 AM.', color: 'var(--teal-brand)' },
-  { day: '27', month: 'OCT', title: 'October Mid-Term Break', details: 'School closed for mid-term break from Oct 27 to Oct 31.', color: 'var(--amber-accent)' },
-  { day: '22', month: 'DEC', title: 'Winter Holidays Begin', details: 'School closes at 12:00 PM for winter holidays.', color: 'var(--primary-navy)' },
-  { day: '06', month: 'JAN', title: 'Term 2 Begins', details: 'School re-opens for Term 2.', color: 'var(--teal-brand)' },
-  { day: '16', month: 'FEB', title: 'February Mid-Term Break', details: 'School closed for February mid-term break.', color: 'var(--amber-accent)' },
-  { day: '17', month: 'MAR', title: 'St. Patrick\'s Day Closure', details: 'Public holiday school closure.', color: '#10b981' }
+const ACADEMIC_YEAR_MONTHS = [
+  { year: 2026, month: 8, name: 'September 2026' },
+  { year: 2026, month: 9, name: 'October 2026' },
+  { year: 2026, month: 10, name: 'November 2026' },
+  { year: 2026, month: 11, name: 'December 2026' },
+  { year: 2027, month: 0, name: 'January 2027' },
+  { year: 2027, month: 1, name: 'February 2027' },
+  { year: 2027, month: 2, name: 'March 2027' },
+  { year: 2027, month: 3, name: 'April 2027' },
+  { year: 2027, month: 4, name: 'May 2027' },
+  { year: 2027, month: 5, name: 'June 2027' },
+  { year: 2027, month: 6, name: 'July 2027' }
 ];
 
+const CALENDAR_DATE_EVENTS = {
+  // September 2026
+  '2026-09-01': { type: 'staff', title: 'Haddington Road Hours', details: 'Staff Training Day. School is closed for pupils.' },
+  '2026-09-02': { type: 'first-last', title: 'First Day of School', details: 'All pupils return for the 2026/2027 academic year.' },
+
+  // October 2026
+  '2026-10-26': { type: 'closed', title: 'October Mid-Term Break', details: 'School closed for Autumn Mid-Term Break.' },
+  '2026-10-27': { type: 'closed', title: 'October Mid-Term Break', details: 'School closed for Autumn Mid-Term Break.' },
+  '2026-10-28': { type: 'closed', title: 'October Mid-Term Break', details: 'School closed for Autumn Mid-Term Break.' },
+  '2026-10-29': { type: 'closed', title: 'October Mid-Term Break', details: 'School closed for Autumn Mid-Term Break.' },
+  '2026-10-30': { type: 'closed', title: 'October Mid-Term Break', details: 'School closed for Autumn Mid-Term Break. Re-opens Monday 2nd Nov.' },
+
+  // December 2026
+  '2026-12-22': { type: 'half-day', title: 'Half Day — Early Closing', details: 'School closes at 12:00 PM for the Winter Holidays.' },
+  '2026-12-23': { type: 'closed', title: 'Winter Holidays', details: 'School closed for Winter / Christmas Holidays.' },
+  '2026-12-24': { type: 'closed', title: 'Christmas Eve', details: 'School closed for Winter Holidays.' },
+  '2026-12-25': { type: 'closed', title: 'Christmas Day', details: 'School closed for Winter Holidays.' },
+  '2026-12-28': { type: 'closed', title: 'Winter Holidays', details: 'School closed for Winter Holidays.' },
+  '2026-12-29': { type: 'closed', title: 'Winter Holidays', details: 'School closed for Winter Holidays.' },
+  '2026-12-30': { type: 'closed', title: 'Winter Holidays', details: 'School closed for Winter Holidays.' },
+  '2026-12-31': { type: 'closed', title: 'New Year\'s Eve', details: 'School closed for Winter Holidays.' },
+
+  // January 2027
+  '2027-01-01': { type: 'closed', title: 'New Year\'s Day', details: 'Public Holiday — School closed.' },
+  '2027-01-04': { type: 'closed', title: 'Winter Holidays', details: 'School closed for Winter Holidays.' },
+  '2027-01-05': { type: 'closed', title: 'Winter Holidays', details: 'School closed for Winter Holidays.' },
+  '2027-01-06': { type: 'closed', title: 'Winter Holidays', details: 'School closed for Winter Holidays. Re-opens Thursday 7th Jan.' },
+
+  // February 2027
+  '2027-02-01': { type: 'closed', title: 'St. Brigid\'s Day', details: 'Public Holiday — School closed.' },
+  '2027-02-17': { type: 'closed', title: 'February Mid-Term Break', details: 'School closed for Spring Mid-Term Break.' },
+  '2027-02-18': { type: 'closed', title: 'February Mid-Term Break', details: 'School closed for Spring Mid-Term Break.' },
+  '2027-02-19': { type: 'closed', title: 'February Mid-Term Break', details: 'School closed for Spring Mid-Term Break. Re-opens Monday 22nd Feb.' },
+
+  // March 2027
+  '2027-03-17': { type: 'closed', title: 'St. Patrick\'s Day', details: 'Public Holiday — School closed.' },
+  '2027-03-19': { type: 'half-day', title: 'Half Day — Early Closing', details: 'School closes at 12:00 PM for the Easter Holidays.' },
+  '2027-03-22': { type: 'closed', title: 'Easter Holidays', details: 'School closed for Easter Holidays.' },
+  '2027-03-23': { type: 'closed', title: 'Easter Holidays', details: 'School closed for Easter Holidays.' },
+  '2027-03-24': { type: 'closed', title: 'Easter Holidays (*Contingency)', details: 'School closed for Easter Holidays (*Contingency arrangement day).' },
+  '2027-03-25': { type: 'closed', title: 'Easter Holidays', details: 'School closed for Easter Holidays.' },
+  '2027-03-26': { type: 'closed', title: 'Easter Holidays', details: 'School closed for Easter Holidays.' },
+  '2027-03-29': { type: 'closed', title: 'Easter Monday', details: 'Public Holiday — School closed.' },
+  '2027-03-30': { type: 'closed', title: 'Easter Holidays', details: 'School closed for Easter Holidays.' },
+  '2027-03-31': { type: 'closed', title: 'Easter Holidays', details: 'School closed for Easter Holidays.' },
+
+  // April 2027
+  '2027-04-01': { type: 'closed', title: 'Easter Holidays', details: 'School closed for Easter Holidays.' },
+  '2027-04-02': { type: 'closed', title: 'Good Friday', details: 'School closed for Easter Holidays. Re-opens Monday 5th April.' },
+
+  // May 2027
+  '2027-05-03': { type: 'closed', title: 'May Bank Holiday', details: 'Public Holiday — School closed.' },
+
+  // June 2027
+  '2027-06-07': { type: 'closed', title: 'June Bank Holiday', details: 'Public Holiday — School closed.' },
+  '2027-06-25': { type: 'last-half', title: 'Last Day of School & Half Day', details: 'School closes at 12:00 PM for pupils for the Summer Holidays.' }
+};
+
+const DEFAULT_CALENDAR_EVENTS = [
+  { day: '01', month: 'SEP 2026', title: 'Staff Training (Haddington Road Hours)', details: 'Staff planning day. School is closed for pupils.', color: '#c45911' },
+  { day: '02', month: 'SEP 2026', title: 'First Day of School', details: 'School re-opens for all pupils for Term 1 at 08:30 AM.', color: '#9acb59' },
+  { day: '26–30', month: 'OCT 2026', title: 'October Mid-Term Break', details: 'School closed Monday 26th Oct to Friday 30th Oct inclusive. Re-opens Monday 2nd Nov.', color: '#eab308' },
+  { day: '22', month: 'DEC 2026', title: 'Half Day — Early Closing', details: 'School closes at 12:00 PM for the Winter / Christmas Holidays.', color: '#7030a0' },
+  { day: '23–06', month: 'DEC/JAN', title: 'Winter / Christmas Holidays', details: 'School closed Wednesday 23rd Dec 2026 to Wednesday 6th Jan 2027 inclusive. Re-opens Thursday 7th Jan.', color: '#eab308' },
+  { day: '01', month: 'FEB 2027', title: 'St. Brigid\'s Day Bank Holiday', details: 'Public holiday — school closed.', color: '#eab308' },
+  { day: '17–19', month: 'FEB 2027', title: 'February Mid-Term Break', details: 'School closed Wednesday 17th Feb to Friday 19th Feb inclusive. Re-opens Monday 22nd Feb.', color: '#eab308' },
+  { day: '17', month: 'MAR 2027', title: 'St. Patrick\'s Day Bank Holiday', details: 'Public holiday — school closed.', color: '#eab308' },
+  { day: '19', month: 'MAR 2027', title: 'Half Day — Early Closing', details: 'School closes at 12:00 PM for the Easter Holidays.', color: '#7030a0' },
+  { day: '22–02', month: 'MAR/APR', title: 'Easter Holidays', details: 'School closed Monday 22nd March to Friday 2nd April inclusive. Re-opens Monday 5th April (*Contingency arrangements may apply up to 24th March).', color: '#eab308' },
+  { day: '03', month: 'MAY 2027', title: 'May Bank Holiday', details: 'Public holiday — school closed.', color: '#eab308' },
+  { day: '07', month: 'JUN 2027', title: 'June Bank Holiday', details: 'Public holiday — school closed.', color: '#eab308' },
+  { day: '25', month: 'JUN 2027', title: 'Last Day of School (Half Day)', details: 'School closes at 12:00 PM for pupils for the Summer Holidays.', color: '#7030a0' }
+];
+
+function switchCalendarView(view) {
+  const gridContainer = document.getElementById('academicYearGrid');
+  const listContainer = document.getElementById('calendarEventsList');
+  const btnGrid = document.getElementById('btnGridView');
+  const btnList = document.getElementById('btnListView');
+
+  if (view === 'grid') {
+    if (gridContainer) gridContainer.style.display = 'grid';
+    if (listContainer) listContainer.style.display = 'none';
+    if (btnGrid) btnGrid.classList.add('active');
+    if (btnList) btnList.classList.remove('active');
+  } else {
+    if (gridContainer) gridContainer.style.display = 'none';
+    if (listContainer) listContainer.style.display = 'grid';
+    if (btnGrid) btnGrid.classList.remove('active');
+    if (btnList) btnList.classList.add('active');
+  }
+}
+window.switchCalendarView = switchCalendarView;
+
+function closeCalendarModal() {
+  const modal = document.getElementById('calendarModal');
+  if (modal) {
+    modal.classList.remove('active');
+    setTimeout(() => {
+      modal.style.display = 'none';
+    }, 250);
+  }
+  document.querySelectorAll('.cal-day.cal-selected').forEach(c => c.classList.remove('cal-selected'));
+}
+window.closeCalendarModal = closeCalendarModal;
+
+function openCalendarModal(info) {
+  const modal = document.getElementById('calendarModal');
+  const titleEl = document.getElementById('modalTitle');
+  const dateEl = document.getElementById('modalDate');
+  const descEl = document.getElementById('modalDesc');
+  const badgeEl = document.getElementById('modalBadge');
+
+  if (!modal || !titleEl || !dateEl || !descEl || !badgeEl) return;
+
+  titleEl.textContent = info.title;
+  dateEl.innerHTML = `<i class="fa-regular fa-calendar"></i> <span>${escapeHTML(info.dateString)}</span>`;
+  descEl.textContent = info.details;
+
+  let badgeColor = '#e2e8f0';
+  let badgeTextColor = '#0f172a';
+  let badgeLabel = 'School Day';
+
+  if (info.type === 'closed') {
+    badgeColor = '#ffff00';
+    badgeLabel = 'School Closed / Holiday';
+  } else if (info.type === 'first-last') {
+    badgeColor = '#9acb59';
+    badgeLabel = 'First / Last Day';
+  } else if (info.type === 'half-day') {
+    badgeColor = '#7030a0';
+    badgeTextColor = '#ffffff';
+    badgeLabel = 'Half Day (12:00 PM Dismissal)';
+  } else if (info.type === 'staff') {
+    badgeColor = '#c45911';
+    badgeTextColor = '#ffffff';
+    badgeLabel = 'Staff Training (Closed for Pupils)';
+  } else if (info.type === 'last-half') {
+    badgeColor = '#9acb59';
+    badgeLabel = 'Last Day & Half Day';
+  } else if (info.type === 'weekend') {
+    badgeColor = '#f1f5f9';
+    badgeTextColor = '#64748b';
+    badgeLabel = 'Weekend';
+  }
+
+  badgeEl.style.background = badgeColor;
+  badgeEl.style.color = badgeTextColor;
+  badgeEl.textContent = badgeLabel;
+
+  modal.style.display = 'flex';
+  requestAnimationFrame(() => {
+    modal.classList.add('active');
+  });
+}
+window.openCalendarModal = openCalendarModal;
+
+function initAcademicYearGrid() {
+  const gridContainer = document.getElementById('academicYearGrid');
+  if (!gridContainer) return;
+
+  // Bind close button and backdrop for modal
+  const modal = document.getElementById('calendarModal');
+  const closeBtn = document.getElementById('calendarModalClose');
+  const closeBtnBottom = document.getElementById('modalCloseBtn');
+  const backdrop = document.getElementById('calendarModalBackdrop');
+
+  if (modal) {
+    if (closeBtn) closeBtn.onclick = closeCalendarModal;
+    if (closeBtnBottom) closeBtnBottom.onclick = closeCalendarModal;
+    if (backdrop) backdrop.onclick = closeCalendarModal;
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeCalendarModal();
+      }
+    });
+  }
+
+  // If already pre-rendered in HTML, attach listeners to cells
+  const existingDays = gridContainer.querySelectorAll('.cal-day:not(.cal-empty)');
+  if (existingDays.length > 0) {
+    existingDays.forEach(cell => {
+      attachDayCellListeners(cell);
+    });
+    return;
+  }
+
+  // Otherwise render dynamically
+  gridContainer.innerHTML = '';
+  const weekdays = ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'S'];
+
+  ACADEMIC_YEAR_MONTHS.forEach(m => {
+    const card = document.createElement('div');
+    card.className = 'month-card';
+
+    const header = document.createElement('div');
+    header.className = 'month-header';
+    header.textContent = m.name;
+    card.appendChild(header);
+
+    const weekdaysRow = document.createElement('div');
+    weekdaysRow.className = 'month-weekdays';
+    weekdays.forEach(dayName => {
+      const col = document.createElement('div');
+      col.textContent = dayName;
+      weekdaysRow.appendChild(col);
+    });
+    card.appendChild(weekdaysRow);
+
+    const daysGrid = document.createElement('div');
+    daysGrid.className = 'month-days-grid';
+
+    const firstDay = new Date(m.year, m.month, 1).getDay();
+    const daysInMonth = new Date(m.year, m.month + 1, 0).getDate();
+
+    for (let i = 0; i < firstDay; i++) {
+      const emptyCell = document.createElement('div');
+      emptyCell.className = 'cal-day cal-empty';
+      daysGrid.appendChild(emptyCell);
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      const cell = document.createElement('div');
+      cell.className = 'cal-day';
+      cell.textContent = day;
+
+      const dateObj = new Date(m.year, m.month, day);
+      const dayOfWeek = dateObj.getDay();
+      const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+
+      if (isWeekend) cell.classList.add('cal-weekend');
+
+      const mmStr = String(m.month + 1).padStart(2, '0');
+      const ddStr = String(day).padStart(2, '0');
+      const dateKey = `${m.year}-${mmStr}-${ddStr}`;
+
+      let eventInfo = CALENDAR_DATE_EVENTS[dateKey];
+      if (!eventInfo && m.month === 6 && !isWeekend) {
+        eventInfo = { type: 'closed', title: 'Summer Holidays', details: 'School closed for Summer Holidays.' };
+      }
+
+      cell.setAttribute('data-date', dateKey);
+      cell.setAttribute('data-day', day);
+      cell.setAttribute('data-month', m.name);
+
+      if (eventInfo) {
+        cell.setAttribute('data-event', 'true');
+        cell.setAttribute('data-type', eventInfo.type);
+        cell.setAttribute('data-title', eventInfo.title);
+        cell.setAttribute('data-details', eventInfo.details);
+        cell.setAttribute('title', `${eventInfo.title}: ${eventInfo.details}`);
+
+        if (eventInfo.type === 'closed') cell.classList.add('cal-closed');
+        else if (eventInfo.type === 'first-last') cell.classList.add('cal-first-last');
+        else if (eventInfo.type === 'half-day') cell.classList.add('cal-half-day');
+        else if (eventInfo.type === 'staff') cell.classList.add('cal-staff');
+        else if (eventInfo.type === 'last-half') cell.classList.add('cal-last-half');
+      } else if (isWeekend) {
+        cell.setAttribute('data-type', 'weekend');
+        cell.setAttribute('data-title', 'Weekend');
+        cell.setAttribute('data-details', 'School closed.');
+      } else {
+        cell.setAttribute('data-type', 'regular');
+        cell.setAttribute('data-title', 'Normal School Day');
+        cell.setAttribute('data-details', 'Classes in session (08:30 AM start).');
+      }
+
+      attachDayCellListeners(cell);
+      daysGrid.appendChild(cell);
+    }
+
+    card.appendChild(daysGrid);
+    gridContainer.appendChild(card);
+  });
+}
+
+function attachDayCellListeners(cell) {
+  const isEvent = cell.getAttribute('data-event') === 'true';
+  const type = cell.getAttribute('data-type') || 'regular';
+  const title = cell.getAttribute('data-title') || (isEvent ? 'School Event' : 'Normal School Day');
+  const details = cell.getAttribute('data-details') || (isEvent ? '' : 'Regular class hours apply.');
+  const day = cell.getAttribute('data-day') || cell.textContent.trim();
+  const month = cell.getAttribute('data-month') || '';
+  const dateKey = cell.getAttribute('data-date') || '';
+
+  const weekdayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  let dateString = `${day} ${month}`;
+  if (dateKey) {
+    const parts = dateKey.split('-');
+    if (parts.length === 3) {
+      const d = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+      dateString = `${weekdayNames[d.getDay()]}, ${parseInt(parts[2])} ${month || ''}`;
+    }
+  }
+
+  const updateBanner = () => {
+    const banner = document.getElementById('calendarEventBanner');
+    const titleEl = document.getElementById('bannerTitle');
+    const detailsEl = document.getElementById('bannerDetails');
+    const badgeEl = document.getElementById('bannerBadge');
+
+    if (banner && titleEl && detailsEl && badgeEl) {
+      banner.style.display = 'flex';
+      titleEl.textContent = `${dateString} — ${title}`;
+      detailsEl.textContent = details;
+
+      let badgeColor = '#94a3b8';
+      if (type === 'closed') badgeColor = '#ffff00';
+      else if (type === 'first-last') badgeColor = '#9acb59';
+      else if (type === 'half-day') badgeColor = '#7030a0';
+      else if (type === 'staff') badgeColor = '#c45911';
+      else if (type === 'last-half') badgeColor = '#9acb59';
+      else if (type === 'regular') badgeColor = '#0d9488';
+
+      badgeEl.style.background = badgeColor;
+    }
+  };
+
+  cell.addEventListener('mouseenter', () => {
+    if (isEvent) updateBanner();
+  });
+
+  cell.addEventListener('click', () => {
+    document.querySelectorAll('.cal-day.cal-selected').forEach(c => c.classList.remove('cal-selected'));
+    cell.classList.add('cal-selected');
+    updateBanner();
+    openCalendarModal({
+      title,
+      details,
+      type,
+      dateString
+    });
+  });
+}
+
 async function initDynamicEvents() {
+  initAcademicYearGrid();
+
   const container = document.getElementById('calendarEventsList');
   if (!container) return;
 
@@ -1058,7 +1414,7 @@ async function initDynamicEvents() {
         const month = cols[1];
         const title = cols[2];
         const details = cols[3];
-        const color = cols[4] || 'var(--teal-brand)';
+        const color = cols[4] && cols[4].trim() !== '' ? cols[4] : 'var(--teal-brand)';
 
         if (i === 0 && (day.toLowerCase().includes('day') || title.toLowerCase().includes('event'))) {
           continue;

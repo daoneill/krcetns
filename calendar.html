@@ -1,46 +1,1289 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>School Calendar & Term Dates | Killester Park Dublin 5</title>
-  <meta name="description" content="Check important dates, mid-term breaks, school closures, and term schedules for Killester Park Educate Together National School.">
+  <title>School Calendar & Term Dates 2026/2027 | Killester Park Dublin 5</title>
+  <meta name="description"
+    content="View the official 2026/2027 academic calendar, term dates, mid-term breaks, and download the official PDF calendar for Killester Park Educate Together National School.">
   <link rel="icon" type="image/png" href="images/logo.png">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=20260906c">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
 
   <!-- Shared Site Header Container -->
   <div id="siteHeader"></div>
 
-  <!-- Page Banner -->
+  <!-- Page Banner with PDF Download Buttons -->
   <section class="page-header-banner">
     <div class="page-header-container">
+      <span class="section-tag"
+        style="background: var(--amber-light); color: var(--primary-navy); margin-bottom: 0.75rem;">Academic Year 2026 /
+        2027</span>
       <h1 class="page-header-title">School Calendar & Term Dates</h1>
-      <p class="page-header-subtitle">Key dates, mid-term breaks, and holidays for the school year.</p>
+      <p class="page-header-subtitle">Official schedule of term dates, mid-term breaks, public holidays, and staff
+        training.</p>
+
+      <!-- Prominent PDF Download Actions at Top of Page -->
+      <div class="calendar-download-banner">
+        <a href="https://drive.google.com/file/d/1o-kS1qxHCUXNbykvvyWrMeDNiFvdbLG1/view?usp=sharing" target="_blank"
+          rel="noopener noreferrer" class="btn btn-amber"
+          style="font-size: 1rem; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);">
+          <i class="fa-solid fa-file-pdf"></i> Download Official Calendar (PDF)
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- Interactive Calendar Section -->
   <section class="section">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Important Dates</span>
-        <h2 class="section-title">Academic Year Schedule</h2>
-        <p class="section-description">Stay informed about upcoming term breaks, staff training days, and special events.</p>
+      <div class="section-header" style="margin-bottom: 1.5rem;">
+        <span class="section-tag">School Year Schedule</span>
+        <h2 class="section-title">Academic Year Calendar</h2>
+        <p class="section-description">Interactive calendar view matching the ratified school schedule. Tap or hover
+          over any highlighted day to view details.</p>
       </div>
 
-      <!-- Dynamic Calendar Events List Container -->
-      <div class="calendar-grid" id="calendarEventsList">
-        <!-- Rendered dynamically via js/main.js -->
+
+
+      <!-- Color Legend / Key (matching the PDF) -->
+      <div class="calendar-legend-card">
+        <div class="legend-title"><i class="fa-solid fa-tags"></i> Calendar Key & Colour Codes:</div>
+        <div class="legend-items">
+          <div class="legend-item">
+            <span class="legend-color-box box-closed"></span>
+            <span class="legend-label"><strong>School Closed / Holidays</strong></span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color-box box-first-last"></span>
+            <span class="legend-label"><strong>First and Last Day of School</strong></span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color-box box-half-day"></span>
+            <span class="legend-label"><strong>Half Day (12:00 PM Dismissal)</strong></span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color-box box-staff"></span>
+            <span class="legend-label"><strong>Haddington Road Hours (Staff Training)</strong></span>
+          </div>
+        </div>
       </div>
+
+      <!-- Live Event Detail Banner for Mobile/Click -->
+      <div id="calendarEventBanner" class="calendar-event-banner" style="display: none;">
+        <div class="event-banner-badge" id="bannerBadge"></div>
+        <div class="event-banner-info">
+          <strong id="bannerTitle"></strong>: <span id="bannerDetails"></span>
+        </div>
+      </div>
+
+      <!-- 1. Interactive Academic Year Grid View (Default) -->
+      <div id="academicYearGrid" class="academic-year-grid">
+        <div class="month-card">
+          <div class="month-header">September 2026</div>
+          <div class="month-weekdays">
+            <div>Su</div>
+            <div>M</div>
+            <div>Tu</div>
+            <div>W</div>
+            <div>Th</div>
+            <div>F</div>
+            <div>S</div>
+          </div>
+          <div class="month-days-grid">
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-staff" data-date="2026-09-01" data-day="1" data-month="September 2026"
+              data-event="true" data-type="staff" data-title="Staff Training (Haddington Road Hours)"
+              data-details="Staff planning day. School is closed for pupils."
+              title="Staff Training (Haddington Road Hours): Staff planning day. School is closed for pupils.">1</div>
+            <div class="cal-day cal-first-last" data-date="2026-09-02" data-day="2" data-month="September 2026"
+              data-event="true" data-type="first-last" data-title="First Day of School"
+              data-details="All pupils return for the 2026/2027 academic year. School starts at 08:30 AM."
+              title="First Day of School: All pupils return for the 2026/2027 academic year. School starts at 08:30 AM.">
+              2</div>
+            <div class="cal-day" data-date="2026-09-03" data-day="3" data-month="September 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">3</div>
+            <div class="cal-day" data-date="2026-09-04" data-day="4" data-month="September 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">4</div>
+            <div class="cal-day cal-weekend" data-date="2026-09-05" data-day="5" data-month="September 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">5</div>
+            <div class="cal-day cal-weekend" data-date="2026-09-06" data-day="6" data-month="September 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">6</div>
+            <div class="cal-day" data-date="2026-09-07" data-day="7" data-month="September 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">7</div>
+            <div class="cal-day" data-date="2026-09-08" data-day="8" data-month="September 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">8</div>
+            <div class="cal-day" data-date="2026-09-09" data-day="9" data-month="September 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">9</div>
+            <div class="cal-day" data-date="2026-09-10" data-day="10" data-month="September 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">10</div>
+            <div class="cal-day" data-date="2026-09-11" data-day="11" data-month="September 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">11</div>
+            <div class="cal-day cal-weekend" data-date="2026-09-12" data-day="12" data-month="September 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">12</div>
+            <div class="cal-day cal-weekend" data-date="2026-09-13" data-day="13" data-month="September 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">13</div>
+            <div class="cal-day" data-date="2026-09-14" data-day="14" data-month="September 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">14</div>
+            <div class="cal-day" data-date="2026-09-15" data-day="15" data-month="September 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">15</div>
+            <div class="cal-day" data-date="2026-09-16" data-day="16" data-month="September 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">16</div>
+            <div class="cal-day" data-date="2026-09-17" data-day="17" data-month="September 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">17</div>
+            <div class="cal-day" data-date="2026-09-18" data-day="18" data-month="September 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">18</div>
+            <div class="cal-day cal-weekend" data-date="2026-09-19" data-day="19" data-month="September 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">19</div>
+            <div class="cal-day cal-weekend" data-date="2026-09-20" data-day="20" data-month="September 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">20</div>
+            <div class="cal-day" data-date="2026-09-21" data-day="21" data-month="September 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">21</div>
+            <div class="cal-day" data-date="2026-09-22" data-day="22" data-month="September 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">22</div>
+            <div class="cal-day" data-date="2026-09-23" data-day="23" data-month="September 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">23</div>
+            <div class="cal-day" data-date="2026-09-24" data-day="24" data-month="September 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">24</div>
+            <div class="cal-day" data-date="2026-09-25" data-day="25" data-month="September 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">25</div>
+            <div class="cal-day cal-weekend" data-date="2026-09-26" data-day="26" data-month="September 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">26</div>
+            <div class="cal-day cal-weekend" data-date="2026-09-27" data-day="27" data-month="September 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">27</div>
+            <div class="cal-day" data-date="2026-09-28" data-day="28" data-month="September 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">28</div>
+            <div class="cal-day" data-date="2026-09-29" data-day="29" data-month="September 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">29</div>
+            <div class="cal-day" data-date="2026-09-30" data-day="30" data-month="September 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">30</div>
+          </div>
+        </div>
+        <div class="month-card">
+          <div class="month-header">October 2026</div>
+          <div class="month-weekdays">
+            <div>Su</div>
+            <div>M</div>
+            <div>Tu</div>
+            <div>W</div>
+            <div>Th</div>
+            <div>F</div>
+            <div>S</div>
+          </div>
+          <div class="month-days-grid">
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day" data-date="2026-10-01" data-day="1" data-month="October 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">1</div>
+            <div class="cal-day" data-date="2026-10-02" data-day="2" data-month="October 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">2</div>
+            <div class="cal-day cal-weekend" data-date="2026-10-03" data-day="3" data-month="October 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">3</div>
+            <div class="cal-day cal-weekend" data-date="2026-10-04" data-day="4" data-month="October 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">4</div>
+            <div class="cal-day" data-date="2026-10-05" data-day="5" data-month="October 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">5</div>
+            <div class="cal-day" data-date="2026-10-06" data-day="6" data-month="October 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">6</div>
+            <div class="cal-day" data-date="2026-10-07" data-day="7" data-month="October 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">7</div>
+            <div class="cal-day" data-date="2026-10-08" data-day="8" data-month="October 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">8</div>
+            <div class="cal-day" data-date="2026-10-09" data-day="9" data-month="October 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">9</div>
+            <div class="cal-day cal-weekend" data-date="2026-10-10" data-day="10" data-month="October 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">10</div>
+            <div class="cal-day cal-weekend" data-date="2026-10-11" data-day="11" data-month="October 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">11</div>
+            <div class="cal-day" data-date="2026-10-12" data-day="12" data-month="October 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">12</div>
+            <div class="cal-day" data-date="2026-10-13" data-day="13" data-month="October 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">13</div>
+            <div class="cal-day" data-date="2026-10-14" data-day="14" data-month="October 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">14</div>
+            <div class="cal-day" data-date="2026-10-15" data-day="15" data-month="October 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">15</div>
+            <div class="cal-day" data-date="2026-10-16" data-day="16" data-month="October 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">16</div>
+            <div class="cal-day cal-weekend" data-date="2026-10-17" data-day="17" data-month="October 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">17</div>
+            <div class="cal-day cal-weekend" data-date="2026-10-18" data-day="18" data-month="October 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">18</div>
+            <div class="cal-day" data-date="2026-10-19" data-day="19" data-month="October 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">19</div>
+            <div class="cal-day" data-date="2026-10-20" data-day="20" data-month="October 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">20</div>
+            <div class="cal-day" data-date="2026-10-21" data-day="21" data-month="October 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">21</div>
+            <div class="cal-day" data-date="2026-10-22" data-day="22" data-month="October 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">22</div>
+            <div class="cal-day" data-date="2026-10-23" data-day="23" data-month="October 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">23</div>
+            <div class="cal-day cal-weekend" data-date="2026-10-24" data-day="24" data-month="October 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">24</div>
+            <div class="cal-day cal-weekend" data-date="2026-10-25" data-day="25" data-month="October 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">25</div>
+            <div class="cal-day cal-closed" data-date="2026-10-26" data-day="26" data-month="October 2026"
+              data-event="true" data-type="closed" data-title="October Mid-Term Break"
+              data-details="School closed for Autumn Mid-Term Break."
+              title="October Mid-Term Break: School closed for Autumn Mid-Term Break.">26</div>
+            <div class="cal-day cal-closed" data-date="2026-10-27" data-day="27" data-month="October 2026"
+              data-event="true" data-type="closed" data-title="October Mid-Term Break"
+              data-details="School closed for Autumn Mid-Term Break."
+              title="October Mid-Term Break: School closed for Autumn Mid-Term Break.">27</div>
+            <div class="cal-day cal-closed" data-date="2026-10-28" data-day="28" data-month="October 2026"
+              data-event="true" data-type="closed" data-title="October Mid-Term Break"
+              data-details="School closed for Autumn Mid-Term Break."
+              title="October Mid-Term Break: School closed for Autumn Mid-Term Break.">28</div>
+            <div class="cal-day cal-closed" data-date="2026-10-29" data-day="29" data-month="October 2026"
+              data-event="true" data-type="closed" data-title="October Mid-Term Break"
+              data-details="School closed for Autumn Mid-Term Break."
+              title="October Mid-Term Break: School closed for Autumn Mid-Term Break.">29</div>
+            <div class="cal-day cal-closed" data-date="2026-10-30" data-day="30" data-month="October 2026"
+              data-event="true" data-type="closed" data-title="October Mid-Term Break"
+              data-details="School closed for Autumn Mid-Term Break. Re-opens Monday 2nd Nov."
+              title="October Mid-Term Break: School closed for Autumn Mid-Term Break. Re-opens Monday 2nd Nov.">30</div>
+            <div class="cal-day cal-weekend" data-date="2026-10-31" data-day="31" data-month="October 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">31</div>
+          </div>
+        </div>
+        <div class="month-card">
+          <div class="month-header">November 2026</div>
+          <div class="month-weekdays">
+            <div>Su</div>
+            <div>M</div>
+            <div>Tu</div>
+            <div>W</div>
+            <div>Th</div>
+            <div>F</div>
+            <div>S</div>
+          </div>
+          <div class="month-days-grid">
+            <div class="cal-day cal-weekend" data-date="2026-11-01" data-day="1" data-month="November 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">1</div>
+            <div class="cal-day" data-date="2026-11-02" data-day="2" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">2</div>
+            <div class="cal-day" data-date="2026-11-03" data-day="3" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">3</div>
+            <div class="cal-day" data-date="2026-11-04" data-day="4" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">4</div>
+            <div class="cal-day" data-date="2026-11-05" data-day="5" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">5</div>
+            <div class="cal-day" data-date="2026-11-06" data-day="6" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">6</div>
+            <div class="cal-day cal-weekend" data-date="2026-11-07" data-day="7" data-month="November 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">7</div>
+            <div class="cal-day cal-weekend" data-date="2026-11-08" data-day="8" data-month="November 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">8</div>
+            <div class="cal-day" data-date="2026-11-09" data-day="9" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">9</div>
+            <div class="cal-day" data-date="2026-11-10" data-day="10" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">10</div>
+            <div class="cal-day" data-date="2026-11-11" data-day="11" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">11</div>
+            <div class="cal-day" data-date="2026-11-12" data-day="12" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">12</div>
+            <div class="cal-day" data-date="2026-11-13" data-day="13" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">13</div>
+            <div class="cal-day cal-weekend" data-date="2026-11-14" data-day="14" data-month="November 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">14</div>
+            <div class="cal-day cal-weekend" data-date="2026-11-15" data-day="15" data-month="November 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">15</div>
+            <div class="cal-day" data-date="2026-11-16" data-day="16" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">16</div>
+            <div class="cal-day" data-date="2026-11-17" data-day="17" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">17</div>
+            <div class="cal-day" data-date="2026-11-18" data-day="18" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">18</div>
+            <div class="cal-day" data-date="2026-11-19" data-day="19" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">19</div>
+            <div class="cal-day" data-date="2026-11-20" data-day="20" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">20</div>
+            <div class="cal-day cal-weekend" data-date="2026-11-21" data-day="21" data-month="November 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">21</div>
+            <div class="cal-day cal-weekend" data-date="2026-11-22" data-day="22" data-month="November 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">22</div>
+            <div class="cal-day" data-date="2026-11-23" data-day="23" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">23</div>
+            <div class="cal-day" data-date="2026-11-24" data-day="24" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">24</div>
+            <div class="cal-day" data-date="2026-11-25" data-day="25" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">25</div>
+            <div class="cal-day" data-date="2026-11-26" data-day="26" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">26</div>
+            <div class="cal-day" data-date="2026-11-27" data-day="27" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">27</div>
+            <div class="cal-day cal-weekend" data-date="2026-11-28" data-day="28" data-month="November 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">28</div>
+            <div class="cal-day cal-weekend" data-date="2026-11-29" data-day="29" data-month="November 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">29</div>
+            <div class="cal-day" data-date="2026-11-30" data-day="30" data-month="November 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">30</div>
+          </div>
+        </div>
+        <div class="month-card">
+          <div class="month-header">December 2026</div>
+          <div class="month-weekdays">
+            <div>Su</div>
+            <div>M</div>
+            <div>Tu</div>
+            <div>W</div>
+            <div>Th</div>
+            <div>F</div>
+            <div>S</div>
+          </div>
+          <div class="month-days-grid">
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day" data-date="2026-12-01" data-day="1" data-month="December 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">1</div>
+            <div class="cal-day" data-date="2026-12-02" data-day="2" data-month="December 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">2</div>
+            <div class="cal-day" data-date="2026-12-03" data-day="3" data-month="December 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">3</div>
+            <div class="cal-day" data-date="2026-12-04" data-day="4" data-month="December 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">4</div>
+            <div class="cal-day cal-weekend" data-date="2026-12-05" data-day="5" data-month="December 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">5</div>
+            <div class="cal-day cal-weekend" data-date="2026-12-06" data-day="6" data-month="December 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">6</div>
+            <div class="cal-day" data-date="2026-12-07" data-day="7" data-month="December 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">7</div>
+            <div class="cal-day" data-date="2026-12-08" data-day="8" data-month="December 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">8</div>
+            <div class="cal-day" data-date="2026-12-09" data-day="9" data-month="December 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">9</div>
+            <div class="cal-day" data-date="2026-12-10" data-day="10" data-month="December 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">10</div>
+            <div class="cal-day" data-date="2026-12-11" data-day="11" data-month="December 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">11</div>
+            <div class="cal-day cal-weekend" data-date="2026-12-12" data-day="12" data-month="December 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">12</div>
+            <div class="cal-day cal-weekend" data-date="2026-12-13" data-day="13" data-month="December 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">13</div>
+            <div class="cal-day" data-date="2026-12-14" data-day="14" data-month="December 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">14</div>
+            <div class="cal-day" data-date="2026-12-15" data-day="15" data-month="December 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">15</div>
+            <div class="cal-day" data-date="2026-12-16" data-day="16" data-month="December 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">16</div>
+            <div class="cal-day" data-date="2026-12-17" data-day="17" data-month="December 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">17</div>
+            <div class="cal-day" data-date="2026-12-18" data-day="18" data-month="December 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">18</div>
+            <div class="cal-day cal-weekend" data-date="2026-12-19" data-day="19" data-month="December 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">19</div>
+            <div class="cal-day cal-weekend" data-date="2026-12-20" data-day="20" data-month="December 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">20</div>
+            <div class="cal-day" data-date="2026-12-21" data-day="21" data-month="December 2026" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">21</div>
+            <div class="cal-day cal-half-day" data-date="2026-12-22" data-day="22" data-month="December 2026"
+              data-event="true" data-type="half-day" data-title="Half Day — Early Closing"
+              data-details="School closes at 12:00 PM for the Winter / Christmas Holidays."
+              title="Half Day — Early Closing: School closes at 12:00 PM for the Winter / Christmas Holidays.">22</div>
+            <div class="cal-day cal-closed" data-date="2026-12-23" data-day="23" data-month="December 2026"
+              data-event="true" data-type="closed" data-title="Winter Holidays"
+              data-details="School closed for Winter / Christmas Holidays."
+              title="Winter Holidays: School closed for Winter / Christmas Holidays.">23</div>
+            <div class="cal-day cal-closed" data-date="2026-12-24" data-day="24" data-month="December 2026"
+              data-event="true" data-type="closed" data-title="Christmas Eve"
+              data-details="School closed for Winter Holidays."
+              title="Christmas Eve: School closed for Winter Holidays.">24</div>
+            <div class="cal-day cal-closed" data-date="2026-12-25" data-day="25" data-month="December 2026"
+              data-event="true" data-type="closed" data-title="Christmas Day"
+              data-details="School closed for Winter Holidays."
+              title="Christmas Day: School closed for Winter Holidays.">25</div>
+            <div class="cal-day cal-weekend" data-date="2026-12-26" data-day="26" data-month="December 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">26</div>
+            <div class="cal-day cal-weekend" data-date="2026-12-27" data-day="27" data-month="December 2026"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">27</div>
+            <div class="cal-day cal-closed" data-date="2026-12-28" data-day="28" data-month="December 2026"
+              data-event="true" data-type="closed" data-title="Winter Holidays"
+              data-details="School closed for Winter Holidays."
+              title="Winter Holidays: School closed for Winter Holidays.">28</div>
+            <div class="cal-day cal-closed" data-date="2026-12-29" data-day="29" data-month="December 2026"
+              data-event="true" data-type="closed" data-title="Winter Holidays"
+              data-details="School closed for Winter Holidays."
+              title="Winter Holidays: School closed for Winter Holidays.">29</div>
+            <div class="cal-day cal-closed" data-date="2026-12-30" data-day="30" data-month="December 2026"
+              data-event="true" data-type="closed" data-title="Winter Holidays"
+              data-details="School closed for Winter Holidays."
+              title="Winter Holidays: School closed for Winter Holidays.">30</div>
+            <div class="cal-day cal-closed" data-date="2026-12-31" data-day="31" data-month="December 2026"
+              data-event="true" data-type="closed" data-title="New Year's Eve"
+              data-details="School closed for Winter Holidays."
+              title="New Year's Eve: School closed for Winter Holidays.">31</div>
+          </div>
+        </div>
+        <div class="month-card">
+          <div class="month-header">January 2027</div>
+          <div class="month-weekdays">
+            <div>Su</div>
+            <div>M</div>
+            <div>Tu</div>
+            <div>W</div>
+            <div>Th</div>
+            <div>F</div>
+            <div>S</div>
+          </div>
+          <div class="month-days-grid">
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-closed" data-date="2027-01-01" data-day="1" data-month="January 2027"
+              data-event="true" data-type="closed" data-title="New Year's Day"
+              data-details="Public Holiday — School closed." title="New Year's Day: Public Holiday — School closed.">1
+            </div>
+            <div class="cal-day cal-weekend" data-date="2027-01-02" data-day="2" data-month="January 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">2</div>
+            <div class="cal-day cal-weekend" data-date="2027-01-03" data-day="3" data-month="January 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">3</div>
+            <div class="cal-day cal-closed" data-date="2027-01-04" data-day="4" data-month="January 2027"
+              data-event="true" data-type="closed" data-title="Winter Holidays"
+              data-details="School closed for Winter Holidays."
+              title="Winter Holidays: School closed for Winter Holidays.">4</div>
+            <div class="cal-day cal-closed" data-date="2027-01-05" data-day="5" data-month="January 2027"
+              data-event="true" data-type="closed" data-title="Winter Holidays"
+              data-details="School closed for Winter Holidays."
+              title="Winter Holidays: School closed for Winter Holidays.">5</div>
+            <div class="cal-day cal-closed" data-date="2027-01-06" data-day="6" data-month="January 2027"
+              data-event="true" data-type="closed" data-title="Winter Holidays"
+              data-details="School closed for Winter Holidays. Re-opens Thursday 7th Jan."
+              title="Winter Holidays: School closed for Winter Holidays. Re-opens Thursday 7th Jan.">6</div>
+            <div class="cal-day" data-date="2027-01-07" data-day="7" data-month="January 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">7</div>
+            <div class="cal-day" data-date="2027-01-08" data-day="8" data-month="January 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">8</div>
+            <div class="cal-day cal-weekend" data-date="2027-01-09" data-day="9" data-month="January 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">9</div>
+            <div class="cal-day cal-weekend" data-date="2027-01-10" data-day="10" data-month="January 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">10</div>
+            <div class="cal-day" data-date="2027-01-11" data-day="11" data-month="January 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">11</div>
+            <div class="cal-day" data-date="2027-01-12" data-day="12" data-month="January 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">12</div>
+            <div class="cal-day" data-date="2027-01-13" data-day="13" data-month="January 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">13</div>
+            <div class="cal-day" data-date="2027-01-14" data-day="14" data-month="January 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">14</div>
+            <div class="cal-day" data-date="2027-01-15" data-day="15" data-month="January 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">15</div>
+            <div class="cal-day cal-weekend" data-date="2027-01-16" data-day="16" data-month="January 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">16</div>
+            <div class="cal-day cal-weekend" data-date="2027-01-17" data-day="17" data-month="January 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">17</div>
+            <div class="cal-day" data-date="2027-01-18" data-day="18" data-month="January 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">18</div>
+            <div class="cal-day" data-date="2027-01-19" data-day="19" data-month="January 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">19</div>
+            <div class="cal-day" data-date="2027-01-20" data-day="20" data-month="January 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">20</div>
+            <div class="cal-day" data-date="2027-01-21" data-day="21" data-month="January 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">21</div>
+            <div class="cal-day" data-date="2027-01-22" data-day="22" data-month="January 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">22</div>
+            <div class="cal-day cal-weekend" data-date="2027-01-23" data-day="23" data-month="January 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">23</div>
+            <div class="cal-day cal-weekend" data-date="2027-01-24" data-day="24" data-month="January 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">24</div>
+            <div class="cal-day" data-date="2027-01-25" data-day="25" data-month="January 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">25</div>
+            <div class="cal-day" data-date="2027-01-26" data-day="26" data-month="January 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">26</div>
+            <div class="cal-day" data-date="2027-01-27" data-day="27" data-month="January 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">27</div>
+            <div class="cal-day" data-date="2027-01-28" data-day="28" data-month="January 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">28</div>
+            <div class="cal-day" data-date="2027-01-29" data-day="29" data-month="January 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">29</div>
+            <div class="cal-day cal-weekend" data-date="2027-01-30" data-day="30" data-month="January 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">30</div>
+            <div class="cal-day cal-weekend" data-date="2027-01-31" data-day="31" data-month="January 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">31</div>
+          </div>
+        </div>
+        <div class="month-card">
+          <div class="month-header">February 2027</div>
+          <div class="month-weekdays">
+            <div>Su</div>
+            <div>M</div>
+            <div>Tu</div>
+            <div>W</div>
+            <div>Th</div>
+            <div>F</div>
+            <div>S</div>
+          </div>
+          <div class="month-days-grid">
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-closed" data-date="2027-02-01" data-day="1" data-month="February 2027"
+              data-event="true" data-type="closed" data-title="St. Brigid's Day"
+              data-details="Public Holiday — School closed." title="St. Brigid's Day: Public Holiday — School closed.">1
+            </div>
+            <div class="cal-day" data-date="2027-02-02" data-day="2" data-month="February 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">2</div>
+            <div class="cal-day" data-date="2027-02-03" data-day="3" data-month="February 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">3</div>
+            <div class="cal-day" data-date="2027-02-04" data-day="4" data-month="February 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">4</div>
+            <div class="cal-day" data-date="2027-02-05" data-day="5" data-month="February 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">5</div>
+            <div class="cal-day cal-weekend" data-date="2027-02-06" data-day="6" data-month="February 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">6</div>
+            <div class="cal-day cal-weekend" data-date="2027-02-07" data-day="7" data-month="February 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">7</div>
+            <div class="cal-day" data-date="2027-02-08" data-day="8" data-month="February 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">8</div>
+            <div class="cal-day" data-date="2027-02-09" data-day="9" data-month="February 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">9</div>
+            <div class="cal-day" data-date="2027-02-10" data-day="10" data-month="February 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">10</div>
+            <div class="cal-day" data-date="2027-02-11" data-day="11" data-month="February 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">11</div>
+            <div class="cal-day" data-date="2027-02-12" data-day="12" data-month="February 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">12</div>
+            <div class="cal-day cal-weekend" data-date="2027-02-13" data-day="13" data-month="February 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">13</div>
+            <div class="cal-day cal-weekend" data-date="2027-02-14" data-day="14" data-month="February 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">14</div>
+            <div class="cal-day" data-date="2027-02-15" data-day="15" data-month="February 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">15</div>
+            <div class="cal-day" data-date="2027-02-16" data-day="16" data-month="February 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">16</div>
+            <div class="cal-day cal-closed" data-date="2027-02-17" data-day="17" data-month="February 2027"
+              data-event="true" data-type="closed" data-title="February Mid-Term Break"
+              data-details="School closed for Spring Mid-Term Break."
+              title="February Mid-Term Break: School closed for Spring Mid-Term Break.">17</div>
+            <div class="cal-day cal-closed" data-date="2027-02-18" data-day="18" data-month="February 2027"
+              data-event="true" data-type="closed" data-title="February Mid-Term Break"
+              data-details="School closed for Spring Mid-Term Break."
+              title="February Mid-Term Break: School closed for Spring Mid-Term Break.">18</div>
+            <div class="cal-day cal-closed" data-date="2027-02-19" data-day="19" data-month="February 2027"
+              data-event="true" data-type="closed" data-title="February Mid-Term Break"
+              data-details="School closed for Spring Mid-Term Break. Re-opens Monday 22nd Feb."
+              title="February Mid-Term Break: School closed for Spring Mid-Term Break. Re-opens Monday 22nd Feb.">19
+            </div>
+            <div class="cal-day cal-weekend" data-date="2027-02-20" data-day="20" data-month="February 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">20</div>
+            <div class="cal-day cal-weekend" data-date="2027-02-21" data-day="21" data-month="February 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">21</div>
+            <div class="cal-day" data-date="2027-02-22" data-day="22" data-month="February 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">22</div>
+            <div class="cal-day" data-date="2027-02-23" data-day="23" data-month="February 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">23</div>
+            <div class="cal-day" data-date="2027-02-24" data-day="24" data-month="February 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">24</div>
+            <div class="cal-day" data-date="2027-02-25" data-day="25" data-month="February 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">25</div>
+            <div class="cal-day" data-date="2027-02-26" data-day="26" data-month="February 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">26</div>
+            <div class="cal-day cal-weekend" data-date="2027-02-27" data-day="27" data-month="February 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">27</div>
+            <div class="cal-day cal-weekend" data-date="2027-02-28" data-day="28" data-month="February 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">28</div>
+          </div>
+        </div>
+        <div class="month-card">
+          <div class="month-header">March 2027</div>
+          <div class="month-weekdays">
+            <div>Su</div>
+            <div>M</div>
+            <div>Tu</div>
+            <div>W</div>
+            <div>Th</div>
+            <div>F</div>
+            <div>S</div>
+          </div>
+          <div class="month-days-grid">
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day" data-date="2027-03-01" data-day="1" data-month="March 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">1</div>
+            <div class="cal-day" data-date="2027-03-02" data-day="2" data-month="March 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">2</div>
+            <div class="cal-day" data-date="2027-03-03" data-day="3" data-month="March 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">3</div>
+            <div class="cal-day" data-date="2027-03-04" data-day="4" data-month="March 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">4</div>
+            <div class="cal-day" data-date="2027-03-05" data-day="5" data-month="March 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">5</div>
+            <div class="cal-day cal-weekend" data-date="2027-03-06" data-day="6" data-month="March 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">6</div>
+            <div class="cal-day cal-weekend" data-date="2027-03-07" data-day="7" data-month="March 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">7</div>
+            <div class="cal-day" data-date="2027-03-08" data-day="8" data-month="March 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">8</div>
+            <div class="cal-day" data-date="2027-03-09" data-day="9" data-month="March 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">9</div>
+            <div class="cal-day" data-date="2027-03-10" data-day="10" data-month="March 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">10</div>
+            <div class="cal-day" data-date="2027-03-11" data-day="11" data-month="March 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">11</div>
+            <div class="cal-day" data-date="2027-03-12" data-day="12" data-month="March 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">12</div>
+            <div class="cal-day cal-weekend" data-date="2027-03-13" data-day="13" data-month="March 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">13</div>
+            <div class="cal-day cal-weekend" data-date="2027-03-14" data-day="14" data-month="March 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">14</div>
+            <div class="cal-day" data-date="2027-03-15" data-day="15" data-month="March 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">15</div>
+            <div class="cal-day" data-date="2027-03-16" data-day="16" data-month="March 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">16</div>
+            <div class="cal-day cal-closed" data-date="2027-03-17" data-day="17" data-month="March 2027"
+              data-event="true" data-type="closed" data-title="St. Patrick's Day"
+              data-details="Public Holiday — School closed." title="St. Patrick's Day: Public Holiday — School closed.">
+              17</div>
+            <div class="cal-day" data-date="2027-03-18" data-day="18" data-month="March 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">18</div>
+            <div class="cal-day cal-half-day" data-date="2027-03-19" data-day="19" data-month="March 2027"
+              data-event="true" data-type="half-day" data-title="Half Day — Early Closing"
+              data-details="School closes at 12:00 PM for the Easter Holidays."
+              title="Half Day — Early Closing: School closes at 12:00 PM for the Easter Holidays.">19</div>
+            <div class="cal-day cal-weekend" data-date="2027-03-20" data-day="20" data-month="March 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">20</div>
+            <div class="cal-day cal-weekend" data-date="2027-03-21" data-day="21" data-month="March 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">21</div>
+            <div class="cal-day cal-closed" data-date="2027-03-22" data-day="22" data-month="March 2027"
+              data-event="true" data-type="closed" data-title="Easter Holidays"
+              data-details="School closed for Easter Holidays."
+              title="Easter Holidays: School closed for Easter Holidays.">22</div>
+            <div class="cal-day cal-closed" data-date="2027-03-23" data-day="23" data-month="March 2027"
+              data-event="true" data-type="closed" data-title="Easter Holidays"
+              data-details="School closed for Easter Holidays."
+              title="Easter Holidays: School closed for Easter Holidays.">23</div>
+            <div class="cal-day cal-closed" data-date="2027-03-24" data-day="24" data-month="March 2027"
+              data-event="true" data-type="closed" data-title="Easter Holidays (*Contingency)"
+              data-details="School closed for Easter Holidays (*Contingency arrangement day)."
+              title="Easter Holidays (*Contingency): School closed for Easter Holidays (*Contingency arrangement day).">
+              24</div>
+            <div class="cal-day cal-closed" data-date="2027-03-25" data-day="25" data-month="March 2027"
+              data-event="true" data-type="closed" data-title="Easter Holidays"
+              data-details="School closed for Easter Holidays."
+              title="Easter Holidays: School closed for Easter Holidays.">25</div>
+            <div class="cal-day cal-closed" data-date="2027-03-26" data-day="26" data-month="March 2027"
+              data-event="true" data-type="closed" data-title="Easter Holidays"
+              data-details="School closed for Easter Holidays."
+              title="Easter Holidays: School closed for Easter Holidays.">26</div>
+            <div class="cal-day cal-weekend" data-date="2027-03-27" data-day="27" data-month="March 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">27</div>
+            <div class="cal-day cal-weekend" data-date="2027-03-28" data-day="28" data-month="March 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">28</div>
+            <div class="cal-day cal-closed" data-date="2027-03-29" data-day="29" data-month="March 2027"
+              data-event="true" data-type="closed" data-title="Easter Monday"
+              data-details="Public Holiday — School closed." title="Easter Monday: Public Holiday — School closed.">29
+            </div>
+            <div class="cal-day cal-closed" data-date="2027-03-30" data-day="30" data-month="March 2027"
+              data-event="true" data-type="closed" data-title="Easter Holidays"
+              data-details="School closed for Easter Holidays."
+              title="Easter Holidays: School closed for Easter Holidays.">30</div>
+            <div class="cal-day cal-closed" data-date="2027-03-31" data-day="31" data-month="March 2027"
+              data-event="true" data-type="closed" data-title="Easter Holidays"
+              data-details="School closed for Easter Holidays."
+              title="Easter Holidays: School closed for Easter Holidays.">31</div>
+          </div>
+        </div>
+        <div class="month-card">
+          <div class="month-header">April 2027</div>
+          <div class="month-weekdays">
+            <div>Su</div>
+            <div>M</div>
+            <div>Tu</div>
+            <div>W</div>
+            <div>Th</div>
+            <div>F</div>
+            <div>S</div>
+          </div>
+          <div class="month-days-grid">
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-closed" data-date="2027-04-01" data-day="1" data-month="April 2027"
+              data-event="true" data-type="closed" data-title="Easter Holidays"
+              data-details="School closed for Easter Holidays."
+              title="Easter Holidays: School closed for Easter Holidays.">1</div>
+            <div class="cal-day cal-closed" data-date="2027-04-02" data-day="2" data-month="April 2027"
+              data-event="true" data-type="closed" data-title="Good Friday"
+              data-details="School closed for Easter Holidays. Re-opens Monday 5th April."
+              title="Good Friday: School closed for Easter Holidays. Re-opens Monday 5th April.">2</div>
+            <div class="cal-day cal-weekend" data-date="2027-04-03" data-day="3" data-month="April 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">3</div>
+            <div class="cal-day cal-weekend" data-date="2027-04-04" data-day="4" data-month="April 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">4</div>
+            <div class="cal-day" data-date="2027-04-05" data-day="5" data-month="April 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">5</div>
+            <div class="cal-day" data-date="2027-04-06" data-day="6" data-month="April 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">6</div>
+            <div class="cal-day" data-date="2027-04-07" data-day="7" data-month="April 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">7</div>
+            <div class="cal-day" data-date="2027-04-08" data-day="8" data-month="April 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">8</div>
+            <div class="cal-day" data-date="2027-04-09" data-day="9" data-month="April 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">9</div>
+            <div class="cal-day cal-weekend" data-date="2027-04-10" data-day="10" data-month="April 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">10</div>
+            <div class="cal-day cal-weekend" data-date="2027-04-11" data-day="11" data-month="April 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">11</div>
+            <div class="cal-day" data-date="2027-04-12" data-day="12" data-month="April 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">12</div>
+            <div class="cal-day" data-date="2027-04-13" data-day="13" data-month="April 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">13</div>
+            <div class="cal-day" data-date="2027-04-14" data-day="14" data-month="April 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">14</div>
+            <div class="cal-day" data-date="2027-04-15" data-day="15" data-month="April 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">15</div>
+            <div class="cal-day" data-date="2027-04-16" data-day="16" data-month="April 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">16</div>
+            <div class="cal-day cal-weekend" data-date="2027-04-17" data-day="17" data-month="April 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">17</div>
+            <div class="cal-day cal-weekend" data-date="2027-04-18" data-day="18" data-month="April 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">18</div>
+            <div class="cal-day" data-date="2027-04-19" data-day="19" data-month="April 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">19</div>
+            <div class="cal-day" data-date="2027-04-20" data-day="20" data-month="April 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">20</div>
+            <div class="cal-day" data-date="2027-04-21" data-day="21" data-month="April 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">21</div>
+            <div class="cal-day" data-date="2027-04-22" data-day="22" data-month="April 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">22</div>
+            <div class="cal-day" data-date="2027-04-23" data-day="23" data-month="April 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">23</div>
+            <div class="cal-day cal-weekend" data-date="2027-04-24" data-day="24" data-month="April 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">24</div>
+            <div class="cal-day cal-weekend" data-date="2027-04-25" data-day="25" data-month="April 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">25</div>
+            <div class="cal-day" data-date="2027-04-26" data-day="26" data-month="April 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">26</div>
+            <div class="cal-day" data-date="2027-04-27" data-day="27" data-month="April 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">27</div>
+            <div class="cal-day" data-date="2027-04-28" data-day="28" data-month="April 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">28</div>
+            <div class="cal-day" data-date="2027-04-29" data-day="29" data-month="April 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">29</div>
+            <div class="cal-day" data-date="2027-04-30" data-day="30" data-month="April 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">30</div>
+          </div>
+        </div>
+        <div class="month-card">
+          <div class="month-header">May 2027</div>
+          <div class="month-weekdays">
+            <div>Su</div>
+            <div>M</div>
+            <div>Tu</div>
+            <div>W</div>
+            <div>Th</div>
+            <div>F</div>
+            <div>S</div>
+          </div>
+          <div class="month-days-grid">
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-weekend" data-date="2027-05-01" data-day="1" data-month="May 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">1</div>
+            <div class="cal-day cal-weekend" data-date="2027-05-02" data-day="2" data-month="May 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">2</div>
+            <div class="cal-day cal-closed" data-date="2027-05-03" data-day="3" data-month="May 2027" data-event="true"
+              data-type="closed" data-title="May Bank Holiday" data-details="Public Holiday — School closed."
+              title="May Bank Holiday: Public Holiday — School closed.">3</div>
+            <div class="cal-day" data-date="2027-05-04" data-day="4" data-month="May 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">4</div>
+            <div class="cal-day" data-date="2027-05-05" data-day="5" data-month="May 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">5</div>
+            <div class="cal-day" data-date="2027-05-06" data-day="6" data-month="May 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">6</div>
+            <div class="cal-day" data-date="2027-05-07" data-day="7" data-month="May 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">7</div>
+            <div class="cal-day cal-weekend" data-date="2027-05-08" data-day="8" data-month="May 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">8</div>
+            <div class="cal-day cal-weekend" data-date="2027-05-09" data-day="9" data-month="May 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">9</div>
+            <div class="cal-day" data-date="2027-05-10" data-day="10" data-month="May 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">10</div>
+            <div class="cal-day" data-date="2027-05-11" data-day="11" data-month="May 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">11</div>
+            <div class="cal-day" data-date="2027-05-12" data-day="12" data-month="May 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">12</div>
+            <div class="cal-day" data-date="2027-05-13" data-day="13" data-month="May 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">13</div>
+            <div class="cal-day" data-date="2027-05-14" data-day="14" data-month="May 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">14</div>
+            <div class="cal-day cal-weekend" data-date="2027-05-15" data-day="15" data-month="May 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">15</div>
+            <div class="cal-day cal-weekend" data-date="2027-05-16" data-day="16" data-month="May 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">16</div>
+            <div class="cal-day" data-date="2027-05-17" data-day="17" data-month="May 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">17</div>
+            <div class="cal-day" data-date="2027-05-18" data-day="18" data-month="May 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">18</div>
+            <div class="cal-day" data-date="2027-05-19" data-day="19" data-month="May 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">19</div>
+            <div class="cal-day" data-date="2027-05-20" data-day="20" data-month="May 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">20</div>
+            <div class="cal-day" data-date="2027-05-21" data-day="21" data-month="May 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">21</div>
+            <div class="cal-day cal-weekend" data-date="2027-05-22" data-day="22" data-month="May 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">22</div>
+            <div class="cal-day cal-weekend" data-date="2027-05-23" data-day="23" data-month="May 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">23</div>
+            <div class="cal-day" data-date="2027-05-24" data-day="24" data-month="May 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">24</div>
+            <div class="cal-day" data-date="2027-05-25" data-day="25" data-month="May 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">25</div>
+            <div class="cal-day" data-date="2027-05-26" data-day="26" data-month="May 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">26</div>
+            <div class="cal-day" data-date="2027-05-27" data-day="27" data-month="May 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">27</div>
+            <div class="cal-day" data-date="2027-05-28" data-day="28" data-month="May 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">28</div>
+            <div class="cal-day cal-weekend" data-date="2027-05-29" data-day="29" data-month="May 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">29</div>
+            <div class="cal-day cal-weekend" data-date="2027-05-30" data-day="30" data-month="May 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">30</div>
+            <div class="cal-day" data-date="2027-05-31" data-day="31" data-month="May 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">31</div>
+          </div>
+        </div>
+        <div class="month-card">
+          <div class="month-header">June 2027</div>
+          <div class="month-weekdays">
+            <div>Su</div>
+            <div>M</div>
+            <div>Tu</div>
+            <div>W</div>
+            <div>Th</div>
+            <div>F</div>
+            <div>S</div>
+          </div>
+          <div class="month-days-grid">
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day" data-date="2027-06-01" data-day="1" data-month="June 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">1</div>
+            <div class="cal-day" data-date="2027-06-02" data-day="2" data-month="June 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">2</div>
+            <div class="cal-day" data-date="2027-06-03" data-day="3" data-month="June 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">3</div>
+            <div class="cal-day" data-date="2027-06-04" data-day="4" data-month="June 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">4</div>
+            <div class="cal-day cal-weekend" data-date="2027-06-05" data-day="5" data-month="June 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">5</div>
+            <div class="cal-day cal-weekend" data-date="2027-06-06" data-day="6" data-month="June 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">6</div>
+            <div class="cal-day cal-closed" data-date="2027-06-07" data-day="7" data-month="June 2027" data-event="true"
+              data-type="closed" data-title="June Bank Holiday" data-details="Public Holiday — School closed."
+              title="June Bank Holiday: Public Holiday — School closed.">7</div>
+            <div class="cal-day" data-date="2027-06-08" data-day="8" data-month="June 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">8</div>
+            <div class="cal-day" data-date="2027-06-09" data-day="9" data-month="June 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">9</div>
+            <div class="cal-day" data-date="2027-06-10" data-day="10" data-month="June 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">10</div>
+            <div class="cal-day" data-date="2027-06-11" data-day="11" data-month="June 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">11</div>
+            <div class="cal-day cal-weekend" data-date="2027-06-12" data-day="12" data-month="June 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">12</div>
+            <div class="cal-day cal-weekend" data-date="2027-06-13" data-day="13" data-month="June 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">13</div>
+            <div class="cal-day" data-date="2027-06-14" data-day="14" data-month="June 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">14</div>
+            <div class="cal-day" data-date="2027-06-15" data-day="15" data-month="June 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">15</div>
+            <div class="cal-day" data-date="2027-06-16" data-day="16" data-month="June 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">16</div>
+            <div class="cal-day" data-date="2027-06-17" data-day="17" data-month="June 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">17</div>
+            <div class="cal-day" data-date="2027-06-18" data-day="18" data-month="June 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">18</div>
+            <div class="cal-day cal-weekend" data-date="2027-06-19" data-day="19" data-month="June 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">19</div>
+            <div class="cal-day cal-weekend" data-date="2027-06-20" data-day="20" data-month="June 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">20</div>
+            <div class="cal-day" data-date="2027-06-21" data-day="21" data-month="June 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">21</div>
+            <div class="cal-day" data-date="2027-06-22" data-day="22" data-month="June 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">22</div>
+            <div class="cal-day" data-date="2027-06-23" data-day="23" data-month="June 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">23</div>
+            <div class="cal-day" data-date="2027-06-24" data-day="24" data-month="June 2027" data-type="regular"
+              data-title="Normal School Day" data-details="Classes in session (08:30 AM start)."
+              title="Normal School Day">24</div>
+            <div class="cal-day cal-last-half" data-date="2027-06-25" data-day="25" data-month="June 2027"
+              data-event="true" data-type="last-half" data-title="Last Day of School & Half Day"
+              data-details="School closes at 12:00 PM for pupils for the Summer Holidays."
+              title="Last Day of School & Half Day: School closes at 12:00 PM for pupils for the Summer Holidays.">25
+            </div>
+            <div class="cal-day cal-weekend" data-date="2027-06-26" data-day="26" data-month="June 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">26</div>
+            <div class="cal-day cal-weekend" data-date="2027-06-27" data-day="27" data-month="June 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">27</div>
+            <div class="cal-day cal-closed" data-date="2027-06-28" data-day="28" data-month="June 2027"
+              data-event="true" data-type="closed" data-title="Summer Holidays"
+              data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">28</div>
+            <div class="cal-day cal-closed" data-date="2027-06-29" data-day="29" data-month="June 2027"
+              data-event="true" data-type="closed" data-title="Summer Holidays"
+              data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">29</div>
+            <div class="cal-day cal-closed" data-date="2027-06-30" data-day="30" data-month="June 2027"
+              data-event="true" data-type="closed" data-title="Summer Holidays"
+              data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">30</div>
+          </div>
+        </div>
+        <div class="month-card">
+          <div class="month-header">July 2027</div>
+          <div class="month-weekdays">
+            <div>Su</div>
+            <div>M</div>
+            <div>Tu</div>
+            <div>W</div>
+            <div>Th</div>
+            <div>F</div>
+            <div>S</div>
+          </div>
+          <div class="month-days-grid">
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-empty"></div>
+            <div class="cal-day cal-closed" data-date="2027-07-01" data-day="1" data-month="July 2027" data-event="true"
+              data-type="closed" data-title="Summer Holidays" data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">1</div>
+            <div class="cal-day cal-closed" data-date="2027-07-02" data-day="2" data-month="July 2027" data-event="true"
+              data-type="closed" data-title="Summer Holidays" data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">2</div>
+            <div class="cal-day cal-weekend" data-date="2027-07-03" data-day="3" data-month="July 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">3</div>
+            <div class="cal-day cal-weekend" data-date="2027-07-04" data-day="4" data-month="July 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">4</div>
+            <div class="cal-day cal-closed" data-date="2027-07-05" data-day="5" data-month="July 2027" data-event="true"
+              data-type="closed" data-title="Summer Holidays" data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">5</div>
+            <div class="cal-day cal-closed" data-date="2027-07-06" data-day="6" data-month="July 2027" data-event="true"
+              data-type="closed" data-title="Summer Holidays" data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">6</div>
+            <div class="cal-day cal-closed" data-date="2027-07-07" data-day="7" data-month="July 2027" data-event="true"
+              data-type="closed" data-title="Summer Holidays" data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">7</div>
+            <div class="cal-day cal-closed" data-date="2027-07-08" data-day="8" data-month="July 2027" data-event="true"
+              data-type="closed" data-title="Summer Holidays" data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">8</div>
+            <div class="cal-day cal-closed" data-date="2027-07-09" data-day="9" data-month="July 2027" data-event="true"
+              data-type="closed" data-title="Summer Holidays" data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">9</div>
+            <div class="cal-day cal-weekend" data-date="2027-07-10" data-day="10" data-month="July 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">10</div>
+            <div class="cal-day cal-weekend" data-date="2027-07-11" data-day="11" data-month="July 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">11</div>
+            <div class="cal-day cal-closed" data-date="2027-07-12" data-day="12" data-month="July 2027"
+              data-event="true" data-type="closed" data-title="Summer Holidays"
+              data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">12</div>
+            <div class="cal-day cal-closed" data-date="2027-07-13" data-day="13" data-month="July 2027"
+              data-event="true" data-type="closed" data-title="Summer Holidays"
+              data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">13</div>
+            <div class="cal-day cal-closed" data-date="2027-07-14" data-day="14" data-month="July 2027"
+              data-event="true" data-type="closed" data-title="Summer Holidays"
+              data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">14</div>
+            <div class="cal-day cal-closed" data-date="2027-07-15" data-day="15" data-month="July 2027"
+              data-event="true" data-type="closed" data-title="Summer Holidays"
+              data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">15</div>
+            <div class="cal-day cal-closed" data-date="2027-07-16" data-day="16" data-month="July 2027"
+              data-event="true" data-type="closed" data-title="Summer Holidays"
+              data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">16</div>
+            <div class="cal-day cal-weekend" data-date="2027-07-17" data-day="17" data-month="July 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">17</div>
+            <div class="cal-day cal-weekend" data-date="2027-07-18" data-day="18" data-month="July 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">18</div>
+            <div class="cal-day cal-closed" data-date="2027-07-19" data-day="19" data-month="July 2027"
+              data-event="true" data-type="closed" data-title="Summer Holidays"
+              data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">19</div>
+            <div class="cal-day cal-closed" data-date="2027-07-20" data-day="20" data-month="July 2027"
+              data-event="true" data-type="closed" data-title="Summer Holidays"
+              data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">20</div>
+            <div class="cal-day cal-closed" data-date="2027-07-21" data-day="21" data-month="July 2027"
+              data-event="true" data-type="closed" data-title="Summer Holidays"
+              data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">21</div>
+            <div class="cal-day cal-closed" data-date="2027-07-22" data-day="22" data-month="July 2027"
+              data-event="true" data-type="closed" data-title="Summer Holidays"
+              data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">22</div>
+            <div class="cal-day cal-closed" data-date="2027-07-23" data-day="23" data-month="July 2027"
+              data-event="true" data-type="closed" data-title="Summer Holidays"
+              data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">23</div>
+            <div class="cal-day cal-weekend" data-date="2027-07-24" data-day="24" data-month="July 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">24</div>
+            <div class="cal-day cal-weekend" data-date="2027-07-25" data-day="25" data-month="July 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">25</div>
+            <div class="cal-day cal-closed" data-date="2027-07-26" data-day="26" data-month="July 2027"
+              data-event="true" data-type="closed" data-title="Summer Holidays"
+              data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">26</div>
+            <div class="cal-day cal-closed" data-date="2027-07-27" data-day="27" data-month="July 2027"
+              data-event="true" data-type="closed" data-title="Summer Holidays"
+              data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">27</div>
+            <div class="cal-day cal-closed" data-date="2027-07-28" data-day="28" data-month="July 2027"
+              data-event="true" data-type="closed" data-title="Summer Holidays"
+              data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">28</div>
+            <div class="cal-day cal-closed" data-date="2027-07-29" data-day="29" data-month="July 2027"
+              data-event="true" data-type="closed" data-title="Summer Holidays"
+              data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">29</div>
+            <div class="cal-day cal-closed" data-date="2027-07-30" data-day="30" data-month="July 2027"
+              data-event="true" data-type="closed" data-title="Summer Holidays"
+              data-details="School closed for Summer Holidays."
+              title="Summer Holidays: School closed for Summer Holidays.">30</div>
+            <div class="cal-day cal-weekend" data-date="2027-07-31" data-day="31" data-month="July 2027"
+              data-type="weekend" data-title="Weekend" data-details="School closed." title="Weekend">31</div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <!-- Interactive Calendar Event Detail Modal -->
+      <div id="calendarModal" class="calendar-modal" style="display: none;" role="dialog" aria-modal="true"
+        aria-labelledby="modalTitle">
+        <div class="calendar-modal-backdrop" id="calendarModalBackdrop"></div>
+        <div class="calendar-modal-content">
+          <button class="calendar-modal-close" id="calendarModalClose" aria-label="Close details">&times;</button>
+          <div class="calendar-modal-badge" id="modalBadge">School Event</div>
+          <h3 class="calendar-modal-title" id="modalTitle">Event Title</h3>
+          <div class="calendar-modal-date" id="modalDate"><i class="fa-regular fa-calendar"></i> <span>Date</span></div>
+          <p class="calendar-modal-desc" id="modalDesc">Event description.</p>
+          <div class="calendar-modal-actions">
+            <button class="btn btn-outline btn-sm" id="modalCloseBtn">Close</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Academic Calendar Notes & Contingency Box (from Page 2 of PDF) -->
+      <div class="calendar-notes-box">
+        <div class="notes-header">
+          <i class="fa-solid fa-circle-info"></i>
+          <h3>Academic Calendar Notes & Contingency Arrangements</h3>
+        </div>
+        <ul class="notes-list">
+          <li><strong>Provisional Dates:</strong> All dates are provisional and subject to Department of Education
+            directives.</li>
+          <li><strong>Early Closing on Half Days:</strong> There will be early closing (12:00 PM) on the last day prior
+            to Winter, Spring, and Summer Breaks (December 22, March 19, and June 25), but regular school hours apply on
+            the last day prior to mid-term breaks (October and February).</li>
+          <li><strong>Easter Contingency Arrangement:</strong> Where contingency arrangements are required, a primary
+            school authority may reduce the length of the Easter Break by remaining open up to and including Wednesday
+            24 March 2027.</li>
+        </ul>
+      </div>
+
     </div>
   </section>
 
   <!-- Shared Site Footer Container -->
   <div id="siteFooter"></div>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=20260906c"></script>
+  <script>
+    if (typeof initAcademicYearGrid === 'function') {
+      initAcademicYearGrid();
+    }
+  </script>
 </body>
+
 </html>
