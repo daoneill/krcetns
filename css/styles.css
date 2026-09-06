@@ -6,19 +6,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Color Palette */
-  --primary-navy: #0d2137;
-  --primary-navy-light: #162e4a;
-  --primary-navy-dark: #071524;
-  --teal-brand: #0d9488;
-  --teal-dark: #0f766e;
-  --teal-light: #ccfbf1;
-  --amber-accent: #f59e0b;
-  --amber-light: #fef3c7;
-  --coral-accent: #f43f5e;
-  --coral-light: #ffe4e6;
-  --emerald-accent: #10b981;
-  --emerald-light: #d1fae5;
+  /* Official Killester Park ETNS Palette (Extracted from School Crest) */
+  --primary-navy: #08204b;
+  --primary-navy-light: #12336b;
+  --primary-navy-dark: #041026;
+
+  /* Crest Leaf Green (Primary Brand Action & Accents) */
+  --primary-green: #2f8b36;
+  --primary-green-dark: #236d2a;
+  --primary-green-light: #eaf6eb;
+
+  /* Backward-compatible alias for existing templates */
+  --teal-brand: #2f8b36;
+  --teal-dark: #236d2a;
+  --teal-light: #eaf6eb;
+
+  /* Crest Sky / Cerulean Blue */
+  --sky-blue: #3093bd;
+  --sky-blue-dark: #247597;
+  --sky-blue-light: #e8f4fa;
+
+  /* Crest Warm Golden Amber */
+  --amber-accent: #ef972b;
+  --amber-light: #fef5ea;
+
+  /* Crest Poppy Coral / Red */
+  --coral-accent: #e03a20;
+  --coral-light: #fdedea;
+
+  /* Crest Violet / Purple */
+  --violet-accent: #9b5a9e;
+  --violet-light: #f6edf7;
+
+  /* Crest Rose Magenta */
+  --rose-accent: #db5897;
+  --rose-light: #faeff5;
+
+  /* Crest Spring Lime */
+  --lime-accent: #9abc33;
+  --lime-light: #f5fae8;
+
+  /* Emerald Alias */
+  --emerald-accent: #2f8b36;
+  --emerald-light: #eaf6eb;
 
   /* Surfaces & Neutral Tones */
   --bg-main: #f8fafc;
@@ -28,7 +58,7 @@
   --border-strong: #cbd5e1;
 
   /* Text Colors */
-  --text-heading: #0f172a;
+  --text-heading: #08204b;
   --text-body: #334155;
   --text-muted: #64748b;
   --text-white: #ffffff;
@@ -38,10 +68,10 @@
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Shadows & Glassmorphism */
-  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
-  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08), 0 2px 4px rgba(15, 23, 42, 0.04);
-  --shadow-lg: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
-  --shadow-hover: 0 20px 30px -10px rgba(13, 148, 136, 0.2);
+  --shadow-sm: 0 1px 3px rgba(8, 32, 75, 0.08);
+  --shadow-md: 0 4px 12px rgba(8, 32, 75, 0.08), 0 2px 4px rgba(8, 32, 75, 0.04);
+  --shadow-lg: 0 10px 25px -5px rgba(8, 32, 75, 0.1), 0 8px 10px -6px rgba(8, 32, 75, 0.04);
+  --shadow-hover: 0 20px 30px -10px rgba(47, 139, 54, 0.25);
   --glass-bg: rgba(255, 255, 255, 0.85);
   --glass-border: rgba(255, 255, 255, 0.3);
 
@@ -273,7 +303,7 @@ img {
 
 .nav-link:hover {
   color: var(--teal-brand);
-  background-color: rgba(13, 148, 136, 0.06);
+  background-color: rgba(47, 139, 54, 0.06);
 }
 
 .nav-link.active {
@@ -370,13 +400,13 @@ img {
   padding: 0.65rem 1.25rem;
   border-radius: var(--radius-full);
   font-weight: 700;
-  box-shadow: 0 4px 10px rgba(13, 148, 136, 0.3);
+  box-shadow: 0 4px 10px rgba(47, 139, 54, 0.3);
 }
 
 .nav-cta:hover {
   background-color: var(--teal-dark);
   transform: translateY(-1px);
-  box-shadow: 0 6px 15px rgba(13, 148, 136, 0.4);
+  box-shadow: 0 6px 15px rgba(47, 139, 54, 0.4);
 }
 
 /* ==========================================================================
@@ -498,7 +528,7 @@ img {
 .mobile-nav-link.active,
 .mobile-nav-toggle.active {
   color: var(--teal-brand);
-  background: rgba(13, 148, 136, 0.05);
+  background: rgba(47, 139, 54, 0.05);
 }
 
 .mobile-nav-toggle .chevron-icon {
@@ -542,7 +572,7 @@ img {
 .mobile-submenu-link:hover,
 .mobile-submenu-link.active {
   color: var(--teal-brand);
-  background: rgba(13, 148, 136, 0.08);
+  background: rgba(47, 139, 54, 0.08);
 }
 
 .backdrop {
@@ -593,7 +623,7 @@ img {
   width: 400px;
   height: 400px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(13, 148, 136, 0.25) 0%, rgba(13, 148, 136, 0) 70%);
+  background: radial-gradient(circle, rgba(47, 139, 54, 0.25) 0%, rgba(47, 139, 54, 0) 70%);
 }
 
 .shape-circle-2 {
@@ -603,7 +633,7 @@ img {
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.18) 0%, rgba(245, 158, 11, 0) 70%);
+  background: radial-gradient(circle, rgba(239, 151, 43, 0.18) 0%, rgba(239, 151, 43, 0) 70%);
 }
 
 .hero-container {
@@ -729,14 +759,14 @@ img {
 .btn-primary {
   background-color: var(--teal-brand);
   color: white;
-  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.35);
+  box-shadow: 0 4px 14px rgba(47, 139, 54, 0.35);
 }
 
 .btn-primary:hover {
   background-color: var(--teal-dark);
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(13, 148, 136, 0.45);
+  box-shadow: 0 6px 20px rgba(47, 139, 54, 0.45);
 }
 
 .btn-secondary {
@@ -767,7 +797,7 @@ img {
   background-color: var(--amber-accent);
   color: var(--primary-navy);
   font-weight: 800;
-  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+  box-shadow: 0 4px 14px rgba(239, 151, 43, 0.3);
 }
 
 .btn-amber:hover {

@@ -521,12 +521,12 @@ function showToast(message, type = 'info') {
 
   const toast = document.createElement('div');
   toast.style.cssText = `
-    background: #0d2137;
+    background: #08204b;
     color: white;
     padding: 1rem 1.5rem;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    border-left: 4px solid ${type === 'success' ? '#10b981' : '#0d9488'};
+    border-left: 4px solid ${type === 'success' ? '#2f8b36' : '#3093bd'};
     font-weight: 600;
     font-size: 0.95rem;
     transform: translateY(20px);
@@ -1365,7 +1365,7 @@ function attachDayCellListeners(cell) {
       else if (type === 'half-day') badgeColor = '#7030a0';
       else if (type === 'staff') badgeColor = '#c45911';
       else if (type === 'last-half') badgeColor = '#9acb59';
-      else if (type === 'regular') badgeColor = '#0d9488';
+      else if (type === 'regular') badgeColor = '#2f8b36';
 
       badgeEl.style.background = badgeColor;
     }
