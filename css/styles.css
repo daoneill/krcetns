@@ -6,59 +6,74 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Official Killester Park ETNS Palette (Extracted from School Crest) */
-  --primary-navy: #08204b;
-  --primary-navy-light: #12336b;
-  --primary-navy-dark: #041026;
+  /* ==========================================================================
+     KILLESTER PARK ETNS - OFFICIAL COLOR PALETTE
+     Extracted directly from School Flyer ("Still Enrolling for 2026/2027")
+     ========================================================================== */
 
-  /* Crest Leaf Green (Primary Brand Action & Accents) */
-  --primary-green: #2f8b36;
-  --primary-green-dark: #236d2a;
-  --primary-green-light: #eaf6eb;
+  /* 1. Primary Brand Light Blue (Extracted from School Logo) */
+  --primary-navy: #2591b9;
+  --primary-navy-light: #3aa8d4;
+  --primary-navy-dark: #166582;
+  --primary-navy-surface: #eef7fb;
+  --primary-blue: #2591b9;
+
+  /* 2. Vibrant Fresh Leaf Green ("Junior Infants" & "3rd Class" Badges, Leaves) */
+  --primary-green: #69af3a;
+  --primary-green-dark: #54902b;
+  --primary-green-light: #eef8e8;
 
   /* Backward-compatible alias for existing templates */
-  --teal-brand: #2f8b36;
-  --teal-dark: #236d2a;
-  --teal-light: #eaf6eb;
+  --teal-brand: #69af3a;
+  --teal-dark: #54902b;
+  --teal-light: #eef8e8;
 
-  /* Crest Sky / Cerulean Blue */
-  --sky-blue: #3093bd;
-  --sky-blue-dark: #247597;
-  --sky-blue-light: #e8f4fa;
+  /* 3. Electric Cerulean / Sky Blue ("for 2026/2027!", "1st Class", "6th Class", Email Icon) */
+  --sky-blue: #3bb1ee;
+  --sky-blue-dark: #1fa2e5;
+  --sky-blue-light: #def2fc;
+  --sky-blue-wave: #92dbfc;
 
-  /* Crest Warm Golden Amber */
-  --amber-accent: #ef972b;
-  --amber-light: #fef5ea;
+  /* 4. Royal Violet / Purple ("Learn Grow Belong", "Senior Infants", "5th Class", Phone Icon) */
+  --violet-accent: #8343a4;
+  --violet-dark: #6b2f8e;
+  --violet-light: #f6eef8;
 
-  /* Crest Poppy Coral / Red */
+  /* 5. Deep Royal Navy ("2nd Class" Badge) */
+  --royal-navy: #084285;
+  --royal-navy-light: #e8f0fa;
+
+  /* 6. Spring Lime (Leaves & Bottom Wave Accent) */
+  --lime-accent: #89c94e;
+  --lime-dark: #74ae3d;
+  --lime-light: #f4fae9;
+
+  /* 7. Warm Sunshine Amber / Gold (Flyer Star Sparkles & Sun Rays) */
+  --amber-accent: #f59e0b;
+  --amber-dark: #d97706;
+  --amber-light: #fef9ee;
+
+  /* 8. Poppy Coral / Warm Accent */
   --coral-accent: #e03a20;
   --coral-light: #fdedea;
-
-  /* Crest Violet / Purple */
-  --violet-accent: #9b5a9e;
-  --violet-light: #f6edf7;
 
   /* Crest Rose Magenta */
   --rose-accent: #db5897;
   --rose-light: #faeff5;
 
-  /* Crest Spring Lime */
-  --lime-accent: #9abc33;
-  --lime-light: #f5fae8;
-
   /* Emerald Alias */
-  --emerald-accent: #2f8b36;
-  --emerald-light: #eaf6eb;
+  --emerald-accent: #69af3a;
+  --emerald-light: #eef8e8;
 
   /* Surfaces & Neutral Tones */
-  --bg-main: #f8fafc;
+  --bg-main: #f8fafd;
   --bg-surface: #ffffff;
   --bg-surface-elevated: #ffffff;
   --border-subtle: #e2e8f0;
   --border-strong: #cbd5e1;
 
   /* Text Colors */
-  --text-heading: #08204b;
+  --text-heading: #166582;
   --text-body: #334155;
   --text-muted: #64748b;
   --text-white: #ffffff;
@@ -68,11 +83,11 @@
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Shadows & Glassmorphism */
-  --shadow-sm: 0 1px 3px rgba(8, 32, 75, 0.08);
-  --shadow-md: 0 4px 12px rgba(8, 32, 75, 0.08), 0 2px 4px rgba(8, 32, 75, 0.04);
-  --shadow-lg: 0 10px 25px -5px rgba(8, 32, 75, 0.1), 0 8px 10px -6px rgba(8, 32, 75, 0.04);
-  --shadow-hover: 0 20px 30px -10px rgba(47, 139, 54, 0.25);
-  --glass-bg: rgba(255, 255, 255, 0.85);
+  --shadow-sm: 0 2px 5px rgba(20, 17, 95, 0.06);
+  --shadow-md: 0 4px 14px rgba(20, 17, 95, 0.08), 0 2px 4px rgba(20, 17, 95, 0.04);
+  --shadow-lg: 0 10px 25px -5px rgba(20, 17, 95, 0.1), 0 8px 10px -6px rgba(20, 17, 95, 0.04);
+  --shadow-hover: 0 20px 30px -10px rgba(105, 175, 58, 0.25);
+  --glass-bg: rgba(255, 255, 255, 0.9);
   --glass-border: rgba(255, 255, 255, 0.3);
 
   /* Radius & Transitions */
@@ -198,6 +213,7 @@ img {
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-left: auto;
 }
 
 .social-link {
@@ -303,7 +319,7 @@ img {
 
 .nav-link:hover {
   color: var(--teal-brand);
-  background-color: rgba(47, 139, 54, 0.06);
+  background-color: var(--teal-light);
 }
 
 .nav-link.active {
@@ -400,13 +416,13 @@ img {
   padding: 0.65rem 1.25rem;
   border-radius: var(--radius-full);
   font-weight: 700;
-  box-shadow: 0 4px 10px rgba(47, 139, 54, 0.3);
+  box-shadow: 0 4px 10px rgba(105, 175, 58, 0.3);
 }
 
 .nav-cta:hover {
   background-color: var(--teal-dark);
   transform: translateY(-1px);
-  box-shadow: 0 6px 15px rgba(47, 139, 54, 0.4);
+  box-shadow: 0 6px 15px rgba(105, 175, 58, 0.4);
 }
 
 /* ==========================================================================
@@ -528,7 +544,7 @@ img {
 .mobile-nav-link.active,
 .mobile-nav-toggle.active {
   color: var(--teal-brand);
-  background: rgba(47, 139, 54, 0.05);
+  background: var(--teal-light);
 }
 
 .mobile-nav-toggle .chevron-icon {
@@ -572,7 +588,7 @@ img {
 .mobile-submenu-link:hover,
 .mobile-submenu-link.active {
   color: var(--teal-brand);
-  background: rgba(47, 139, 54, 0.08);
+  background: var(--teal-light);
 }
 
 .backdrop {
@@ -599,7 +615,7 @@ img {
    ========================================================================== */
 .hero {
   position: relative;
-  background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-navy-light) 60%, #1e3a5f 100%);
+  background: linear-gradient(135deg, var(--primary-navy) 0%, #176887 55%, var(--royal-navy) 100%);
   color: var(--text-white);
   padding: 5rem 1.5rem 6rem;
   overflow: hidden;
@@ -623,7 +639,7 @@ img {
   width: 400px;
   height: 400px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(47, 139, 54, 0.25) 0%, rgba(47, 139, 54, 0) 70%);
+  background: radial-gradient(circle, rgba(59, 177, 238, 0.28) 0%, rgba(59, 177, 238, 0) 70%);
 }
 
 .shape-circle-2 {
@@ -633,7 +649,7 @@ img {
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(239, 151, 43, 0.18) 0%, rgba(239, 151, 43, 0) 70%);
+  background: radial-gradient(circle, rgba(131, 67, 164, 0.25) 0%, rgba(131, 67, 164, 0) 70%);
 }
 
 .hero-container {
@@ -654,11 +670,11 @@ img {
   padding: 0.4rem 1rem;
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: var(--radius-full);
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--amber-accent);
+  color: var(--sky-blue-wave);
   margin-bottom: 1.25rem;
 }
 
@@ -669,13 +685,41 @@ img {
   line-height: 1.15;
   letter-spacing: -0.02em;
   margin-bottom: 1.25rem;
+  color: #ffffff;
 }
 
 .hero-title span {
-  color: #38bdf8;
-  background: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ffffff;
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: #ffffff;
+}
+
+.hero-former-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.95);
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-full);
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.hero-former-badge i {
+  color: var(--sky-blue-wave);
+  font-size: 1rem;
+}
+
+.hero-former-badge strong {
+  color: #ffffff;
+  font-weight: 700;
 }
 
 .hero-lead {
@@ -713,7 +757,7 @@ img {
 
 /* Page Header Banner (for secondary pages) */
 .page-header-banner {
-  background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-navy-light) 100%);
+  background: linear-gradient(135deg, var(--primary-navy) 0%, #176887 55%, var(--royal-navy) 100%);
   color: white;
   padding: 3.5rem 1.5rem 4rem;
   text-align: center;
@@ -757,16 +801,16 @@ img {
 }
 
 .btn-primary {
-  background-color: var(--teal-brand);
+  background-color: var(--primary-green);
   color: white;
-  box-shadow: 0 4px 14px rgba(47, 139, 54, 0.35);
+  box-shadow: 0 4px 14px rgba(105, 175, 58, 0.35);
 }
 
 .btn-primary:hover {
-  background-color: var(--teal-dark);
+  background-color: var(--primary-green-dark);
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(47, 139, 54, 0.45);
+  box-shadow: 0 6px 20px rgba(105, 175, 58, 0.45);
 }
 
 .btn-secondary {
@@ -797,13 +841,52 @@ img {
   background-color: var(--amber-accent);
   color: var(--primary-navy);
   font-weight: 800;
-  box-shadow: 0 4px 14px rgba(239, 151, 43, 0.3);
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
 }
 
 .btn-amber:hover {
-  background-color: #d97706;
+  background-color: var(--amber-dark);
   color: white;
   transform: translateY(-2px);
+}
+
+.btn-violet, .btn-purple {
+  background-color: var(--violet-accent);
+  color: white;
+  box-shadow: 0 4px 14px rgba(131, 67, 164, 0.35);
+}
+
+.btn-violet:hover, .btn-purple:hover {
+  background-color: var(--violet-dark);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(131, 67, 164, 0.45);
+}
+
+.btn-sky, .btn-cerulean {
+  background-color: var(--sky-blue);
+  color: white;
+  box-shadow: 0 4px 14px rgba(59, 177, 238, 0.35);
+}
+
+.btn-sky:hover, .btn-cerulean:hover {
+  background-color: var(--sky-blue-dark);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 177, 238, 0.45);
+}
+
+.btn-royal {
+  background-color: var(--royal-navy);
+  color: white;
+  box-shadow: 0 4px 14px rgba(8, 66, 133, 0.35);
+}
+
+.btn-royal:hover {
+  background-color: #063266;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(8, 66, 133, 0.45);
 }
 
 /* ==========================================================================
@@ -920,13 +1003,13 @@ img {
   left: 0;
   width: 100%;
   height: 4px;
-  background: var(--teal-brand);
+  background: var(--primary-green);
   transition: var(--transition);
 }
 
-.pillar-card:nth-child(2)::before { background: var(--amber-accent); }
-.pillar-card:nth-child(3)::before { background: var(--coral-accent); }
-.pillar-card:nth-child(4)::before { background: var(--emerald-accent); }
+.pillar-card:nth-child(2)::before { background: var(--sky-blue); }
+.pillar-card:nth-child(3)::before { background: var(--violet-accent); }
+.pillar-card:nth-child(4)::before { background: var(--royal-navy); }
 
 .pillar-card:hover {
   transform: translateY(-6px);
@@ -945,10 +1028,10 @@ img {
   margin-bottom: 1.5rem;
 }
 
-.pillar-card:nth-child(1) .pillar-icon { background: var(--teal-light); color: var(--teal-brand); }
-.pillar-card:nth-child(2) .pillar-icon { background: var(--amber-light); color: var(--amber-accent); }
-.pillar-card:nth-child(3) .pillar-icon { background: var(--coral-light); color: var(--coral-accent); }
-.pillar-card:nth-child(4) .pillar-icon { background: var(--emerald-light); color: var(--emerald-accent); }
+.pillar-card:nth-child(1) .pillar-icon { background: var(--primary-green-light); color: var(--primary-green); }
+.pillar-card:nth-child(2) .pillar-icon { background: var(--sky-blue-light); color: var(--sky-blue-dark); }
+.pillar-card:nth-child(3) .pillar-icon { background: var(--violet-light); color: var(--violet-accent); }
+.pillar-card:nth-child(4) .pillar-icon { background: var(--royal-navy-light); color: var(--royal-navy); }
 
 .pillar-title {
   font-family: var(--font-heading);
@@ -1280,7 +1363,7 @@ img {
 }
 
 .month-header {
-  background: linear-gradient(135deg, var(--primary-navy) 0%, #1e3a5f 100%);
+  background: linear-gradient(135deg, var(--primary-navy) 0%, var(--royal-navy) 100%);
   color: white;
   padding: 0.75rem 1rem;
   text-align: center;
@@ -1634,10 +1717,21 @@ img {
    ========================================================================== */
 .main-footer {
   background-color: var(--primary-navy);
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85);
   padding: 4.5rem 1.5rem 2rem;
   margin-top: 5rem;
-  border-top: 4px solid var(--teal-brand);
+  position: relative;
+  border-top: 4px solid var(--sky-blue);
+}
+
+.main-footer::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--violet-accent) 0%, var(--sky-blue) 33%, var(--primary-green) 66%, var(--lime-accent) 100%);
 }
 
 .footer-grid {
@@ -1763,4 +1857,87 @@ img {
     font-size: 1.35rem;
     padding: 0.35rem;
   }
+}
+
+/* ==========================================================================
+   SCHOOL FLYER DESIGN SYSTEM EXTENSIONS
+   Directly derived from images/School flyer.jpeg
+   ========================================================================== */
+
+/* Signature Soft Blue Highlight Container ("Come and join our...") */
+.flyer-banner, .banner-soft-blue {
+  background-color: var(--sky-blue-light);
+  border: 1.5px solid rgba(59, 177, 238, 0.4);
+  border-radius: var(--radius-lg);
+  padding: 2rem 2.25rem;
+  color: var(--primary-navy);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.flyer-banner-title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--primary-navy);
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+}
+
+.flyer-banner-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-body);
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+/* Class Pill Badges matching Flyer Badges */
+.pill-badges-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 1.15rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(20, 17, 95, 0.12);
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.pill-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(20, 17, 95, 0.18);
+  color: #ffffff;
+}
+
+.pill-badge.pill-green {
+  background-color: var(--primary-green);
+}
+
+.pill-badge.pill-purple {
+  background-color: var(--violet-accent);
+}
+
+.pill-badge.pill-sky {
+  background-color: var(--sky-blue);
+}
+
+.pill-badge.pill-navy {
+  background-color: var(--royal-navy);
+}
+
+.pill-badge.pill-lime {
+  background-color: var(--lime-accent);
+  color: var(--primary-navy);
 }

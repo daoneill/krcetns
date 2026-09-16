@@ -53,6 +53,8 @@ function renderCommonComponents() {
             <span class="top-info-item"><i class="fa-solid fa-location-dot"></i> Collins Avenue East, Killester, Dublin 5, D05 F2H1</span>
             <span class="top-info-item"><i class="fa-solid fa-phone"></i> <a href="tel:015241637">01 524 1637</a></span>
             <span class="top-info-item"><i class="fa-solid fa-envelope"></i> <a href="mailto:info@killesterparketns.ie">info@killesterparketns.ie</a></span>
+          </div>
+          <div class="top-social">
             <span class="top-info-item top-instagram-item">
               <i class="fa-brands fa-instagram"></i>
               <a href="https://www.instagram.com/killesterparketns/" target="_blank" rel="noopener noreferrer" title="Follow Killester Park ETNS on Instagram">@killesterparketns</a>
@@ -521,12 +523,12 @@ function showToast(message, type = 'info') {
 
   const toast = document.createElement('div');
   toast.style.cssText = `
-    background: #08204b;
+    background: #166582;
     color: white;
     padding: 1rem 1.5rem;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    border-left: 4px solid ${type === 'success' ? '#2f8b36' : '#3093bd'};
+    box-shadow: 0 10px 25px rgba(22, 101, 130, 0.25);
+    border-left: 4px solid ${type === 'success' ? '#69af3a' : '#3bb1ee'};
     font-weight: 600;
     font-size: 0.95rem;
     transform: translateY(20px);
@@ -1365,7 +1367,7 @@ function attachDayCellListeners(cell) {
       else if (type === 'half-day') badgeColor = '#7030a0';
       else if (type === 'staff') badgeColor = '#c45911';
       else if (type === 'last-half') badgeColor = '#9acb59';
-      else if (type === 'regular') badgeColor = '#2f8b36';
+      else if (type === 'regular') badgeColor = '#69af3a';
 
       badgeEl.style.background = badgeColor;
     }
