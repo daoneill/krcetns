@@ -15,16 +15,16 @@
     .admissions-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2.5rem;
+      gap: 2rem;
       max-width: 1050px;
-      margin: 0 auto;
+      margin: 0 auto 3.5rem;
     }
 
     .admission-card {
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      padding: 3rem 2.25rem;
+      padding: 2.5rem 2rem;
       box-shadow: var(--shadow-sm);
       display: flex;
       flex-direction: column;
@@ -48,14 +48,14 @@
     }
 
     .card-icon-circle {
-      width: 60px;
-      height: 60px;
+      width: 56px;
+      height: 56px;
       border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.6rem;
-      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
     .icon-welcome {
@@ -70,18 +70,18 @@
 
     .admission-card h3 {
       font-family: var(--font-heading);
-      font-size: 1.45rem;
+      font-size: 1.4rem;
       font-weight: 800;
       color: var(--text-heading);
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       line-height: 1.3;
     }
 
     .admission-card p {
-      font-size: 1.05rem;
+      font-size: 1rem;
       color: var(--text-body);
-      line-height: 1.75;
-      margin-bottom: 1.75rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
     }
 
     .status-notice {
@@ -104,9 +104,323 @@
       flex-shrink: 0;
     }
 
+    /* Official Admissions Documents & Resources */
+    .admissions-docs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.5rem;
+      max-width: 1050px;
+      margin: 0 auto 3rem;
+    }
+
+    .doc-item-card {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      position: relative;
+    }
+
+    .doc-item-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-navy);
+    }
+
+    .doc-item-card.featured-doc {
+      border-color: rgba(37, 145, 185, 0.45);
+      background: linear-gradient(180deg, rgba(238, 247, 251, 0.75) 0%, #ffffff 100%);
+      box-shadow: 0 4px 14px rgba(37, 145, 185, 0.12);
+    }
+
+    .doc-item-card.featured-doc:hover {
+      border-color: var(--primary-navy);
+      box-shadow: 0 8px 22px rgba(37, 145, 185, 0.2);
+    }
+
+    .doc-card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .doc-card-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .doc-icon-notice {
+      background: rgba(37, 145, 185, 0.15);
+      color: var(--primary-navy);
+    }
+
+    .doc-icon-policy {
+      background: rgba(131, 67, 164, 0.15);
+      color: var(--violet-accent);
+    }
+
+    .doc-icon-apply {
+      background: rgba(105, 175, 58, 0.18);
+      color: var(--primary-green-dark);
+    }
+
+    .doc-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      line-height: 1.3;
+      margin-bottom: 0.25rem;
+    }
+
+    .doc-card-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0.15rem 0.6rem;
+      border-radius: var(--radius-full);
+      background: rgba(37, 145, 185, 0.12);
+      color: var(--primary-navy-dark);
+    }
+
+    .doc-card-badge-green {
+      background: rgba(105, 175, 58, 0.18);
+      color: var(--primary-green-dark);
+    }
+
+    .doc-card-desc {
+      font-size: 0.95rem;
+      color: var(--text-body);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    /* Key Information Section */
+    .policy-key-info-wrap {
+      max-width: 1050px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .policy-info-header {
+      text-align: center;
+      margin-bottom: 2.25rem;
+    }
+
+    .policy-info-header h2 {
+      font-family: var(--font-heading);
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 0.5rem;
+    }
+
+    .policy-info-header p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .dates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .date-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.85rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+
+    .date-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-navy-light);
+    }
+
+    .date-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+      gap: 0.75rem;
+    }
+
+    .date-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.22rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin: 0 0 0.35rem 0;
+      line-height: 1.3;
+    }
+
+    .places-pill {
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.35rem 0.8rem;
+      border-radius: var(--radius-full);
+      background: var(--primary-green-light);
+      color: var(--primary-green-dark);
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .places-pill-amber {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .places-pill-purple {
+      background: var(--violet-light);
+      color: var(--violet-accent);
+    }
+
+    .date-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .date-step-item {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+    }
+
+    .date-step-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: var(--primary-navy-surface);
+      color: var(--primary-navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    .date-step-content {
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+
+    .date-step-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .date-step-val {
+      font-weight: 700;
+      color: var(--text-heading);
+    }
+
+    .date-card-note {
+      font-size: 0.85rem;
+      color: var(--text-body);
+      background: var(--bg-main);
+      padding: 0.75rem 0.9rem;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--primary-navy);
+      margin-top: auto;
+      line-height: 1.5;
+    }
+
+    .date-card-note.note-amber {
+      border-left-color: var(--amber-accent);
+      background: #fffdf7;
+    }
+
+    .date-card-note.note-purple {
+      border-left-color: var(--violet-accent);
+      background: var(--violet-light);
+    }
+
+    /* Policy Rules / Notes Row */
+    .policy-rules-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .rule-box {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid var(--primary-navy);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .rule-box-amber {
+      border-left-color: var(--amber-accent);
+      background: #fffdf8;
+    }
+
+    .rule-box-purple {
+      border-left-color: var(--violet-accent);
+      background: #fdfaff;
+    }
+
+    .rule-box-header {
+      font-weight: 700;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      color: var(--text-heading);
+      margin-bottom: 0.45rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .rule-box p {
+      font-size: 0.92rem;
+      color: var(--text-body);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* Policy Help Box */
     .policy-help-box {
       max-width: 1050px;
-      margin: 3.5rem auto 0;
+      margin: 0 auto;
       background: white;
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
@@ -156,96 +470,300 @@
   <section class="section">
     <div class="container">
 
-      <!-- Current Enrolment Notice directly from School Flyer -->
-      <div class="flyer-banner" style="margin-bottom: 3rem;">
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 1.5rem; margin-bottom: 1.25rem;">
-          <div>
+      <!-- 2027/2028 Enrolment Banner -->
+      <div class="flyer-banner" style="margin-bottom: 2.5rem;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem;">
+          <div style="max-width: 720px;">
             <span class="section-tag" style="background: var(--violet-accent); color: #ffffff; margin-bottom: 0.6rem;">
-              <i class="fa-solid fa-sparkles"></i> 2026 / 2027 Enrolment Update
+              <i class="fa-solid fa-graduation-cap"></i> 2027 / 2028 Enrolment
             </span>
-            <h2 class="flyer-banner-title">Still Enrolling for 2026/2027!</h2>
-            <p class="flyer-banner-subtitle" style="max-width: 680px; margin-bottom: 0;">
-              Come and join our welcoming, inclusive, and child-centred school community. We currently have places available in:
+            <h2 class="flyer-banner-title">Enrolling for 2027/2028</h2>
+            <p class="flyer-banner-subtitle" style="margin-bottom: 0;">
+              Killester Park Educate Together National School is now welcoming applications for the <strong>2027/2028</strong> academic year. Junior Infants applications open on <strong>1st October 2026</strong>, and applications for other year groups &amp; the Autism Class open on <strong>1st January 2027</strong>.
             </p>
           </div>
-          <a href="contact.html?subject=2026/2027%20Place%20Enquiry" class="btn btn-primary" style="font-size: 1rem; white-space: nowrap;">
-            <i class="fa-solid fa-paper-plane"></i> Apply / Enquire Today
-          </a>
-        </div>
-        <div class="pill-badges-group">
-          <span class="pill-badge pill-green"><i class="fa-solid fa-sun"></i> Junior Infants</span>
-          <span class="pill-badge pill-purple"><i class="fa-solid fa-rainbow"></i> Senior Infants</span>
-          <span class="pill-badge pill-sky"><i class="fa-solid fa-pencil"></i> 1st Class</span>
-          <span class="pill-badge pill-navy"><i class="fa-solid fa-book-open"></i> 2nd Class</span>
-          <span class="pill-badge pill-green"><i class="fa-solid fa-star"></i> 3rd Class</span>
-          <span class="pill-badge pill-navy"><i class="fa-solid fa-shapes"></i> 4th Class</span>
-          <span class="pill-badge pill-purple"><i class="fa-solid fa-seedling"></i> 5th Class</span>
-          <span class="pill-badge pill-sky"><i class="fa-solid fa-face-smile"></i> 6th Class</span>
+          <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+            <a href="https://www.aladdin.ie/i/6454986197172224" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="btn-apply-main" data-admissions-link="apply" style="font-size: 1.05rem; white-space: nowrap; font-weight: 700; padding: 0.85rem 2rem; box-shadow: 0 4px 12px rgba(37, 145, 185, 0.35);">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Apply
+            </a>
+            <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-solid fa-lock"></i> Official Aladdin Portal</span>
+          </div>
         </div>
       </div>
 
-      <div class="admissions-grid">
+      <!-- Quick Links to Official Documents & Online Enrolment -->
+      <div class="admissions-docs-grid">
 
-        <!-- 1. Welcoming New Students & Year-Round Enquiries -->
-        <div class="admission-card admission-card-featured">
+        <!-- 1. Admissions Notice -->
+        <div class="doc-item-card">
           <div>
-            <div class="card-icon-circle icon-welcome">
-              <i class="fa-solid fa-door-open"></i>
+            <div class="doc-card-top">
+              <div class="doc-card-icon doc-icon-notice">
+                <i class="fa-solid fa-file-lines"></i>
+              </div>
+              <div>
+                <span class="doc-card-badge">Official Notice</span>
+                <h3 class="doc-card-title">Admissions Notice</h3>
+              </div>
             </div>
-            <span class="section-tag" style="margin-bottom: 0.75rem;">Year-Round Enrolment</span>
-            <h3>Welcoming New Students</h3>
-            <p>
-              We are always ready to welcome new students to our school. Outside of the annual enrolment period, please
-              use the Contact Us form and we will respond to you as soon as possible. This will involve us responding to
-              you and an invite to come and visit our wonderful school.
+            <p class="doc-card-desc">
+              The ratified Annual Admission Notice for the 2027/2028 school year, detailing intake dates, place counts, and statutory criteria.
             </p>
           </div>
           <div>
-            <a href="contact.html?subject=Admissions%20%26%20Enrolment" class="btn btn-primary"
-              style="width: 100%; text-align: center; justify-content: center; font-size: 1rem;">
-              <i class="fa-solid fa-envelope"></i> Contact Us to Arrange a Visit
+            <a href="https://drive.google.com/file/d/1Lzix7PLNxJ-IYDDV6EKiLs6gr7wKiugQ/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-admissions-link="notice" style="width: 100%; justify-content: center; font-size: 0.95rem;">
+              <i class="fa-solid fa-file-pdf"></i> View Admissions Notice
             </a>
           </div>
         </div>
 
-        <!-- 2. Annual Enrolment Applications -->
-        <div class="admission-card admission-card-annual">
+        <!-- 2. Admissions Policy -->
+        <div class="doc-item-card">
           <div>
-            <div class="card-icon-circle icon-annual">
-              <i class="fa-solid fa-calendar-check"></i>
+            <div class="doc-card-top">
+              <div class="doc-card-icon doc-icon-policy">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div>
+                <span class="doc-card-badge">Ratified Policy</span>
+                <h3 class="doc-card-title">Admissions Policy</h3>
+              </div>
             </div>
-            <span class="section-tag"
-              style="background: var(--amber-light); color: var(--primary-navy); margin-bottom: 0.75rem;">Annual Intake
-              Window</span>
-            <h3>Annual Enrolment Applications</h3>
-            <p>
-              Annual Enrolment Applications take place in <strong>January and February</strong> of the academic year.
-              This page will be updated with an online application form for 2026/2027 in December 2026.
+            <p class="doc-card-desc">
+              Our comprehensive school Admissions Policy setting out enrolment principles, equality guidelines, and selection criteria.
             </p>
           </div>
           <div>
-            <div class="status-notice">
-              <i class="fa-solid fa-circle-info"></i>
+            <a href="https://drive.google.com/file/d/1STclAceTik1cVxAUaxDB_uPXla2AI8iz/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-admissions-link="policy" style="width: 100%; justify-content: center; font-size: 0.95rem;">
+              <i class="fa-solid fa-file-pdf"></i> View Admissions Policy
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Enrollment Link -->
+        <div class="doc-item-card featured-doc">
+          <div>
+            <div class="doc-card-top">
+              <div class="doc-card-icon doc-icon-apply">
+                <i class="fa-solid fa-laptop-file"></i>
+              </div>
               <div>
-                <strong>Online Application Notice:</strong><br>
-                The online application form for the upcoming annual intake will be published directly here on this page
-                in December.
+                <span class="doc-card-badge doc-card-badge-green">Online Application</span>
+                <h3 class="doc-card-title">Enrollment Link</h3>
               </div>
             </div>
+            <p class="doc-card-desc">
+              Applications are completed and submitted online only through the official Aladdin Enrolment portal for Killester Park ETNS.
+            </p>
+          </div>
+          <div>
+            <a href="https://www.aladdin.ie/i/6454986197172224" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-admissions-link="apply" style="width: 100%; justify-content: center; font-size: 0.98rem; font-weight: 700;">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Apply
+            </a>
           </div>
         </div>
 
       </div>
 
-      <!-- Reference Link to Formal Admission Policy -->
-      <div class="policy-help-box">
-        <div class="policy-help-text">
-          <h4>Looking for our ratified Admission Policy?</h4>
-          <p>Read our full criteria and guidelines in the school Policy Centre.</p>
+      <!-- In-Year Enquiries & School Visits -->
+      <div class="admission-card admission-card-featured" style="max-width: 1050px; margin: 0 auto 3.5rem; display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 2rem;">
+        <div style="max-width: 680px;">
+          <div class="card-icon-circle icon-welcome" style="margin-bottom: 1rem;">
+            <i class="fa-solid fa-door-open"></i>
+          </div>
+          <span class="section-tag" style="margin-bottom: 0.75rem;">In-Year Transfers &amp; Visits</span>
+          <h3 style="margin-bottom: 0.5rem;">Welcoming New Students</h3>
+          <p style="margin-bottom: 0;">
+            We are always ready to welcome new students to our school family. If you are seeking a mid-year place or wish to schedule an in-person visit to our school campus on Collins Avenue East, please reach out via our contact form.
+          </p>
         </div>
-        <a href="about.html#policies" class="btn btn-outline">
-          <i class="fa-solid fa-file-shield"></i> View Admission Policy
-        </a>
+        <div>
+          <a href="contact.html?subject=Admissions%20%26%20Enrolment" class="btn btn-primary"
+            style="font-size: 1rem; white-space: nowrap; padding: 0.85rem 1.75rem;">
+            <i class="fa-solid fa-envelope"></i> Contact Us to Arrange a Visit
+          </a>
+        </div>
+      </div>
+
+      <!-- Key Information from Policy Document -->
+      <div class="policy-key-info-wrap" style="margin-bottom: 1rem;">
+        <div class="policy-info-header">
+          <h2>Key Information for 2027/2028 Admissions</h2>
+          <p>
+            Summary of statutory dates, available places, and admission requirements in respect of admissions to the 2027/2028 school year.
+          </p>
+        </div>
+
+        <!-- Timetable by Year Group -->
+        <div class="dates-grid">
+
+          <!-- Junior Infants -->
+          <div class="date-card">
+            <div class="date-card-header">
+              <div>
+                <h3 class="date-card-title">Junior Infants</h3>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Mainstream Intake</span>
+              </div>
+              <span class="places-pill"><i class="fa-solid fa-user-check"></i> 28 Places</span>
+            </div>
+            <div class="date-steps">
+              <div class="date-step-item">
+                <div class="date-step-icon"><i class="fa-regular fa-calendar-plus"></i></div>
+                <div class="date-step-content">
+                  <span class="date-step-label">Applications Open</span>
+                  <span class="date-step-val">1st October 2026</span>
+                </div>
+              </div>
+              <div class="date-step-item">
+                <div class="date-step-icon"><i class="fa-regular fa-calendar-xmark"></i></div>
+                <div class="date-step-content">
+                  <span class="date-step-label">Closing Date</span>
+                  <span class="date-step-val">12th February 2027</span>
+                </div>
+              </div>
+              <div class="date-step-item">
+                <div class="date-step-icon"><i class="fa-regular fa-envelope-open"></i></div>
+                <div class="date-step-content">
+                  <span class="date-step-label">Decision Notification</span>
+                  <span class="date-step-val">26th February 2027</span>
+                </div>
+              </div>
+              <div class="date-step-item">
+                <div class="date-step-icon"><i class="fa-solid fa-clock"></i></div>
+                <div class="date-step-content">
+                  <span class="date-step-label">Confirm Acceptance</span>
+                  <span class="date-step-val">Within 7 Days</span>
+                </div>
+              </div>
+            </div>
+            <div class="date-card-note">
+              <strong>Intake Group:</strong> Applications made after 12th February 2027 are considered late applications.
+            </div>
+          </div>
+
+          <!-- Other Year Groups -->
+          <div class="date-card">
+            <div class="date-card-header">
+              <div>
+                <h3 class="date-card-title">Other Year Groups</h3>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Senior Infants to 6th Class</span>
+              </div>
+              <span class="places-pill places-pill-amber"><i class="fa-solid fa-clock"></i> Subject to Availability</span>
+            </div>
+            <div class="date-steps">
+              <div class="date-step-item">
+                <div class="date-step-icon"><i class="fa-regular fa-calendar-plus"></i></div>
+                <div class="date-step-content">
+                  <span class="date-step-label">Applications Open</span>
+                  <span class="date-step-val">1st January 2027</span>
+                </div>
+              </div>
+              <div class="date-step-item">
+                <div class="date-step-icon"><i class="fa-regular fa-calendar-xmark"></i></div>
+                <div class="date-step-content">
+                  <span class="date-step-label">Closing Date</span>
+                  <span class="date-step-val">12th February 2027</span>
+                </div>
+              </div>
+              <div class="date-step-item">
+                <div class="date-step-icon"><i class="fa-regular fa-envelope-open"></i></div>
+                <div class="date-step-content">
+                  <span class="date-step-label">Decision Notification</span>
+                  <span class="date-step-val">26th February 2027</span>
+                </div>
+              </div>
+              <div class="date-step-item">
+                <div class="date-step-icon"><i class="fa-solid fa-clock"></i></div>
+                <div class="date-step-content">
+                  <span class="date-step-label">Confirm Acceptance</span>
+                  <span class="date-step-val">Within 7 Days</span>
+                </div>
+              </div>
+            </div>
+            <div class="date-card-note note-amber">
+              <strong>Transfers:</strong> Places in 1st–6th classes depend on vacancy and class capacity.
+            </div>
+          </div>
+
+          <!-- Autism Class -->
+          <div class="date-card">
+            <div class="date-card-header">
+              <div>
+                <h3 class="date-card-title">Autism Class</h3>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Specialised Class</span>
+              </div>
+              <span class="places-pill places-pill-purple"><i class="fa-solid fa-list-ol"></i> Wait List Open</span>
+            </div>
+            <div class="date-steps">
+              <div class="date-step-item">
+                <div class="date-step-icon"><i class="fa-regular fa-calendar-plus"></i></div>
+                <div class="date-step-content">
+                  <span class="date-step-label">Applications Open</span>
+                  <span class="date-step-val">1st January 2027</span>
+                </div>
+              </div>
+              <div class="date-step-item">
+                <div class="date-step-icon"><i class="fa-regular fa-calendar-xmark"></i></div>
+                <div class="date-step-content">
+                  <span class="date-step-label">Closing Date</span>
+                  <span class="date-step-val">12th February 2027</span>
+                </div>
+              </div>
+              <div class="date-step-item">
+                <div class="date-step-icon"><i class="fa-regular fa-envelope-open"></i></div>
+                <div class="date-step-content">
+                  <span class="date-step-label">Decision Notification</span>
+                  <span class="date-step-val">26th February 2027</span>
+                </div>
+              </div>
+              <div class="date-step-item">
+                <div class="date-step-icon"><i class="fa-solid fa-clock"></i></div>
+                <div class="date-step-content">
+                  <span class="date-step-label">Confirm Acceptance</span>
+                  <span class="date-step-val">Within 7 Days</span>
+                </div>
+              </div>
+            </div>
+            <div class="date-card-note note-purple">
+              <strong>Requirement:</strong> Applicants must have a diagnosis of Autism with a recommendation for an Autism Class.
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Key Policy Rules & Conditions -->
+        <div class="policy-rules-row" style="margin-bottom: 0;">
+          <div class="rule-box rule-box-amber">
+            <div class="rule-box-header">
+              <i class="fa-solid fa-triangle-exclamation" style="color: var(--amber-accent);"></i>
+              <span>Late Applications</span>
+            </div>
+            <p>
+              Applications made after <strong>12th February 2027</strong> will be considered late applications. The school will consider and issue decisions on late applications in accordance with the school's admission policy.
+            </p>
+          </div>
+
+          <div class="rule-box">
+            <div class="rule-box-header">
+              <i class="fa-solid fa-stopwatch" style="color: var(--primary-navy);"></i>
+              <span>Offer Acceptance Period</span>
+            </div>
+            <p>
+              Applicants must confirm acceptance of an offer of admission within <strong>7 days</strong>. Failure to accept an offer within the prescribed period may result in the offer being withdrawn.
+            </p>
+          </div>
+
+          <div class="rule-box rule-box-purple">
+            <div class="rule-box-header">
+              <i class="fa-solid fa-scale-balanced" style="color: var(--violet-accent);"></i>
+              <span>Autism Class Wait List Validity</span>
+            </div>
+            <p>
+              Under the Education (Admission to Schools) Act 2018, the waiting list for the Special Class (Autism) is valid <strong>only for the school year for which admission is sought</strong>. If a place does not become available, a new application must be submitted for the following year.
+            </p>
+          </div>
+        </div>
+
       </div>
 
     </div>

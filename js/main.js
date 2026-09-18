@@ -20,6 +20,7 @@ const GOOGLE_NEWS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR8
 const GOOGLE_EVENTS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR8PJbUy5vu3mIAwEe-QVuYjSZ4qW0NZoQOjLPefUd2mz7dV_qxCzYxrr-dfpoETdj17i2iB2MF6X6T/pub?gid=528651931&single=true&output=csv';
 const GOOGLE_GALLERY_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR8PJbUy5vu3mIAwEe-QVuYjSZ4qW0NZoQOjLPefUd2mz7dV_qxCzYxrr-dfpoETdj17i2iB2MF6X6T/pub?gid=1776415787&single=true&output=csv'; // Paste Published Gallery Sheet CSV URL here
 const GOOGLE_AFTERSCHOOL_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR8PJbUy5vu3mIAwEe-QVuYjSZ4qW0NZoQOjLPefUd2mz7dV_qxCzYxrr-dfpoETdj17i2iB2MF6X6T/pub?gid=1290596322&single=true&output=csv';
+const GOOGLE_ADMISSIONS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR8PJbUy5vu3mIAwEe-QVuYjSZ4qW0NZoQOjLPefUd2mz7dV_qxCzYxrr-dfpoETdj17i2iB2MF6X6T/pub?gid=197245906&single=true&output=csv';
 
 document.addEventListener('DOMContentLoaded', () => {
   renderCommonComponents();
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNewsFilters();
   initFormValidation();
   initLightbox();
+  initDynamicAdmissionsLinks();
   initDynamicPolicies();
   initDynamicStaff();
   initDynamicBOM();
@@ -648,6 +650,60 @@ function escapeHTML(str) {
   return str.replace(/[&<>'"]/g,
     tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
   );
+}
+
+/* --------------------------------------------------------------------------
+   0. Dynamic Admissions Document & Enrolment Links Loader (admissions.html)
+   Performs a column-based lookup on the first column ("Link Name")
+   -------------------------------------------------------------------------- */
+async function initDynamicAdmissionsLinks() {
+  const noticeElements = document.querySelectorAll('[data-admissions-link="notice"]');
+  const policyElements = document.querySelectorAll('[data-admissions-link="policy"]');
+  const applyElements = document.querySelectorAll('[data-admissions-link="apply"]');
+
+  if (!noticeElements.length && !policyElements.length && !applyElements.length) return;
+  if (!GOOGLE_ADMISSIONS_CSV_URL || GOOGLE_ADMISSIONS_CSV_URL.trim() === '') return;
+
+  try {
+    const response = await fetch(GOOGLE_ADMISSIONS_CSV_URL);
+    if (!response.ok) return;
+
+    const csvText = await response.text();
+    const rows = parseCSVRows(csvText);
+
+    let noticeUrl = '';
+    let policyUrl = '';
+    let applyUrl = '';
+
+    rows.forEach((cols, idx) => {
+      if (idx === 0) return; // skip header row
+      if (cols.length >= 2) {
+        const linkName = cols[0].trim().toLowerCase();
+        const linkUrl = cols[1].trim();
+        if (!linkUrl) return;
+
+        if (linkName.includes('notice')) {
+          noticeUrl = linkUrl;
+        } else if (linkName.includes('policy')) {
+          policyUrl = linkUrl;
+        } else if (linkName.includes('enrol') || linkName.includes('enroll') || linkName.includes('apply')) {
+          applyUrl = linkUrl;
+        }
+      }
+    });
+
+    if (noticeUrl) {
+      noticeElements.forEach(el => { el.href = noticeUrl; });
+    }
+    if (policyUrl) {
+      policyElements.forEach(el => { el.href = policyUrl; });
+    }
+    if (applyUrl) {
+      applyElements.forEach(el => { el.href = applyUrl; });
+    }
+  } catch (err) {
+    console.warn('Dynamic admissions links lookup failed:', err);
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1559,8 +1615,8 @@ function renderAfterschoolCards(container, activities) {
       <div class="activity-footer">
         <span class="fee-tag">${escapeHTML(act.fee || 'Contact Provider')}</span>
         <div style="display: flex; gap: 0.4rem;">
-          ${act.contactEmail ? `<a href="mailto:${escapeHTML(act.contactEmail)}" class="contact-btn" title="Email Provider"><i class="fa-solid fa-envelope"></i> Email</a>` : ''}
-          ${act.contactPhone ? `<a href="tel:${escapeHTML(act.contactPhone.replace(/\s+/g, ''))}" class="contact-btn" style="background: var(--primary-navy);" title="Call Provider"><i class="fa-solid fa-phone"></i> Call</a>` : ''}
+          ${act.contactEmail ? `<a href="mailto:${escapeHTML(act.contactEmail)}" class="contact-btn" title="Email: ${escapeHTML(act.contactEmail)}"><i class="fa-solid fa-envelope"></i> Email</a>` : ''}
+          ${act.contactPhone ? `<a href="tel:${escapeHTML(act.contactPhone.replace(/\s+/g, ''))}" class="contact-btn" style="background: var(--primary-navy);" title="Call / Text: ${escapeHTML(act.contactPhone)}"><i class="fa-solid fa-mobile-screen-button"></i> Call / Text</a>` : ''}
         </div>
       </div>
     `;
