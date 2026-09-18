@@ -560,9 +560,12 @@ function initLightbox() {
   if (!galleryItems.length) return;
 
   galleryItems.forEach(item => {
+    if (item._lightboxAttached) return;
+    item._lightboxAttached = true;
+
     item.addEventListener('click', (e) => {
       e.preventDefault();
-      const imgSrc = item.getAttribute('href') || item.querySelector('img')?.src;
+      const imgSrc = item.getAttribute('href') || item.getAttribute('data-img-src') || item.querySelector('img')?.src;
       const title = item.getAttribute('data-title') || 'School Activity';
 
       if (!imgSrc) return;
@@ -574,7 +577,7 @@ function initLightbox() {
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: rgba(15, 23, 42, 0.9);
+        background: rgba(15, 23, 42, 0.92);
         backdrop-filter: blur(8px);
         z-index: 3000;
         display: flex;
@@ -586,14 +589,24 @@ function initLightbox() {
       `;
 
       overlay.innerHTML = `
-        <div style="position: relative; max-width: 900px; max-height: 80vh;">
-          <img src="${imgSrc}" style="max-width: 100%; max-height: 80vh; border-radius: 16px; box-shadow: 0 25px 50px rgba(0,0,0,0.5);" alt="${title}">
+        <div style="position: relative; max-width: 900px; max-height: 85vh; display: flex; flex-direction: column; align-items: center; cursor: default;" onclick="event.stopPropagation()">
+          <img src="${imgSrc}" style="max-width: 100%; max-height: 75vh; object-fit: contain; border-radius: 12px; box-shadow: 0 25px 50px rgba(0,0,0,0.5);" alt="${title}">
           <p style="color: white; font-size: 1.1rem; text-align: center; margin-top: 1rem; font-weight: 600;">${title}</p>
         </div>
-        <span style="position: absolute; top: 2rem; right: 2rem; color: white; font-size: 2rem; cursor: pointer;">&times;</span>
+        <span style="position: absolute; top: 1.5rem; right: 2rem; color: white; font-size: 2.5rem; cursor: pointer; line-height: 1;" title="Close (Esc)">&times;</span>
       `;
 
-      overlay.addEventListener('click', () => overlay.remove());
+      const closeOverlay = () => {
+        overlay.remove();
+        document.removeEventListener('keydown', onKeyDown);
+      };
+
+      const onKeyDown = (event) => {
+        if (event.key === 'Escape') closeOverlay();
+      };
+
+      overlay.addEventListener('click', closeOverlay);
+      document.addEventListener('keydown', onKeyDown);
       document.body.appendChild(overlay);
     });
   });
@@ -650,6 +663,25 @@ function escapeHTML(str) {
   return str.replace(/[&<>'"]/g,
     tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
   );
+}
+
+/**
+ * Normalizes image URLs, automatically converting Google Drive share links
+ * (e.g. drive.google.com/file/d/...) to direct embeddable image URLs.
+ */
+function normalizeImageUrl(url) {
+  if (!url || typeof url !== 'string') return '';
+  const trimmed = url.trim();
+  if (!trimmed) return '';
+
+  if (trimmed.includes('drive.google.com') || trimmed.includes('docs.google.com')) {
+    const fileIdMatch = trimmed.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || trimmed.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+    if (fileIdMatch && fileIdMatch[1]) {
+      return `https://lh3.googleusercontent.com/d/${fileIdMatch[1]}`;
+    }
+  }
+
+  return trimmed;
 }
 
 /* --------------------------------------------------------------------------
@@ -1031,7 +1063,8 @@ async function initDynamicNews() {
         const title = cols[0];
         const category = (cols[1] || 'events').toLowerCase().trim();
         const summary = cols[2];
-        const image = cols[3] && cols[3].trim() !== '' ? cols[3].trim() : 'images/hero.png';
+        const rawImage = cols[3] && cols[3].trim() !== '' ? cols[3].trim() : '';
+        const image = rawImage ? normalizeImageUrl(rawImage) : 'images/hero.png';
         const link = cols[4] && cols[4].trim() !== '' ? cols[4].trim() : '';
 
         if (i === 0 && (title.toLowerCase().includes('title') || title.toLowerCase().includes('news'))) {
@@ -1079,9 +1112,10 @@ function renderNewsCards(items, container) {
       : '';
 
     article.innerHTML = `
-      <div class="card-img-wrapper">
+      <div class="card-img-wrapper" data-lightbox="true" data-title="${escapeHTML(item.title)}" title="Click to view full photo">
         <span class="card-badge">${escapeHTML(item.categoryLabel)}</span>
-        <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.title)}">
+        <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.title)}" onerror="this.onerror=null;this.src='images/hero.png';">
+        <span class="img-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
       </div>
       <div class="card-body">
         <h3 class="card-title">${escapeHTML(item.title)}</h3>
@@ -1092,6 +1126,8 @@ function renderNewsCards(items, container) {
 
     container.appendChild(article);
   });
+
+  initLightbox();
 }
 
 /* --------------------------------------------------------------------------
@@ -1536,7 +1572,8 @@ async function initDynamicGallery() {
       const cols = rows[i];
       if (cols.length >= 2) {
         const title = cols[0];
-        const image = cols[1];
+        const rawImage = cols[1] && cols[1].trim() !== '' ? cols[1].trim() : '';
+        const image = rawImage ? normalizeImageUrl(rawImage) : '';
 
         if (i === 0 && (title.toLowerCase().includes('title') || title.toLowerCase().includes('photo'))) {
           continue;
@@ -1558,7 +1595,7 @@ async function initDynamicGallery() {
         item.style.cssText = 'border-radius: 14px; overflow: hidden; height: 180px; box-shadow: var(--shadow-sm); display: block;';
 
         item.innerHTML = `
-          <img src="${escapeHTML(photo.image)}" alt="${escapeHTML(photo.title)}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="${escapeHTML(photo.image)}" alt="${escapeHTML(photo.title)}" onerror="this.onerror=null;this.src='images/hero.png';" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
         `;
         container.appendChild(item);
       });
